@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Little Introduction To Programming</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <%- css('book') %>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <%- js('site') %>
+  </head>
+  <body>
+    <div id="header">
+      <div class="content">
+        <h1>The Little Introduction To Programming</h1>
+        <%- partial('shared/toc') %>
+      </div>
+    </div>
+    <div id="content">
+      <%- partial('shared/ie6') %>
+      <%- body %>
+    </div>
+    <%- partial('shared/footer') %>
+  </body>
+</htlm>

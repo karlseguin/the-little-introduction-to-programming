@@ -1,0 +1,54 @@
+
+<h2>Introduction</h2>
+<p>Programming is the process of writing instructions for computers to produce software for users. It's the combination of minute details to form a cohesive whole. More than anything, it is a creative and problem solving activity. The problem solving aspect of programming will become self-evident as we move forward. For now, I'd like to talk about the creative side.</p>
+
+<p>At a high level, it's obvious that creating software requires creativity. You are building something for people to use. It must therefore be clever without being complex. It must be intuitive and elegant. What isn't obvious to most people is that creativity plays an equally important role at the micro level of building software. Every instruction that you type requires consideration. In this respect, I've always likened programming to writing a book or painting a picture. Ultimately you have a finished product, but it's the sentences and the strokes, and how they are combined, which is where the book, painting or program truly comes to life.</p>
+
+<p>I sincerely believe that programming is a beautiful thing. However, I warn you that learning to program isn't trivial. You should be able to learn the basics with relative ease. Unfortunately, going from these basics to being able to write a useful program isn't easy. In fact, it can be quite frustrating. I tell you this so that you know what to expect, not to discourage you. How far you take this journey is up to you, this is but a start.</p>
+
+<h3>What's a Program</h3>
+<p>You already know what a program is; which is also called an application or app or, if you are old enough, an executable. You use hundreds a day. You use an email program, surf the web in a browser, interact with various websites, send an SMS or check the weather on your phone. A program is the goal of programming.</p>
+
+<p>Much like a book is made up of chapters, paragraphs, sentences, phrases, words and finally punctuation and letters, so too is a program broken down into smaller and smaller components. For now, the most important is a <em>statement</em>. A <em>statement</em> is analogous to a sentence in a book. On its own, it has structure and purpose, but without the context of the other <em>statements</em> around it, it isn't that meaningful.</p>
+
+<p>A <em>statement</em> is more casually (and commonly) known as a <em>line of code</em>. That's because <em>statements</em> tend to be written on individual lines. As such, programs are read up to down, rather than left to right. You might be wondering what <em>code</em> (also called <em>source code</em>) is? That happens to be a broad term which can references to the whole of the program or the smallest part. Therefore, a <em>line of code</em> is simply a line of your program.</p>
+
+<p>I think this would be a good time to introduce our first little program. There are more concepts and terms to learn, but it will be useful to have something to visualize.</p>
+
+<pre data-language="ruby">deck = ["2 of Hearts", "3 of Hearts", "4 of Hearts", "5 of Hearts"]
+shuffled_deck = shuffle(deck)
+print shuffled_deck.at(0)</pre>
+
+<p>Although it's rather short, there's a lot going on here. We won't go into any of this in great detail. For now what's important is that our program is made up of three lines of code and that the program is read from top to bottom. The purpose of this program is to pick a random card from a partial deck.</p>
+
+<p>The first line collects a limited number of cards into a container, our deck. Next, we shuffle the deck. Finally, we pick the first card (which at this point could have any value) and print it out on the screen. You might be tempted to analyze this deeper. For example, maybe you are curious about the meaning of the square brackets <code>[]</code> in the first <em>line of code</em>. Or maybe you're wondering about the implication of the equal sign <code>=</code>. Those are all things we'll eventually cover. For now, this is a program made up of three <em>lines of code</em> which create a deck, shuffles it, picks the first card and prints it.</p>
+
+<p>There are a lot of ways to write this program. The approach shown above is similar to how it works in the real-world, which makes it easy to understand. However, it isn't the most efficient in terms of performance. While we've just barely began to talk about programming, it's worth remembering that our programs are executed within a physical environment, which has finite resources.</p>
+
+<p>This is where creativity, at a micro level, comes into play. A good programmer wants to write code which is both understandable to other programmers (and to his or her future self), which is correct (or bug free), and which performs efficiently. Balancing these three aspects of programming is fundamental. But there's no shortcut to mastering this, one must learn through experience.</p>
+
+<h3>Programming Languages</h3>
+<p>We have an idea of what a simple program looks like: a collections of lines of code. But that's still quite vague, so let's peel away the layers.</p>
+
+<p>When you write a program you do so using a programming language. A programming language defines the syntax that you use to write your program. In our above example, we used square brackets <code>[]</code> to group together our cards. A different programming language might insist that you use parenthesis <code>()</code>. We used <code>print</code> to output the picked card, while another language might use <code>echo</code>.</p>
+
+<p>Programming languages define more than just the syntax, but for now, that's all we'll concern ourselves with. Thankfully even though some languages are vastly different than others, most share a lot of common ground, so that once you know your first language, other languages are much easier to pick up.</p>
+
+<p>Modern programming languages are known, relative to their older counterparts, as being high-level. What does this mean? It turns out that the CPUs in your computer, or smartphone, only understand a single low-level language. In this language, known as <em>assembly</em>, our little program might require 30 or more individual instructions, none of which is obvious to read or write. This means that on the one hand, you have programming languages that humans can understand, on the other you have languages that computers understand. What's needed is a translation process to go from the code that we write, to the code that a computer reads. This is process is known as <em>compiling</em> your code. A <em>compiler</em> takes your high-level program as input and outputs a low-level executable which your computer will understand.</p>
+
+<p>Even as your knowledge progresses, you'll probably never have to know the details of <em>assembly</em>  or <em>compilers</em>. They are both advanced topics which an increasingly rare number of programmers focus on. Why bring it up at all then? First, because learning to program is more than learning the correct sequence of instructions to write down. It's also about understanding, even at a high level, the metamorphosis of your code from what you write to what ends up actually being executed. Secondly, and more importantly, it introduces the important topic of <em>abstraction</em>.</p>
+
+<p>We've already seen that the code we'll write and the code that the CPU will execute aren't the same thing. The details of <em>assembly</em> are abstracted away from us by the <em>compiler</em>. This is only one of many layers of abstraction. These layers of abstraction help programmers deal with the ever increasing complexity of programming. It's abstraction that makes it possible for us to write a few understandable lines of code to shuffle a deck, without having to worry about the various building blocks which others have provided for us; like, how does <code>shuffle</code> randomly mix up our deck? But abstractions aren't perfect, and ignorance isn't always bliss. Sometimes a lower level concept will break through the abstraction. Sometimes we'll need to get our hands dirty to achieve what we want.</p>
+
+<p>The point is that while we'll focus on writing programs using modern techniques, know that there's en entire foundation which makes it all possible. Sometimes, those underlying elements will become visible, say by means of a cryptic error message. Also, rather than sugar-coating what programming is, you now hopefully have a more meaningful sense of it beyond simply being a list of written instructions for the computer to follow.</p>
+
+<h3>In This Chapter</h3>
+<p>This chapter served to introduce some basic concepts of programming. If it seemed overwhelming, don't worry. Most of what we talked about is rather broad and it isn't until we start filling in the pieces that the picture will sharpen. Having said that, let's recap what we have learned.</p>
+
+<p>First, a program is made up of sub-components, which themselves are made up of sub-component. The most interesting, for now, is the <em>statement</em> or <em>line of code</em>. This tends to represent a cohesive instruction; for example, add two numbers, shuffle these values, or print this value to the screen.</p>
+
+<p>Secondly, there are many programming languages, which define the syntax and rules that we'll follow, but most share common ground. Our focus will be on learning this common ground.</p>
+
+<p>Finally, in order to be executed, our program leverages building blocks written by other programmers and gets transformed into <em>assembly</em>, which is the language understood by a computer. As new programmers, this is a fairly minor detail that we can safely ignore. However, professional programmers who completely ignore their foundation do so at their own peril.</p>
+
+<%- partial('shared/paging', {chapter: 1}) %>

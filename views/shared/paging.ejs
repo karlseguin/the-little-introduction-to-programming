@@ -1,0 +1,8 @@
+<div id="paging">
+  <% if (chapter > 1) { -%>
+  <a href="<%= chapter_link(chapter-1) %>" id="prev">prev</a>
+  <% } %>
+  <% if (chapter < chapters.length) { -%>
+  <a href="<%= chapter_link(chapter+1) %>" id="next">next</a>
+  <% } -%>
+</div>

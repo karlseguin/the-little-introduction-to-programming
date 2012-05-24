@@ -1,0 +1,5 @@
+/config/deploy.rb
+Capfile
+/lib
+/node_modules
+config.js

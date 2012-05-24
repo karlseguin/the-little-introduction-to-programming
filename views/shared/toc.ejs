@@ -1,0 +1,7 @@
+<div id="toc">table of contents</div>
+<ul id="menu">
+  <li><a href="/">home</a></li>
+  <% for (var i = 1; i <= chapters.length; ++i) { -%>
+  <li><a href="<%=: chapter_link(i) %>"><%= i %>. <%= chapters[i-1]%></a></li>
+  <% } -%>
+</ul>

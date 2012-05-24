@@ -1,0 +1,126 @@
+<h2>Understanding Languages</h2>
+<p>Now that we've learned the basics, it'd be wonderful if we could start putting all the pieces together and slowly program an application. Before we can do that though, we need to talk about some details that we previous glossed over, and correct some over-simplifications.</p>
+
+<p>In chapter 1 we mentioned that there are a lot of programming languages and that programming languages define the syntax that we use (amongst other things). Now that we've seen more code and we've seen the components which are common to almost all programming languages, it's time to show concrete examples of how one language might be different than another.</p>
+
+<p>Also, since programmers use <em>programming language</em> and <em>language</em> interchangeably, we will too.</p>
+
+<p>Finally, programming languages tend to have a long life. A number of today's most popular languages are over 30 years old and almost all mainstream languages are at least a decade old. When you see something strange about a language, it very well could have to do with a problem or limitation long-since solved.</p>
+
+<h3>Syntax</h3>
+<p>In chapter 2 we saw a number of operators, such as the assignment operator <code>=</code>, the equality operator <code>==</code> and the addition  operator <code>+</code>. But there are no rules that say that these symbols must be used for these actions. A language designer could decide to use <code>%</code> to compare values and <code>#</code> to add them. Furthermore, there's no rule that defines what features a language must support. Maybe it isn't possible to add strings with an operator or to compare two values. Of course a language that didn't follow the most basic common sense or provide the most basic functionality, probably wouldn't be very popular.</p>
+
+<p>However, while we can all agree that <code>+</code> is the best symbol for the addition operation, and that a language <strong>should</strong> allow us to compare values, there are a number of things which are very subjective.</p>
+
+<h3>Variable Declaration</h3>
+<p>In chapter 2, we declared and assigned variables like so:</p>
+
+<pre data-language="ruby">name = "Leto"</pre>
+
+<p>It isn't uncommon that languages require slightly more explicit syntax:</p>
+
+<pre data-language="ruby">var name = "Leto"</pre>
+
+<p>Again, some languages might opt for something different than <code>var</code>. One of the benefits to this is that variables can be declared but uninitialized:</p>
+
+<pre data-language="ruby">var name;</pre>
+
+<p>This, of course, brings up the question <em>what value is name?</em>. Most languages have some concept of <em>no value</em>, which is typically identified by the <code>null</code> keyword, though <code>nil</code> and <code>None</code> are also common.</p>
+
+<pre data-language="ruby">if name == null
+  print "Please enter a name"</pre>
+
+<p>While we are talking about variables, it's worth pointing out languages put restrictions on the characters you can use to name your variables, or functions. Thankfully, if you are naming things to be meaningful, this is rarely a problem.</p>
+
+<h3>Strings</h3>
+<p>In most languages, strings are exactly as we've explained them - a value enclosed in double quotes. However, some languages also allow you to use single quotes. The two often behave slightly differently, but don't worry about that. For now, it's safe to think of the two as being interchangeable (assuming the language supports both).</p>
+
+<h3>Statement Termination</h3>
+<p>Many languages require an explicit character to mark the end of a statement and in many languages this symbol is a semicolon <code>;</code>:</p>
+
+<pre data-language="ruby">name = "Leto";
+account_balance = account_balance - withdrawal_amount;</pre>
+
+<p>Although newlines are often meaningless in these languages, developers still write a statement-per-line. Languages with a statement terminator are more popular than those without, but this does seem to be changing with time. This isn't to say having an explicit statement terminator is useless. How should the following behave?</p>
+
+<pre data-language="ruby">return
+["Ace of Clubs", "2 of Hearts"]</pre>
+
+<p>Should it return nothing, or should it return the collection of cards? In situations like these, languages without explicit statement terminators will always behave predictably, but unless you know what that behavior you can't just look at this code and know how it'll behave.</p>
+
+<h3>Scope</h3>
+<p>When we introduced the <code>if/else</code> control flow, we used indentation to indicate the <em>lines of code</em> that belonged to each branch:</p>
+
+<pre data-language="ruby">if withdraw_amount &gt; account_balance
+  print "Amount too large"
+else
+  account_balance = account_balance - withdraw_amount
+  print "Withdrawal request accepted"
+end</pre>
+
+<p>A common alternative is to use braces <code>{}</code>. This tends to be seen in languages which also require statement termination <code>;</code> - probably because they are all more or less descendants of a very popular language called C.</p>
+
+<pre data-language="ruby">if (withdraw_amount &gt; account_balance) {
+  print "Amount too large"
+} else {
+  account_balance = account_balance - withdraw_amount
+  print "Withdrawal request accepted"
+}</pre>
+
+<p>There are two things to notice her. First, even though the braces, and not the indentation, identifies our scope, we still indent for the sake of readability. Second, notice that our <code>if</code> condition is is surrounded by parenthesis. This is yet another common requirement from this class of languages.</p>
+
+<p>In these languages, braces are also used for functions:</p>
+
+<pre data-language="ruby">function sayHello()
+  print "Hello"
+end</pre>
+
+<p>Turns into:</p>
+
+<pre data-language="ruby">function sayHello() {
+  print "Hello"
+}</pre>
+
+<h3>Comments</h3>
+<p>We haven't talked about comments yet, but almost all languages allow developers to add comments to their code. These have no impact on the application, but can be useful as reminders or explanations for other developers or even yourself.</p>
+
+<p>Most languages use a character to mark the start of a comment. The two most common are <code>#</code> and <code>//</code> (which is actually two characters). Comments can be on their own line, or they can be at the end of the line:</p>
+
+<pre data-language="ruby"># don't let them enter a negative amount
+if withdraw_amount &lt; 0
+  ...
+end</pre>
+
+<p>Or:</p>
+
+<pre data-language="ruby">if (withdraw_amount &lt; 0) { // don't let them enter a negative amount
+  ...
+}</pre>
+
+<h3>Libraries and Frameworks</h3>
+<p>When we first talked about programming languages, we spoke of compilers which turn the code that we write into code that computers understand. The idea is to make programming more efficient by giving us higher-level tools.
+
+
+<h3>In This Chapter</h3>
+<p>The goal of this chapter was to show that, while syntaxes might change, the core components of programming don't. A variable, whether prefixed with <code>var</code>, nothing, or something else is still a variable. A condition, whether wrapped in parentheses, or not, is still a condition. From this point on we'll settle on a single language, but hopefully you'll now be better equipped to see beyond that language's idiosyncrasies.</p>
+
+<p>Don't let these details overwhelm you. In chapter 2 we saw a <code>hasCard</code> function. Look at this same function written in a different language:</p>
+
+<pre data-language="ruby">function hasCard(deck, card) {
+  foreach(c in deck) {
+    if (c == card) {
+      return true;
+    }
+  }
+  return false;
+}</pre>
+
+<p>You probably prefer one over the other, but they are both understandable, because they both rely on the same fundamentals: variables, functions, operators and control-flow. Also, you won't be asked to remember all of these different rules.</p>
+
+<p>You may be sad to hear this, but the the language that we'll be using will be of the  more cryptic variety (with semi-colons <code>;</code> and braces <code>{}</code>). There are good reasons for this, which will be explained at the start of the next chapter. This chapter therefore served as an introduction to this new syntax.</p>
+
+<p>You may be wondering how professional programmers deal with this variety - some of which is quite subtle. First, most programmers only deal with 2 or 3 languages on a day to day basis. Secondly, most of the mainstream languages tend to have more in common than not. Finally, consider that we do this for hours every day, so it becomes quite natural to us. Despite these facts, most of us get tripped up quite frequently, especially if we've been using the same languages for days at a time and suddenly switch. My own personal nemesis is <code>else if</code>. Every language seems to have its own version <code>else if</code>, <code>elseif</code>, <code>elsif</code>, <code>elif</code>, ...) and I seem to always pick the wrong one.</p>
+
+<p>You might also be wondering why we need so many languages in the first place? Some languages are invented to solve specific problems. Some of it has to do with legacy. An old language which was used to create millions of applications can't be thrown away (otherwise we'd have to rewrite all those applications), so the language is kept around. At the same time new applications are built using newer languages. Some programmers just like to write new languages and explore the world of language design to try and come up with better techniques and patterns. Finally, politics play a part in the creation of new languages: company X releases a new language and company Y releases it's own variation.</p>
+
+<%- partial('shared/paging', {chapter: 3}) %>
