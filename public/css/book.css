@@ -75,11 +75,6 @@ a {
   border-radius: 5px;
   padding: 10px; }
 
-.content, #content {
-  width: 940px;
-  margin: 0 auto;
-  position: relative; }
-
 h1 {
   color: #fff;
   font-size: 1.5em;
@@ -92,7 +87,8 @@ h2 {
 
 h3 {
   font-size: 1.2em;
-  padding-top: 10px;
+  padding-top: 20px;
+  margin-top: 30px;
   border-top: 1px solid #aaa; }
 
 code {
@@ -177,6 +173,11 @@ pre {
 
 #content {
   padding-top: 60px; }
+
+.content, #content {
+  width: 95%;
+  margin: 0 auto;
+  position: relative; }
 
 #paging {
   margin-top: 10px;

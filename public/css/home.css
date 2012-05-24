@@ -45,11 +45,6 @@ a {
   border-radius: 5px;
   padding: 10px; }
 
-.content, #content {
-  width: 940px;
-  margin: 0 auto;
-  position: relative; }
-
 html {
   background: #222; }
 
@@ -113,3 +108,7 @@ li {
 
 #go:hover {
   color: #ffd; }
+
+.content {
+  width: 960px;
+  margin: 0 auto; }

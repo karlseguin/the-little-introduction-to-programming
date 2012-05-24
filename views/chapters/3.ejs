@@ -19,11 +19,11 @@
 
 <p>It isn't uncommon that languages require slightly more explicit syntax:</p>
 
-<pre data-language="ruby">var name = "Leto"</pre>
+<pre data-language="javascript">var name = "Leto"</pre>
 
 <p>Again, some languages might opt for something different than <code>var</code>. One of the benefits to this is that variables can be declared but uninitialized:</p>
 
-<pre data-language="ruby">var name;</pre>
+<pre data-language="javascript">var name;</pre>
 
 <p>This, of course, brings up the question <em>what value is name?</em>. Most languages have some concept of <em>no value</em>, which is typically identified by the <code>null</code> keyword, though <code>nil</code> and <code>None</code> are also common.</p>
 
@@ -60,7 +60,7 @@ end</pre>
 
 <p>A common alternative is to use braces <code>{}</code>. This tends to be seen in languages which also require statement termination <code>;</code> - probably because they are all more or less descendants of a very popular language called C.</p>
 
-<pre data-language="ruby">if (withdraw_amount &gt; account_balance) {
+<pre data-language="javascript">if (withdraw_amount &gt; account_balance) {
   print "Amount too large"
 } else {
   account_balance = account_balance - withdraw_amount
@@ -77,8 +77,8 @@ end</pre>
 
 <p>Turns into:</p>
 
-<pre data-language="ruby">function sayHello() {
-  print "Hello"
+<pre data-language="javascript">function sayHello() {
+  print "Hello";
 }</pre>
 
 <h3>Comments</h3>
@@ -93,7 +93,7 @@ end</pre>
 
 <p>Or:</p>
 
-<pre data-language="ruby">if (withdraw_amount &lt; 0) { // don't let them enter a negative amount
+<pre data-language="javascript">if (withdraw_amount &lt; 0) { // don't let them enter a negative amount
   ...
 }</pre>
 
@@ -106,7 +106,7 @@ end</pre>
 
 <p>Don't let these details overwhelm you. In chapter 2 we saw a <code>hasCard</code> function. Look at this same function written in a different language:</p>
 
-<pre data-language="ruby">function hasCard(deck, card) {
+<pre data-language="javascript">function hasCard(deck, card) {
   foreach(c in deck) {
     if (c == card) {
       return true;
