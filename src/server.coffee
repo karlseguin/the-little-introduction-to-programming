@@ -13,7 +13,7 @@ run = (config) ->
       app.set('view engine', 'ejs')
       app.use(express.bodyParser())
       app.use(app.router)
-      app.use(require('connect-assets')())
+      app.use(require('connect-assets')({src: __dirname + '../assets'}))
       if app.settings.env == 'development'
         app.use(express.static(__dirname + '/../assets/'));
 
