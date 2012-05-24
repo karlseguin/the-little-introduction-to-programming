@@ -4,7 +4,7 @@ class Routes
     app.get '/chapter/:chapter/:name', (req, res) ->
       res.render "chapters/#{req.params.chapter}"
 
-    app.get '/', (req, res) ->
+    app.get '/_home', (req, res) ->
       res.render 'index', layout: 'layouts/home'
 
 module.exports = Routes.routes
