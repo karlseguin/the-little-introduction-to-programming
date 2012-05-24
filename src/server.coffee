@@ -11,10 +11,14 @@ run = (config) ->
     app.configure ->
       app.set('views', __dirname + '/../views')
       app.set('view engine', 'ejs')
-      app.use(express.static(__dirname + '/../assets/'));
       app.use(express.bodyParser())
-      app.use(require('connect-assets')())
       app.use(app.router)
+
+      if app.settings.env == 'development'
+        app.use(express.static(__dirname + '/../assets/'));
+        app.use(require('connect-assets')())
+
+
 
     require('./routes')(app)
     require('./helpers')(app, config)
