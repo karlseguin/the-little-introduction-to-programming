@@ -1,5 +1,0 @@
-assets = require('connect-assets')
-assets({build: true, buildDir: 'public'})
-assets.instance.compileCSS('css/home')
-assets.instance.compileCSS('css/book')
-assets.instance.compileJS('js/site')

@@ -1,0 +1,115 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  font-family: 'Open Sans',sans-serif;
+  color: #444;
+  background: #f9f9f9; }
+
+p {
+  line-height: 1.8em; }
+
+a {
+  color: #229;
+  text-decoration: none; }
+
+#footer {
+  background: #222;
+  margin-top: 45px;
+  padding: 20px 0;
+  font-size: 85%;
+  border-top: 1px solid #000;
+  overflow: auto; }
+
+.addthis_toolbox {
+  float: left; }
+
+#links {
+  float: right; }
+
+#links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid transparent; }
+
+#links a:hover {
+  background: #444;
+  border: 1px solid #000; }
+
+#ie6 {
+  border: 1px solid #fdd;
+  background: #fee;
+  border-radius: 5px;
+  padding: 10px; }
+
+.content, #content {
+  width: 940px;
+  margin: 0 auto;
+  position: relative; }
+
+html {
+  background: #222; }
+
+h1 {
+  padding-top: 30px;
+  text-align: center;
+  color: #444; }
+
+ul {
+  list-style: none; }
+
+li {
+  padding: 5px 10px;
+  background: url(/images/arrow.png) no-repeat 0 12px; }
+
+#tagline {
+  margin: 15px 0 50px 0;
+  text-align: right;
+  font-style: italic;
+  font-size: 80%; }
+
+#info {
+  background: #fff;
+  overflow: auto;
+  padding: 30px 0;
+  border-top: 2px solid #ccc;
+  border-bottom: 1px solid #aaa;
+  color: #666;
+  margin-bottom: 40px; }
+
+#info p {
+  margin-bottom: 15px; }
+
+#desc {
+  width: 425px;
+  float: left;
+  line-height: 28px;
+  padding-right: 75px;
+  border-right: 1px solid #ccc; }
+
+#quick {
+  width: 425px;
+  margin-left: 550px; }
+
+#quick h2 {
+  font-size: 1em;
+  font-weight: normal; }
+
+#go {
+  padding: 10px 20px;
+  margin-top: 30px;
+  display: inline-block;
+  border: 1px solid #555;
+  background: #333333;
+  background: -webkit-gradient(linear, left top, left bottom, from(#4a4a4a), to(#333333));
+  background: -moz-linear-gradient(-90deg, #4a4a4a, #333333);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$from, endColorstr=$to);
+  border-radius: 5px;
+  color: #fff;
+  line-height: 25px; }
+
+#go:hover {
+  color: #ffd; }

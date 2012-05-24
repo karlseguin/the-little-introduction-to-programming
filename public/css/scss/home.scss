@@ -10,5 +10,5 @@ li{padding:5px 10px;background:url(/images/arrow.png) no-repeat 0 12px;}
 #desc{width:425px;float:left;line-height:28px;padding-right:75px;border-right:1px solid #ccc;}
 #quick{width:425px;margin-left:550px}
 #quick h2{font-size:1em;font-weight:normal;}
-#go{padding:10px 20px;margin-top:30px;display:inline-block;border:1px solid #555;.gradient(#4a4a4a, #333333);border-radius:5px;color:#fff;line-height:25px;}
+#go{padding:10px 20px;margin-top:30px;display:inline-block;border:1px solid #555;@include gradient(#4a4a4a, #333333);border-radius:5px;color:#fff;line-height:25px;}
 #go:hover{color:#ffd;}

@@ -3,3 +3,4 @@ Capfile
 /lib
 /node_modules
 config.js
+.sass-cache
