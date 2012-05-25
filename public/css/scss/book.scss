@@ -35,22 +35,22 @@ pre{padding:20px;border:1px solid #eee;border-radius:5px;margin-bottom:20px;}
 .codingArea{margin-top:10px;font-family:$code-font;font-size:0.95em;}
 .codingArea > div{width:100%;padding:5px 10px;}
 .codingArea .goal{border:1px solid transparent;background:#eee;border-top-left-radius:4px;border-top-right-radius:4px;}
-.codingArea .goal.correct{background:#cfc;}
-.codingArea .goal.incorrect{background:#fcc;}
 .codingArea .buttons{overflow:auto;position:relative;padding-left:0;padding-right:20px;}
 .codingArea .buttons a{padding:4px 10px;border:1px solid #eee;border-radius:4px;background:#444;color:#fff;}
 .codingArea .buttons a:hover{background:#111;}
-.codingArea .run{float:left;}
-.codingArea .reset{position:absolute;right:100px;}
-.codingArea .answer{position:absolute;right:0;}
+.codingArea .buttons .run{float:left;}
+.codingArea .buttons .reset{position:absolute;right:100px;}
+.codingArea .buttons .answer{position:absolute;right:0;}
 
-textarea{padding:10px;height:125px;border:1px solid #afa;width:100%;color:#444;font-family:$code-font;font-size:0.95em;background:#efe;outline: none;}
-.codingArea.error textarea{border-color:#faa;background:#fee;}
+textarea{padding:1%;height:125px;border:1px solid #afa;width:100%;color:#444;font-family:$code-font;font-size:0.95em;background:#efe;outline: none;}
+textarea.answer{background:#eee;border:1px solid #ccc;display:none;}
+.codingArea.error textarea.input{border-color:#faa;background:#fee;}
 .codingArea.error .goal{background:#fcc;}
 
 #items.error{border:1px solid #faa;background:#fee;}
 #items > div{padding:3px;border-bottom:1px solid #ccc;}
 #items > div:last-child{border-bottom:none;}
-#funcList{margin-top:30px;display:none;border-top:1px solid #aaa;padding-top:30px;}
-#funcList > div {padding:5px 0;font-family:$code-font;}
-#funcList .type, #funcList .desc {padding:7px 0 0 7px;}
+#funcList{margin-top:30px;display:none;border-top:1px solid #aaa;padding-top:30px;padding:10px 0;font-family:$code-font;font-size:0.9em;}
+#funcList .function{margin-top:10px;border-bottom:1px solid #eee;padding-bottom:10px;}
+#funcList .desc{padding-bottom:5px;}
+

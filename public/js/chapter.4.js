@@ -14,15 +14,14 @@
     Runner.functionTemplate = _.template($('#functionTemplate').html());
 
     Runner.run = function(e) {
-      var area, config;
+      var config, input;
       config = Runner.getConfig(this);
-      area = Runner.getTextArea(this);
+      input = Runner.getInput(this, '.input');
       Runner.setContext(config);
       Runner.ok(this);
       try {
-        with(Runner.context) { eval(area.val()) };
+        with(Runner.context) { eval(input.val()) };
 
-        Runner.verify(config, this);
       } catch (error) {
         Runner.error(this, error.toString());
       }
@@ -30,10 +29,9 @@
     };
 
     Runner.answer = function(e) {
-      var area, config;
+      var config;
       config = Runner.getConfig(this);
-      area = Runner.getTextArea(this);
-      area.val(config.answer).focus();
+      Runner.getInput(this, '.answer').toggle().text(config.answer);
       return e.preventDefault();
     };
 
@@ -84,36 +82,12 @@
       return _results;
     };
 
-    Runner.verify = function(config, element) {
-      var index, item, items, _i, _len;
-      items = (function() {
-        var _i, _len, _ref, _results;
-        _ref = Runner.shopList.children();
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          item = _ref[_i];
-          _results.push($(item).text());
-        }
-        return _results;
-      })();
-      if (items.length !== config.expected.length) {
-        return Runner.incorrect(element);
-      }
-      for (index = _i = 0, _len = items.length; _i < _len; index = ++_i) {
-        item = items[index];
-        if (item.toLowerCase() !== config.expected[index].toLowerCase()) {
-          return Runner.incorrect(element);
-        }
-      }
-      return Runner.correct(element);
-    };
-
     Runner.getConfig = function(element) {
       return this.config.steps[Runner.getCodingArea(element).data('id')];
     };
 
-    Runner.getTextArea = function(element) {
-      return Runner.getCodingArea(element).find('textarea');
+    Runner.getInput = function(element, type) {
+      return Runner.getCodingArea(element).find('textarea').filter(type);
     };
 
     Runner.getCodingArea = function(element) {
@@ -135,14 +109,6 @@
       return Runner.shopList.addClass('error').append($('<div class="error">').text(error)).siblings('h4').hide();
     };
 
-    Runner.incorrect = function(element) {
-      return Runner.getCodingArea(element).find('.goal').addClass('incorrect').removeClass('correct');
-    };
-
-    Runner.correct = function(element) {
-      return Runner.getCodingArea(element).find('.goal').addClass('correct').removeClass('incorrect');
-    };
-
     return Runner;
 
   })();
@@ -153,19 +119,43 @@
     {
       answer: 'addItem("milk");',
       functions: ['addItem'],
-      expected: ['milk'],
       reset: []
+    }, {
+      answer: 'var item = prompt("What do you need to buy?");\naddItem(item);',
+      functions: ['addItem', 'prompt'],
+      reset: ['milk']
+    }, {
+      answer: 'var item = prompt("What do you need to buy?");\nif(item == ""){\n  alert("Please enter a value");\n} else {\n  addItem(item);\n}',
+      functions: ['addItem', 'prompt', 'alert'],
+      reset: ['milk', 'eggs']
     }
   ];
 
   config.functions = {
     addItem: {
       display: "addItem(item);",
-      description: 'Add an item to the shopping list',
       parameters: [['item - string', 'the item to add to the list']],
       define: {
         addItem: function(item) {
           return $('#items').append($('<div>').text(item));
+        }
+      }
+    },
+    prompt: {
+      display: "prompt(message);",
+      parameters: [['message - string', 'the message to display'], ['return - string', 'the value entered by the user']],
+      define: {
+        prompt: function(message) {
+          return window.prompt(message);
+        }
+      }
+    },
+    alert: {
+      display: "alert(message);",
+      parameters: [['message - string', 'the message to display']],
+      define: {
+        alert: function(message) {
+          return window.alert(message);
         }
       }
     }
@@ -175,9 +165,9 @@
 
   $(function() {
     $('textarea').on('focus', Runner.focus);
-    $('.run').on('click', Runner.run);
-    $('.answer').on('click', Runner.answer);
-    $('.reset').on('click', Runner.reset);
+    $('a.run').on('click', Runner.run);
+    $('a.answer').on('click', Runner.answer);
+    $('a.reset').on('click', Runner.reset);
     return Runner.shopList = $('#items');
   });
 

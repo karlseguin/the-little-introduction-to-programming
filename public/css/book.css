@@ -243,12 +243,6 @@ pre {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px; }
 
-.codingArea .goal.correct {
-  background: #cfc; }
-
-.codingArea .goal.incorrect {
-  background: #fcc; }
-
 .codingArea .buttons {
   overflow: auto;
   position: relative;
@@ -265,19 +259,19 @@ pre {
 .codingArea .buttons a:hover {
   background: #111; }
 
-.codingArea .run {
+.codingArea .buttons .run {
   float: left; }
 
-.codingArea .reset {
+.codingArea .buttons .reset {
   position: absolute;
   right: 100px; }
 
-.codingArea .answer {
+.codingArea .buttons .answer {
   position: absolute;
   right: 0; }
 
 textarea {
-  padding: 10px;
+  padding: 1%;
   height: 125px;
   border: 1px solid #afa;
   width: 100%;
@@ -287,7 +281,12 @@ textarea {
   background: #efe;
   outline: none; }
 
-.codingArea.error textarea {
+textarea.answer {
+  background: #eee;
+  border: 1px solid #ccc;
+  display: none; }
+
+.codingArea.error textarea.input {
   border-color: #faa;
   background: #fee; }
 
@@ -309,11 +308,15 @@ textarea {
   margin-top: 30px;
   display: none;
   border-top: 1px solid #aaa;
-  padding-top: 30px; }
+  padding-top: 30px;
+  padding: 10px 0;
+  font-family: "Monaco", "Consolas", monospace;
+  font-size: 0.9em; }
 
-#funcList > div {
-  padding: 5px 0;
-  font-family: "Monaco", "Consolas", monospace; }
+#funcList .function {
+  margin-top: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px; }
 
-#funcList .type, #funcList .desc {
-  padding: 7px 0 0 7px; }
+#funcList .desc {
+  padding-bottom: 5px; }

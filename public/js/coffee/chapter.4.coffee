@@ -6,20 +6,18 @@ class Runner
   @functionTemplate: _.template($('#functionTemplate').html())
   @run: (e) ->
     config = Runner.getConfig(this)
-    area = Runner.getTextArea(this)
+    input = Runner.getInput(this, '.input')
     Runner.setContext(config)
     Runner.ok(this)
     try
-      `with(Runner.context) { eval(area.val()) }`
-      Runner.verify(config, this)
+      `with(Runner.context) { eval(input.val()) }`
     catch error
       Runner.error(this, error.toString())
     e.preventDefault()
 
   @answer: (e) ->
     config = Runner.getConfig(this)
-    area = Runner.getTextArea(this)
-    area.val(config.answer).focus()
+    Runner.getInput(this, '.answer').toggle().text(config.answer);
     e.preventDefault()
 
   @reset: (e) ->
@@ -42,19 +40,11 @@ class Runner
       for name, func of Runner.getFunction(n).define
         Runner.context[name] = func
 
-  @verify: (config, element) ->
-    items = ($(item).text() for item in Runner.shopList.children())
-    if items.length != config.expected.length
-      return Runner.incorrect(element)
-    for item, index in items
-      return Runner.incorrect(element) if item.toLowerCase() != config.expected[index].toLowerCase()
-    Runner.correct(element)
-
   @getConfig: (element) ->
     @config.steps[Runner.getCodingArea(element).data('id')]
 
-  @getTextArea: (element) ->
-    Runner.getCodingArea(element).find('textarea')
+  @getInput: (element, type) ->
+    Runner.getCodingArea(element).find('textarea').filter(type)
 
   @getCodingArea: (element) ->
     $(element).closest('.codingArea')
@@ -71,33 +61,45 @@ class Runner
     Runner.getCodingArea(element).addClass('error')
     Runner.shopList.addClass('error').append($('<div class="error">').text(error)).siblings('h4').hide()
 
-  @incorrect: (element) ->
-    Runner.getCodingArea(element).find('.goal').addClass('incorrect').removeClass('correct')
-
-  @correct: (element) ->
-    Runner.getCodingArea(element).find('.goal').addClass('correct').removeClass('incorrect')
-
 config = {}
 config.steps = [
-  answer: 'addItem("milk");'
-  functions: ['addItem']
-  expected: ['milk']
-  reset: []
+  {
+    answer: 'addItem("milk");'
+    functions: ['addItem']
+    reset: []
+  }, {
+    answer: 'var item = prompt("What do you need to buy?");\naddItem(item);'
+    functions: ['addItem', 'prompt']
+    reset: ['milk']
+  }, {
+    answer: 'var item = prompt("What do you need to buy?");\nif(item == ""){\n  alert("Please enter a value");\n} else {\n  addItem(item);\n}'
+    functions: ['addItem', 'prompt', 'alert']
+    reset: ['milk', 'eggs']
+  }
 ]
 
 config.functions =
   addItem:
     display: "addItem(item);"
-    description: 'Add an item to the shopping list'
     parameters: [['item - string', 'the item to add to the list']]
     define:
       addItem: (item) -> $('#items').append($('<div>').text(item))
+  prompt:
+    display: "prompt(message);"
+    parameters: [['message - string', 'the message to display'], ['return - string', 'the value entered by the user']]
+    define:
+      prompt: (message) -> window.prompt(message)
+  alert:
+    display: "alert(message);"
+    parameters: [['message - string', 'the message to display']]
+    define:
+      alert: (message) -> window.alert(message)
 
 Runner.config = config
 
 $ ->
   $('textarea').on 'focus', Runner.focus
-  $('.run').on 'click', Runner.run
-  $('.answer').on 'click', Runner.answer
-  $('.reset').on 'click', Runner.reset
+  $('a.run').on 'click', Runner.run
+  $('a.answer').on 'click', Runner.answer
+  $('a.reset').on 'click', Runner.reset
   Runner.shopList = $('#items')
