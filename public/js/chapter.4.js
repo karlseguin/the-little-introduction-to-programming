@@ -121,12 +121,20 @@
       functions: ['addItem'],
       reset: []
     }, {
-      answer: 'var item = prompt("What do you need to buy?");\naddItem(item);',
+      answer: 'var item = prompt("What do you need to buy?");\raddItem(item);',
       functions: ['addItem', 'prompt'],
       reset: ['milk']
     }, {
-      answer: 'var item = prompt("What do you need to buy?");\nif(item == ""){\n  alert("Please enter a value");\n} else {\n  addItem(item);\n}',
+      answer: 'var item = prompt("What do you need to buy?");\rif(item == null || item == ""){ //prompt returns null when the user hits cancel\r  alert("Please enter a value");\r} else {\r  addItem(item);\r}',
       functions: ['addItem', 'prompt', 'alert'],
+      reset: ['milk', 'eggs']
+    }, {
+      answer: '//removed the empty/null check for simplicity\rvar item = prompt("What do you need to buy?");\rif(itemExists(item) == true){\r alert("This item was already added");\r} else {\r  addItem(item);\r}',
+      functions: ['addItem', 'prompt', 'alert', 'itemExists'],
+      reset: ['milk', 'eggs']
+    }, {
+      answer: 'function itemExists(item) {\r  var items = getItems();\r  for (var i = 0; i < items.length; i = i + 1) {\r    if (items[i] == item) {\r      return true;\r    }\r  }\r  return false;\r}\ralert(itemExists("milk"));',
+      functions: ['alert', 'getItems'],
       reset: ['milk', 'eggs']
     }
   ];
@@ -156,6 +164,39 @@
       define: {
         alert: function(message) {
           return window.alert(message);
+        }
+      }
+    },
+    itemExists: {
+      display: "itemExists(item);",
+      parameters: [['item - string', 'the item to check'], ['return - boolean', 'true if the item exists, false otherwise']],
+      define: {
+        itemExists: function(item) {
+          var element, _i, _len, _ref;
+          _ref = $('#items').children();
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            element = _ref[_i];
+            if (element.innerHTML.toLowerCase() === item) {
+              return true;
+            }
+          }
+          return false;
+        }
+      }
+    },
+    getItems: {
+      display: "getItems();",
+      parameters: [['return - string collection', 'the items currently in the list']],
+      define: {
+        getItems: function() {
+          var element, _i, _len, _ref, _results;
+          _ref = $('#items').children();
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            element = _ref[_i];
+            _results.push(element.innerHTML);
+          }
+          return _results;
         }
       }
     }

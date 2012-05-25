@@ -68,12 +68,20 @@ config.steps = [
     functions: ['addItem']
     reset: []
   }, {
-    answer: 'var item = prompt("What do you need to buy?");\naddItem(item);'
+    answer: 'var item = prompt("What do you need to buy?");\raddItem(item);'
     functions: ['addItem', 'prompt']
     reset: ['milk']
   }, {
-    answer: 'var item = prompt("What do you need to buy?");\nif(item == ""){\n  alert("Please enter a value");\n} else {\n  addItem(item);\n}'
+    answer: 'var item = prompt("What do you need to buy?");\rif(item == null || item == ""){ //prompt returns null when the user hits cancel\r  alert("Please enter a value");\r} else {\r  addItem(item);\r}'
     functions: ['addItem', 'prompt', 'alert']
+    reset: ['milk', 'eggs']
+  }, {
+    answer: '//removed the empty/null check for simplicity\rvar item = prompt("What do you need to buy?");\rif(itemExists(item) == true){\r alert("This item was already added");\r} else {\r  addItem(item);\r}'
+    functions: ['addItem', 'prompt', 'alert', 'itemExists']
+    reset: ['milk', 'eggs']
+  }, {
+    answer: 'function itemExists(item) {\r  var items = getItems();\r  for (var i = 0; i < items.length; i = i + 1) {\r    if (items[i] == item) {\r      return true;\r    }\r  }\r  return false;\r}\ralert(itemExists("milk"));'
+    functions: ['alert', 'getItems']
     reset: ['milk', 'eggs']
   }
 ]
@@ -94,6 +102,19 @@ config.functions =
     parameters: [['message - string', 'the message to display']]
     define:
       alert: (message) -> window.alert(message)
+  itemExists:
+    display: "itemExists(item);"
+    parameters: [['item - string', 'the item to check'], ['return - boolean', 'true if the item exists, false otherwise']]
+    define:
+      itemExists: (item) ->
+        for element in $('#items').children()
+          return true if element.innerHTML.toLowerCase() == item
+        return false
+   getItems:
+    display: "getItems();"
+    parameters: [['return - string collection', 'the items currently in the list']]
+    define:
+      getItems: -> (element.innerHTML for element in $('#items').children())
 
 Runner.config = config
 

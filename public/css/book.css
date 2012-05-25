@@ -239,7 +239,7 @@ pre {
 
 .codingArea .goal {
   border: 1px solid transparent;
-  background: #eee;
+  background: #ddd;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px; }
 
@@ -285,6 +285,9 @@ textarea.answer {
   background: #eee;
   border: 1px solid #ccc;
   display: none; }
+
+.codingArea.taller textarea {
+  height: 175px; }
 
 .codingArea.error textarea.input {
   border-color: #faa;
