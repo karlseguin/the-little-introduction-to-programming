@@ -3,4 +3,4 @@ module.exports = (app, config) ->
     chapters:  config.chapters
     development:  app.settings.env == 'development'
     chapter_link: (chapter) ->
-      "/chapter/#{chapter}/#{config.chapters[chapter-1].replace(/\ /g, '_')}"
+      "/chapter/#{chapter}/#{config.chapters[chapter-1].replace(/\ /g, '_').replace(/'/g, '')}"

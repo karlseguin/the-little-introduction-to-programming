@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <title>The Little Introduction To Programming</title>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <link href="/css/book.css" rel="stylesheet" type="text/css">
@@ -11,10 +12,11 @@
   <body>
     <div id="header">
       <div class="content">
-        <h1>The Little Introduction To Programming</h1>
-        <%- partial('shared/toc') %>
+        <h1><a href="/">The Little Introduction To Programming</a></h1>
+        <div id="toc"></div>
       </div>
     </div>
+    <%- partial('shared/toc') %>
     <div id="content">
       <%- partial('shared/ie6') %>
       <%- body %>

@@ -1,3 +1,5 @@
+@import 'variables';
+
 pre{background:#FFF;word-wrap:break-word;color:#000;line-height:30px;margin:0 0 20px;padding:10px;
   .comment{color:#7E7E7E;font-style:italic;}
   .constant{color:#18838A;font-weight:700;}
@@ -8,4 +10,4 @@ pre{background:#FFF;word-wrap:break-word;color:#000;line-height:30px;margin:0 0 
   .support{color:#192140;}
   .entity, .variable.global, .variable.class, .variable.instance{color:#3E853F;}
 }
-pre,code{font-family:'Monaco', 'Consolas', monospace;}
+pre,code{font-family:$code-font;}

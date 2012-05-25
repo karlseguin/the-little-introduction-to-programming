@@ -1,18 +1,22 @@
 @import 'tricolore';
 @import 'base';
+@import 'variables';
 
-h1{color:#fff;font-size:1.5em;position:absolute;top:2px;text-shadow:1px 1px 2px #000;}
+h1{font-size:1.5em;position:absolute;top:2px;text-shadow:1px 1px 2px #000;}
+h1 a{color:#fff;}
 h2{font-size:1.4em;}
 h3{font-size:1.2em;padding-top:20px;margin-top:30px;border-top:1px solid #aaa;}
 code{background:#fff;padding:2px;border:1px solid #aaa;border-radius:4px;}
 ul{margin-bottom:20px;}
 li{margin-left:20px;}
+ol{margin-left:20px;}
+ol li {padding:7px;}
 pre{padding:20px;border:1px solid #eee;border-radius:5px;margin-bottom:20px;}
 
-#header{height:40px;@include gradient(#4a4a4a, #333333);position:fixed;width:100%;z-index:10;}
+#header{height:40px;@include gradient(#4a4a4a, #333333);position:fixed;left:0;width:100%;z-index:10;}
 #toc{position:absolute;right:0;height:40px;line-height:40px;border:solid #000;border-width:0 1px;color:#fff;@include gradient(#333333, #222222);@include noselect();cursor:pointer;width:250px;text-align:center;}
 #toc:hover{background:#4a4a4a;}
-#menu{position:absolute;right:0;top:40px;display:none;margin:0;padding:0;list-style:none;background:#222;border:1px solid #000;width:250px;border-bottom-left-radius:3px;border-bottom-right-radius:3px;}
+#menu{z-index:10;position:fixed;right:2.5%;top:40px;display:none;margin:0;padding:0;list-style:none;background:#222;border:1px solid #000;width:250px;border-bottom-left-radius:3px;border-bottom-right-radius:3px;}
 #menu li{border-bottom:1px solid #000;margin:0;}
 #menu li:last-child{border-radius:5px;}
 #menu a{color:#fff;text-decoration:none;display:block;padding:10px;}
@@ -25,3 +29,28 @@ pre{padding:20px;border:1px solid #eee;border-radius:5px;margin-bottom:20px;}
 #next{position:absolute;right:0;}
 
 .code, p{margin-bottom:15px;}
+
+#book{margin-right:250px;padding-right:50px;border-right:1px solid #aaa;}
+#runner{position:fixed;right:10px;top:60px;width:265px;}
+.codingArea{margin-top:10px;font-family:$code-font;font-size:0.95em;}
+.codingArea > div{width:100%;padding:5px 10px;}
+.codingArea .goal{border:1px solid transparent;background:#eee;border-top-left-radius:4px;border-top-right-radius:4px;}
+.codingArea .goal.correct{background:#cfc;}
+.codingArea .goal.incorrect{background:#fcc;}
+.codingArea .buttons{overflow:auto;position:relative;padding-left:0;padding-right:20px;}
+.codingArea .buttons a{padding:4px 10px;border:1px solid #eee;border-radius:4px;background:#444;color:#fff;}
+.codingArea .buttons a:hover{background:#111;}
+.codingArea .run{float:left;}
+.codingArea .reset{position:absolute;right:100px;}
+.codingArea .answer{position:absolute;right:0;}
+
+textarea{padding:10px;height:125px;border:1px solid #afa;width:100%;color:#444;font-family:$code-font;font-size:0.95em;background:#efe;outline: none;}
+.codingArea.error textarea{border-color:#faa;background:#fee;}
+.codingArea.error .goal{background:#fcc;}
+
+#items.error{border:1px solid #faa;background:#fee;}
+#items > div{padding:3px;border-bottom:1px solid #ccc;}
+#items > div:last-child{border-bottom:none;}
+#funcList{margin-top:30px;display:none;border-top:1px solid #aaa;padding-top:30px;}
+#funcList > div {padding:5px 0;font-family:$code-font;}
+#funcList .type, #funcList .desc {padding:7px 0 0 7px;}
