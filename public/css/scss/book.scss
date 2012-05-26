@@ -14,7 +14,7 @@ ol li {padding:7px;}
 pre{padding:20px;border:1px solid #eee;border-radius:5px;margin-bottom:20px;}
 
 #header{height:40px;@include gradient(#4a4a4a, #333333);position:fixed;left:0;width:100%;z-index:10;}
-#toc{position:absolute;right:0;height:40px;line-height:40px;border:solid #000;border-width:0 1px;color:#fff;@include gradient(#333333, #222222);@include noselect();cursor:pointer;width:250px;text-align:center;}
+#toc{position:absolute;right:0;height:40px;line-height:40px;border:solid #000;border-width:0 1px;color:#fff;@include gradient(#333333, #222222);@include noselect();cursor:pointer;width:250px;text-align:center;font-size:1em;}
 #toc:hover{background:#4a4a4a;}
 #menu{z-index:10;position:fixed;right:2.5%;top:40px;display:none;margin:0;padding:0;list-style:none;background:#222;border:1px solid #000;width:250px;border-bottom-left-radius:3px;border-bottom-right-radius:3px;}
 #menu li{border-bottom:1px solid #000;margin:0;}
@@ -32,6 +32,7 @@ pre{padding:20px;border:1px solid #eee;border-radius:5px;margin-bottom:20px;}
 
 #book{margin-right:250px;padding-right:50px;border-right:1px solid #aaa;}
 #runner{position:fixed;right:10px;top:60px;width:265px;}
+#runner + #paging{margin-right:250px;}
 .codingArea{margin-top:10px;font-family:$code-font;font-size:0.95em;}
 .codingArea > div{width:100%;padding:5px 10px;}
 .codingArea .goal{border:1px solid transparent;background:#ddd;border-top-left-radius:4px;border-top-right-radius:4px;}
@@ -54,4 +55,3 @@ textarea.answer{background:#eee;border:1px solid #ccc;display:none;}
 #funcList{margin-top:30px;display:none;border-top:1px solid #aaa;padding-top:30px;padding:10px 0;font-family:$code-font;font-size:0.9em;}
 #funcList .function{margin-top:10px;border-bottom:1px solid #eee;padding-bottom:10px;}
 #funcList .desc{padding-bottom:5px;}
-

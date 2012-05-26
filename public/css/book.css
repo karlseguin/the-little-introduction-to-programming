@@ -150,7 +150,8 @@ pre {
   user-select: none;
   cursor: pointer;
   width: 250px;
-  text-align: center; }
+  text-align: center;
+  font-size: 1em; }
 
 #toc:hover {
   background: #4a4a4a; }
@@ -227,6 +228,9 @@ pre {
   right: 10px;
   top: 60px;
   width: 265px; }
+
+#runner + #paging {
+  margin-right: 250px; }
 
 .codingArea {
   margin-top: 10px;

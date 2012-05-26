@@ -13,13 +13,14 @@
     <div id="header">
       <div class="content">
         <h1><a href="/">The Little Introduction To Programming</a></h1>
-        <div id="toc"></div>
+        <h2 id="toc"><%- chapters[chapter-1] %></h2>
       </div>
     </div>
     <%- partial('shared/toc') %>
     <div id="content">
       <%- partial('shared/ie6') %>
       <%- body %>
+      <%- partial('shared/paging') %>
     </div>
     <%- partial('shared/footer') %>
   </body>
