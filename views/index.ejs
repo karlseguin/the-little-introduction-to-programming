@@ -3,7 +3,7 @@
   <div id="tagline">A free online book that gently introduces the art of programming</div>
 </div>
 
-<div id="info">
+<div id="info" class="alt">
   <div class="content">
     <div id="desc">
       <p>Programming isn't something that you can learn in an hour. But you can begin to appreciate it.</p>
@@ -22,4 +22,30 @@
     </div>
   </div>
 </div>
-<div class="content"></div>
+<div class="content">
+  <h3>More To Come</h3>
+  <p>We hope to add at least a few more chapters in the near future. You can be notified via email by subscribing below. We promise to treat your email with respect. We won't disclose nor sell it or do anything other than email you about meaningful updates to the book.<p>
+  <form method="post" action="subscribe">
+    <label for="email">email</label>
+    <input type="text" name="email" id="email" />
+    <input type="submit" value="subscribe" id="subscribe" />
+    <div id="suggestion">did you mean <a id="suggestLink" href="#"></a></div>
+  </form>
+</div>
+
+<script>
+$('#email').on('blur', function() {
+  $(this).mailcheck({
+    suggested: function(element, data) {
+      var text = 'did you mean ' +
+      $('#suggestLink').html(data.full);
+      $('#suggestion').show();
+    },
+    empty: function(element) { $('#suggestion').hide(); }
+  });
+});
+$('#suggestLink').on('click', function(e) {
+  $('#email').val($(this).text());
+  e.preventDefault();
+});
+</script>

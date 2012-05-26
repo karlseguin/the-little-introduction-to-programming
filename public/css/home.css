@@ -70,14 +70,16 @@ li {
   font-style: italic;
   font-size: 80%; }
 
-#info {
+.alt {
   background: #fff;
-  overflow: auto;
   padding: 30px 0;
   border-top: 2px solid #ccc;
   border-bottom: 1px solid #aaa;
   color: #666;
-  margin-bottom: 40px; }
+  margin-bottom: 20px; }
+
+#info {
+  overflow: auto; }
 
 #info p {
   margin-bottom: 15px; }
@@ -97,7 +99,7 @@ li {
   font-size: 1em;
   font-weight: normal; }
 
-#go {
+.high a, #subscribe, #go {
   padding: 10px 20px;
   border: 1px solid #555;
   background: #333333;
@@ -105,13 +107,52 @@ li {
   background: -moz-linear-gradient(-90deg, #4a4a4a, #333333);
   filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr='#4a4a4a', endColorstr='#333333');
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#4a4a4a', endColorstr='#333333')";
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 5px;
   color: #fff;
   line-height: 25px; }
 
-#go:hover {
-  color: #ffd; }
+.high a:hover, #subscribe:hover, #go:hover {
+  background: #888; }
 
 .content {
   width: 960px;
   margin: 0 auto; }
+
+#subscribe {
+  overflow: auto; }
+
+form {
+  margin: 10px 0 0 25px; }
+
+label {
+  display: block; }
+
+#email {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 240px; }
+
+#subscribe {
+  padding: 2px 10px; }
+
+#suggestion {
+  display: none;
+  font-size: 0.80em;
+  margin: 5px 0 0 20px; }
+
+#suggestLink {
+  text-decoration: underline; }
+
+#suggestLink:hover {
+  color: #aa9; }
+
+.high {
+  height: 500px; }
+
+.high h1 {
+  margin-bottom: 75px; }
+
+.high a {
+  position: relative;
+  top: 25px; }

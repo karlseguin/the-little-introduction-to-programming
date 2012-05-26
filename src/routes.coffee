@@ -1,3 +1,5 @@
+Store = require('./store');
+
 class Routes
   @routes: (app) ->
     app.get '/chapter/:chapter/:name', (req, res) ->
@@ -9,5 +11,10 @@ class Routes
 
     app.get '/help', (req, res) ->
       res.render 'help'
+
+    app.post '/subscribe', (req, res) ->
+      Store.subscribe req.body.email, (err) ->
+        console.log(err)
+        res.render 'subscribe', { layout: 'layouts/home', locals: {ok: !err?}}
 
 module.exports = Routes.routes
