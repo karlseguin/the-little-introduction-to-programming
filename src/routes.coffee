@@ -6,4 +6,8 @@ class Routes
     app.get '/_home', (req, res) ->
       res.render 'index', layout: 'layouts/home'
 
+
+    app.get '/help', (req, res) ->
+      res.render 'help'
+
 module.exports = Routes.routes
