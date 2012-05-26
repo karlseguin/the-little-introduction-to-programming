@@ -7,6 +7,8 @@ run = (config) ->
       console.log('store initialization error: %s', err)
       process.exit(1)
 
+    require('./config')(config)
+
     app = module.exports = express.createServer()
     app.configure ->
       app.set('views', __dirname + '/../views')
