@@ -15,7 +15,7 @@ alert(landscape[2]);</pre>
 
 <pre data-language="javascript">landscape[3] = "seagulls";</pre>
 
-<p>Another important characteristic of arrays is that the order is preserved. In the following example, where we start with a blank array and add two items, we are know for sure that the 2nd item will be <code>cat</code>:</p>
+<p>Another important characteristic of arrays is that the order is preserved. In the following example, where we start with a blank array and add two items, we know for sure that the 2nd item will be <code>cat</code>:</p>
 
 <pre data-language="javascript">var pets = [];
 pets.push("dog");
@@ -31,7 +31,7 @@ alert(pet[1]); //will display cat</pre>
 <h3>Queues and Stacks</h3>
 <p>Queues and stacks aren't data structures that you'll use often, but we'll learn them to understand how data structures differ from one and other, and why so many exist in the first place.</p>
 
-<p>Both are very well named, and to understand how they work, you must simply think of a real life queue and stack. Imagine, if you will, a line of people waiting at the checkout counter. The behavior of this line is simple: you get into the queue move closer to the front and then get out of the queue. In computer science terms, a queue is also known as a FIFO, or first-in first-out. That is, the first person to enter the queue will be the first person to leave the queue.</p>
+<p>Both are very well named, and to understand how they work, you must simply think of a real life queue and stack. Imagine a line of people waiting at the checkout counter. The behavior of this line is simple: you get into the queue, then move closer to the front and then get out of the queue. In computer science terms, a queue is also known as a FIFO, or first-in first-out. That is, the first person to enter the queue will be the first person to leave the queue.</p>
 
 <p>A stack on the other had is like a stack of chips in a poker game. Chips get added and removed from the top of the pile. A stack is known as a LIFO, or last-in first out. Because the most recently added chips are the ones that get used up the soonest.</p>
 
@@ -75,7 +75,7 @@ list.set("eggs");
 list.set("milk"); //doesn't do anything
 alert(list.exists("milk")); //will display true</pre>
 
-<p>In theory, we could use plain old arrays to create sets. In fact, in chapter 4 we could have modified the <code>addItem</code> function to make use of the <code>itemExists</code> and not allow duplicates to be added. However there are certain preformance characteristics that one expects from a set. Namely, the speed of adding an item and checking for the existance of an item should not vary based on the size of a set. This is a good example of how data structures not only define the behavior of a collection, but also its performance characteristics.</p>
+<p>In theory, we could use plain old arrays to create sets. In fact, in chapter 4 we could have modified the <code>addItem</code> function to make use of the <code>itemExists</code> and not allow duplicates to be added. However there are certain performance characteristics that one expects from a set. Namely, the speed of adding an item and checking for the existance of an item should not vary based on the size of a set. This is a good example of how data structures not only define the behavior of a collection, but also its performance characteristics.</p>
 
 <p>As a final point, a properly implemented set should allow for set-based operation (in the mathematical sense). For example, you should be able to create a union of two sets (to get all the values contained in both), or an intersection (to get only the value which exist in both). That may seem academic, but it's actually quite useful. Imagine having a set with the list of movies Jane has seen and intesecting it with the set of movies Matt has seen. The result is a list of movies that both have seen.</p>
 
@@ -106,7 +106,7 @@ alert(list["milk"] == true); //will display true</pre>
 
 <p>However, we don't have access to any set-based operations.</p>
 
-<p>Hashes are powerful and are used often. They conviniently let you reprent more complex data. For example, we could represent a spreadsheet using an array of hashes:</p>
+<p>Hashes are powerful and are used often. They conviniently let you represent more complex data. For example, we could represent a spreadsheet using an array of hashes:</p>
 
 <pre data-language="javascript">var rows = [];
 rows.push({type: "cat", name: "fluffy", age: 5});
@@ -119,4 +119,4 @@ rows.push({type: "fish", name: "jorge", age: 2});</pre>
 <h3>In This Chapter</h3>
 <p>In this chapter we learned more about arrays as well as hashes. These are two data structures that you'll make heavy use of. We also saw queues, stacks and sets. While all three serve useful purposes, we mostly explored them as a means to learn about different data structures. There are other classes of data structures available, but they tend to be more complex, more specialized and thus less often used.</p>
 
-<p>JavaScipt's support for arrays and hases is quite excellent. The clean and elegant syntax for creating and manipulating hashes isn't something available in all languages. While JavaScript does support the more advanced concept of a <em>class</em>, for simple data or simple programs, developers often favor hashes - so don't feel bad about using them!</p>
+<p>JavaScipt's support for arrays and hashes is quite excellent. The clean and elegant syntax for creating and manipulating hashes isn't something available in all languages. While JavaScript does support the more advanced concept of a <em>class</em>, for simple data or simple programs, developers often favor hashes.</p>

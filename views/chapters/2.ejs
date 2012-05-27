@@ -3,15 +3,15 @@
 
 <p>Before jumping directly into a list of terms with an accompanying description and small code samples, let's first try to think about a program's components abstractly.</p>
 
-<p>Consider the scenario of registering a user on a website. A basic implementation might ask for an email and password. What might the code to register this user look like? First we'll collect the two provided pieces of information: the email and password. Next we'll probably want our program verify this data: is the password long enough and is the email valid? If either of these things aren't true, we'll display an error message. Otherwise, we can save the information so that it can be used at a later point.</p>
+<p>Consider the scenario of registering a user on a website. A basic implementation might ask for an email and password. What might the code to register this user look like? First we'll collect the two provided pieces of information: the email and password. Next we'll probably want our program to verify this data: is the password long enough and is the email valid? If either of these things aren't true, we'll display an error message. Otherwise, we can save the information so that it can be used at a later point.</p>
 
-<p>What about a withdrawing money from your bank? First you enter your card and security pin. Again, the program collects this information and verifies it. If it's invalid, it'll display an error and repeat until the information provided is valid. Once valid, you provide a third piece of information, the amount you wish to withdraw. If the amount is too large, it'll once again display an error. Otherwise, the amount if subtracted from your account balance (a forth piece of information which, sadly, isn't supplied by you, but stored in the bank's system) and the requested funds made available.</p>
+<p>What about withdrawing money from your bank? First you enter your card and security pin. Again, the program collects this information and verifies it. If it's invalid, it'll display an error and repeat until the information provided is valid. Once valid, you provide a third piece of information, the amount you wish to withdraw. If the amount is too large, it'll once again display an error. Otherwise, the amount if subtracted from your account balance (a forth piece of information which, sadly, isn't supplied by you, but stored in the bank's system) and the requested funds made available.</p>
 
-<p>Neither of these descriptions tells us how to actually write programs. However, they both expose 3 core aspects of programming. First, both deal with data or values. The first deals with an email and password, the second with an account number (retrieved from the card), your pin, your withdrawal amount and your account balance. Second, they both apply conditional logic. If the password is too short, or the withdrawal amount too large, display an error; otherwise, proceed to the next step. Finally, they both perform actions. For our account withdrawal, this is a simple subtraction of the withdrawn amount from our account balance. For the user registration, it's the process of saving the new user information for later use.</p>
+<p>Neither of these descriptions tell us how to actually write programs. However, they both expose 3 core aspects of programming. First, both deal with data or values. The first deals with an email and password, the second with an account number (retrieved from the card), your pin, your withdrawal amount and your account balance. Second, they both apply conditional logic. If the password is too short, or the withdrawal amount too large, display an error; otherwise, proceed to the next step. Finally, they both perform actions. For our account withdrawal, this is a simple subtraction of the withdrawn amount from our account balance. For the user registration, it's the process of saving the new user information for later use.</p>
 
 <p>In other words, programs:</p>
 <ul>
-  <li>Deal with data,</li>
+  <li>Deal with data from various sources (user input, file, the internet, ...),</li>
   <li>Determine a course of action based on this data, and</li>
   <li>Perform the appropriate action</li>
 </ul>
@@ -32,7 +32,7 @@ true</pre>
 <pre data-language="ruby">"false"
 "9001"</pre>
 
-<p>These are still strings (they are enclosed in quotes!). However our programming language allows us to convert the first to a boolean and the second to a number. At this point, this isn't important but it's explained in case you were wondering what happens if a number is enclosed in quotes.</p>
+<p>These are still strings, because they are enclosed in quotes. However our programming language allows us to convert the first to a boolean and the second to a number. At this point, this isn't important but it's explained in case you were wondering what happens if a number is enclosed in quotes.</p>
 
 <p>Why is the type of data so important? The type is what defines what we can and can't do with the data. For example, adding two numbers together or even two strings together make sense:</p>
 
@@ -44,29 +44,29 @@ true</pre>
 <p>We'll revisit types in chapter 3. What's important for now is that you can tell a string from a number from a boolean and that you understand that what you can do with one type of data isn't necessarily valid for another type.</p>
 
 <h3>Dealing With Data - Variables</h3>
-<p>Much of the data that your program will make use of isn't going to be known ahead of time. Data can come from many sources, such as user inputs or by reading it from files stores on the computer. In our user registration example, we know that we'll be dealing with an email and password, but we don't know exactly what those values will be.</p>
+<p>Much of the data that your program will make use of isn't going to be known ahead of time. Data can come from many sources, such as user inputs or by reading it from files stored on the computer. In our user registration example, we know that we'll be dealing with an email and password, but we don't know exactly what those values will be.</p>
 
 <p>In a program we need a way to label our data, which is where variables come in. Variables, which are very important, basically just hold data. Consider these two examples:</p>
 
 <pre data-language="ruby">email = "leto@dune.gov"
 password = "ghanima"</pre>
 
-<p>The above code introduces two variables: <code>email</code> and <code>password</code>. A variable and its value are interchangeable. Just like we could add two strings together, so too can we add to variables which hold strings:</p>
+<p>The above code introduces two variables: <code>email</code> and <code>password</code>. A variable and its value are interchangeable. Just like we could add two strings together, so too can we add two variables which hold strings:</p>
 
 <pre data-language="ruby">joined = email + password</pre>
 
-<p>This introduces a 3rd variable named <code>joined</code> - which likely serves no purpose other than to show that variables and their values are interchangeable.</p>
+<p>This introduces a 3rd variable named <code>joined</code> - which likely serves no purpose other than to show that variables and their values are interchangeable. The value of <code>joined</code> is <em>leto@dune.govghanima</em></p>
 
 <p>To understand the role that variables play, you need to remember that not all data is known ahead of time. Rather than creating a variable named <code>email</code> with a specific value, we'd be much more likely to do:</p>
 
 <pre data-language="ruby">email = get_the_value_entered_by_the_user</pre>
 
-<p>Exactly how or what <code>get_the_value_entered_by_the_user</code> works isn't important. What is important is that the <code>email's</code> value isn't determined by us when we program, but rather determined as the program is running.</p>
+<p>Exactly how <code>get_the_value_entered_by_the_user</code> works or what it does isn't important. What is important is that the <code>email's</code> value isn't determined by us when we program, but rather determined as the program is running.</p>
 
-<p>In the next couple sections, you'll see how important, yet simple, variables are. It's hard to  grasp them until we've introduced a few more concepts. We might be obvious already though is that properly naming your variables is crucial to making your code readable. Although you don't know the exact value held by <code>email</code>, if we printed it out, you probably wouldn't be surprised. However, if we named our variable <code>a</code> or <code>the</code> or even <code>string</code> your guess about the contents would be as good as mine.</p>
+<p>In the next couple sections, you'll see how important, yet simple, variables are. It's hard to  grasp them until we've introduced a few more concepts. What might be obvious already though is that properly naming your variables is crucial to making your code readable. Although you don't know the exact value held by <code>email</code>, if we printed it out, you probably wouldn't be surprised. However, if we named our variable <code>a</code> or <code>the</code> or even <code>string</code> your guess about the contents would be as good as mine.</p>
 
 <h3>Determining A Course Of Action</h3>
-<p>In chapter 1 we learned that a program is read from top to bottom. The reality is more complex. When we describes our two examples, we saw how a program needs to execute different code based on various conditions. This aspect of programming is known as control flow, because it controls which part of code will be executed.</p>
+<p>In chapter 1 we learned that a program is read from top to bottom. The reality is more complex. When we described our two examples, we saw how a program needs to execute different code based on various conditions. This aspect of programming is known as control flow, because it controls which part of code will be executed.</p>
 
 <p>The simplest control flow is an <code>if</code> condition:</p>
 
@@ -115,7 +115,7 @@ end</pre>
   end
 end</pre>
 
-<p>Notice in the above that we are introduce a variable named <code>card</code> as part of our loop. The word <em>variable</em> was aptly chosen as the value of <code>card</code> varies with each iteration of our loop.</p>
+<p>Notice in the above that we introduce a variable named <code>card</code> as part of our loop. The word <em>variable</em> was aptly chosen as the value of <code>card</code> varies with each iteration of our loop.</p>
 
 <p>This example is similar to how we'd check for jokers in the real world. It's true that our eyes and brain might be able to look at multiple cards at once, but it isn't a stretch to imagine scanning each card one at a time, and taking a certain action if we spot a joker.</p>
 
@@ -124,11 +124,11 @@ end</pre>
 <h3>Performing Actions</h3>
 <p>We know how to manage data, and how to make decisions based on that data, now it's time to take action. If you go back through the examples in this chapter, you'll notice that we've already taken a number of actions. For example, we've printed messages to the user and subtracted one amount from another. Let's break it down further.</p>
 
-<p>Programming languages contain a number of operators. The most basic are <code>+</code>, <code>-</code>, <code>/</code> and <code>*</code>. These operators, amongst others, represent the simplest actions we can take: add, subtract, divide or multiple two values. Another important operator is the assignment operator, which assigns a value to a variable. We've seen this plenty of times already, it's the equal sign <code>=</code>. If we go back to an earlier example, we'll find this specific line:</p>
+<p>Programming languages contain a number of operators. The most basic are <code>+</code>, <code>-</code>, <code>/</code> and <code>*</code>. These operators, amongst others, represent the simplest actions we can take: add, subtract, divide or multiply two values. Another important operator is the assignment operator, which assigns a value to a variable. We've seen this plenty of times already, it's the equal sign <code>=</code>. If we go back to an earlier example, we'll find this specific line:</p>
 
 <pre data-language="ruby">account_balance = account_balance - withdraw_amount</pre>
 
-<p>It'd fair to say that this lines involves two actions: subtract the two numbers, then assign the results into the <code>account_balance</code> variable. You might be wondering how the order is determined. Just like in mathematic operators, programming operators have an order of precedents and can be controlled with parenthesis <code>()</code>. Thankfully, this order is pretty intuitive. The above is the same as doing:</p>
+<p>It's fair to say that this line involves two actions: subtract the two numbers, then assign the results into the <code>account_balance</code> variable. You might be wondering how the order is determined. Just like in mathematic operators, programming operators have an order of precedents and can be controlled with parenthesis <code>()</code>. Thankfully, this order is pretty intuitive. The above is the same as doing:</p>
 
 <pre data-language="ruby">account_balance = (account_balance - withdraw_amount)</pre>
 
@@ -144,10 +144,10 @@ end</pre>
 
 <pre data-language="ruby">if card == "Joker"</pre>
 
-<p>The assignment <code>=</code> and equality <code>==</code> operators might seem similar, but they really have little relation. The first makes the left-hand variable equal to the right had value. The second results in true of the two values are equal, or false otherwise.</p>
+<p>The assignment <code>=</code> and equality <code>==</code> operators might seem similar, but they really have little relation. The first makes the left-hand variable equal to the right hand value. The second results in true of the two values are equal, or false otherwise.</p>
 
 <h4>Custom Actions: Functions</h4>
-<p>The last, and most advanced topic we'll cover in this chapter are functions. Much like a variable can be thought of as giving a label to a value, a function gives a label to a group of <em>lines of code</em>. Functions are powerful and important. They also serve a number of purposes. First, they help us organize our code. Rather than having a long series of code, we can break it down into functions with meaningful name. Secondly, they help us reuse code. You'll commonly have a task that you'll want to execute over the course of your program.</p>
+<p>The last, and most advanced topic we'll cover in this chapter are functions. Much like a variable can be thought of as giving a label to a value, a function gives a label to a group of <em>lines of code</em>. Functions are powerful and important. They also serve a number of purposes. First, they help us organize our code. Rather than having a long series of code, we can break it down into functions with meaningful names. Secondly, they help us reuse code. You'll commonly have a task that you'll want to execute over the course of your program.</p>
 
 <p>In its simplest form, a function looks like:</p>
 
