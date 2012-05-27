@@ -1,0 +1,119 @@
+<h2>More on Languages</h2>
+<p>Our goal thus far has been to learn about programming in general, regardless of the language and its libraries. For this reason, we've looked at it things that exist no matter what language you use. How you define a variable, or the exact syntax of <code>for</code> loop is secondary to the concept of variables and looping.</p>
+
+<p>In this chapter we'll continue down this same path, but with a slightly broader perspective. Specifically, we want to familiriaze ourselves with some of the other common things we are likely to see in program. Some of these are just shortcuts provided by the language, or different approaches some languages take. Hopefully by learning these, you'll not only be in a better position to write more complex programs, but also be better able understand other people's code.</p>
+
+
+<h3>Incrementing</h3>
+<p>We've already seen a number of examples where we increment a value by some number. The code is straightforward, regardless of if we are increment a counter in a <code>for</code> loop, or adding/subtracting amounts:</p>
+
+<pre data-language="javascript">i = i + 1;
+//or
+account_balance = account_balance - withdrawal_amount;</pre>
+
+<p>Incrementing and decrementing values is such a common thing, that most languages provide alternative syntax:</p>
+
+<pre data-language="javascript">i += 1;
+//or
+account_balance -= withdrawal_amount;</pre>
+
+<p>The two versions are identical, the second one is simply less verbose by making use of the <code>+=</code> and <code>-=</code> operators. Not only is incrementing so common that we have this special syntax, but incrementing and decrementing by 1 is itself so common that many languages give us special syntax for that specific purpose:</p>
+
+<pre data-language="javascript">i++;
+//or
+i--;
+//or
+++i;
+//or
+--i;</pre>
+
+<p>There's a subtle difference between the first two and the last two. The first two are called post-increment and post-decrement. The last two are called pre-increment and pre-decrement. The difference between them is all about the operator's precedence with respect to other operators. Consider:
+
+<pre data-language="javascript">var i = 5;
+var total = i++;
+//vs
+var i = 5;
+var total = ++i;</pre>
+
+<p>In both cases <code>i</code> will be equal to 6. However, in the first case, <code>i</code> is assigned to <code>total</code> and then incremented. Thus, <code>total</code> is 5. In the second case, <code>i</code> is incremented and then assigned to <code>total</code>. Thus, <code>total</code> is 6.</p>
+
+<p>The <code>++</code> operator is often seen in a <code>for</code> loop:
+<pre data-language="javascript">for(var i = 0; i &lt; list.length; i++) { ... }</pre>
+
+<p>In such cases, it doesn't matter if you use a post or pre increment, since we only care about incrementing <code>i</code> itself and not about assigning the new or old value to another variable. (personally, I like to use a pre-increment, but having seen a lot of code, I'm pretty sure I'm in the minority.)</p>
+
+<h3>Strings With Values</h3>
+<p>You'll often want to display a message which includes variable values. There are three common ways to do this, but not all languages provide all three mechanism.</p>
+
+<p>The simplest to understand, and the one we've used so far, is to join the pieces together with the <code>+</code> operator:</p>
+
+<pre data-language="javascript">var name = prompt("What is your name?");
+alert("Hello " + name);</pre>
+
+<p>This works well for simple message, but it can get quite messy for something even slightly complicated. Unfortunately, this is the only option available in JavaScript (without creating our own).</p>
+
+<p>Another common approach is to have some type of string formatting function. Every language seems to have its own version, but it normally ends up looking something like:</p>
+
+<pre data-language="javascript">var name = prompt("What is your name?");
+var formatted = format("Hello %s", name);
+alert(formatted);
+
+//or, a more terse version:
+var name = prompt("What is your name?");
+alert(format("Hello %s", name));</pre>
+
+<p>Again, this varies a lot from one language to another, but in the above <code>%s</code> is a string place holder, as opposed to a <code>%d</code> digit placeholder. Writing such a <code>format</code> method in JavaScript wouldn't be too difficult.</p>
+
+<p>The last approach that you'll often see is the ability to put variables directly in your string:</p>
+
+<pre data-language="ruby">var name = prompt("What is your name?");
+alert("Hello #{name}");</pre>
+
+<p>In chapter 3 we mentioned that some languages allow strings to be enclosed in either single or double quotes. In many of these languges, the above string interpolation is only possible using double quotes. This means that using single quotes, when you don't need this behavior, will be faster (because the processor doesn't have to look through your string looking for variables to replace).</p>
+
+<h3>Strings and Escape Sequences</h3>
+<p>Sometimes you'll want to include a special character within a string. The most common example is a double quote. However, a computer can't make sense of the following. Where is the string meant to end?</p>
+
+<pre data-language="javascript">var message = "And he said "to get to the other side"";</pre>
+
+<p>To avoid this ambiguity, languages tend to have an escape character, and that tends to be the backslace <code>\</code>:</p>
+
+<pre data-language="javascript">var message = "And he said \"to get to the other side\"";</pre>
+
+<p>When you want to print an actual backslash, you simply escape it:</p>
+
+<pre data-language="javascript">var message = "I'm printing a backspace like so \\";</pre>
+
+<p>Finally, if you want to output a tab or new line, you can use the special <code>\t</code> or <code>\n</code> sequence. <code>\n</code> is a line feed. To get a new line to display properly on some operating systems, you'll have to print out a carriage return <code>\r</code> followed by a line feed: <code>\n\r</code>.
+
+
+<h3>Loop Control</h3>
+<p>All the loops that we've seen so far have had a well defined start and stop point. For example we want to loop from the start to the end of an array. However, sometimes you'll want to exit the loop or possibly skip to the next iteration. For these operations, most languages provide two keywords: <code>break</code> and <code>continue</code>. When code reaches a <code>break</code>, it'll exit the existing loop (since it's possible to have loops within loops, it's worth pointing out that break will exit the inner-most loop):</p>
+
+<pre data-language="javascript">for (var i = 0; i &lt; deck.length; i++) {
+  if (decks[i] == "Ace") {
+    alert("Found it! Card " + i + " is the first ace");
+    break;
+  }
+}</pre>
+
+<p>When code reaches a <code>continue</code> it skips to the next iteration, jumping over any following lines of code. The output from the code below is 1, 2, 4</p>
+
+<pre data-language="javascript">var values = [1, 2, 3, 4];
+for (var i = 0; i &lt; values.length; i++) {
+  if (values[i] == 3) {
+    continue;
+  }
+  alert(values[i]);
+}</pre>
+
+<p>In thibs simple example, it might be best, from a readabiilty point of view, to rewrite the code as follows. But in some cases <code>continue</code> will be more readable.</p>
+
+<pre data-language="javascript">var values = [1, 2, 3, 4];
+for (var i = 0; i &lt; values.length; i++) {
+  if (values[i] != 3) {
+    alert(values[i]);
+  }
+}</pre>
+
+<h3>Types</h3>
