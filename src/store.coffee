@@ -10,4 +10,7 @@ class Store
   @subscribe: (email, cb) =>
     @client.sadd('ci:subscriptions', email, cb)
 
+  @unsubscribe: (email, cb) =>
+    @client.srem('ci:subscriptions', email, cb)
+
 module.exports = Store

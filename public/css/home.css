@@ -99,7 +99,7 @@ li {
   font-size: 1em;
   font-weight: normal; }
 
-.high a, #subscribe, #go {
+#backhome, #subscribe, #go {
   padding: 10px 20px;
   border: 1px solid #555;
   background: #333333;
@@ -111,7 +111,7 @@ li {
   color: #fff;
   line-height: 25px; }
 
-.high a:hover, #subscribe:hover, #go:hover {
+#backhome:hover, #subscribe:hover, #go:hover {
   background: #888; }
 
 .content {
@@ -153,6 +153,6 @@ label {
 .high h1 {
   margin-bottom: 75px; }
 
-.high a {
+#backhome {
   position: relative;
   top: 25px; }

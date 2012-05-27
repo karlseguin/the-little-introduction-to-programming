@@ -1,0 +1,28 @@
+<div class="content high">
+  <h1>Unsubscribe your email</h1>
+  <p>To remove your email from our list, please fill out the following form</p>
+  <form method="post" action="unsubscribe">
+    <label for="email">email</label>
+    <input type="text" name="email" id="email" value="<%= email %>" />
+    <input type="submit" value="unsubscribe" id="subscribe" />
+    <div id="suggestion">did you mean <a id="suggestLink" href="#"></a></div>
+  </form>
+</div>
+
+
+<script>
+$('#email').on('blur', function() {
+  $(this).mailcheck({
+    suggested: function(element, data) {
+      var text = 'did you mean ' +
+      $('#suggestLink').html(data.full);
+      $('#suggestion').show();
+    },
+    empty: function(element) { $('#suggestion').hide(); }
+  });
+});
+$('#suggestLink').on('click', function(e) {
+  $('#email').val($(this).text());
+  e.preventDefault();
+});
+</script>

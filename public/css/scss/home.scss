@@ -11,8 +11,8 @@ li{padding:5px 10px;background:url(/images/arrow.png) no-repeat 0 12px;}
 #desc{width:425px;float:left;line-height:28px;padding-right:50px;border-right:1px solid #ccc;}
 #quick{width:425px;margin-left:530px}
 #quick h2{font-size:1em;font-weight:normal;}
-.high a, #subscribe, #go{padding:10px 20px;border:1px solid #555;@include gradient(#4a4a4a, #333333);border-radius:5px;color:#fff;line-height:25px;}
-.high a:hover, #subscribe:hover, #go:hover{background:#888;}
+#backhome, #subscribe, #go{padding:10px 20px;border:1px solid #555;@include gradient(#4a4a4a, #333333);border-radius:5px;color:#fff;line-height:25px;}
+#backhome:hover, #subscribe:hover, #go:hover{background:#888;}
 .content{width:960px;margin:0 auto;}
 
 #subscribe{overflow:auto;}
@@ -27,4 +27,4 @@ label{display:block;}
 
 .high{height:500px;}
 .high h1{margin-bottom:75px;}
-.high a{position:relative;top:25px;}
+#backhome{position:relative;top:25px;}
