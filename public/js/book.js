@@ -9,4 +9,110 @@ $(document).ready(function() {
     if (e.keyCode == 27) { $('#menu').hide(); }
   });
   $(document).on('click', function() { $('#menu').hide(); });
+
+  $('a.anchor').each(function(){ new POI(this); });
+  $(document).resize(POI.refresh);
+  $(window).resize(POI.refresh);
 });
+
+
+// Scrollbar navigaion taken from http://bottlepy.org/ and modified
+POI = function(anchor, title, options) {
+  // Create a Point-Of-Interest, a named position within the document.
+  // @param anchor is the point of interest (HTML or jquery node). This MUST
+  //    have an ID attribute.
+  // @param title is the name of the POI (string)
+  POI.all.push(this);
+
+  //: Number of pixels the handle should be visible
+  options = options || {};
+  this.peak = options.peak || POI.peak;
+  this.delay = options.delay || POI.delay;
+  this.css = options.css || POI.css;
+
+  this.pinned = false;
+  this.visible = false;
+  this.hide_timeout = null;
+
+  this.anchor = $(anchor);
+  this.id = this.anchor.attr('name');
+  this.title = this.anchor.next().text();
+  this.node  = $('<div>').addClass(this.css).appendTo('body');
+  this.link  = $('<a>').text(this.title)
+             .attr('href', '#'+this.id)
+             .appendTo(this.node);
+  this.node.css('right', '-'+(this.node.outerWidth()-this.peak)+'px');
+  this.refresh();
+  this.node.mouseenter(function() { POI.show(); });
+  this.node.mouseleave(function() { POI.hide(POI.delay); });
+}
+
+POI.prototype.refresh = function() {
+  // Re-arrange the anchors
+  var dsize = $(document).height();
+  var wsize = $(window).height();
+  var pos = this.anchor.offset().top;
+  var hpos = Math.round(wsize*(pos/dsize));
+  if (hpos < 60) { hpos += 60; }
+  this.node.css('top', hpos+'px');
+}
+
+POI.prototype.show = function() {
+  // Show the handle
+  if(this.visible) return;
+  this.node.stop(true).animate({'right': '0px'}, 250);
+  this.link.css({opacity: 1});
+  this.visible = true;
+}
+
+POI.prototype.hide = function() {
+  // Hide the handle
+  if(this.pinned) return;
+  if(! this.visible) return;
+  this.node.stop(true).animate({
+    'right': '-'+(this.node.outerWidth()-this.peak-10)+'px'
+  }, 250);
+  this.link.css({opacity: 0.2});
+  this.visible = false;
+}
+
+
+
+// Static attributes and methods.
+
+POI.all = Array();
+POI.peak = 30;
+POI.delay = 500;
+POI.css = 'sidelegend';
+POI.hide_timeout = null;
+
+POI.refresh = function() {
+  // Refresh all at once
+  jQuery.each(POI.all, function() {
+    this.refresh();
+  })
+}
+
+POI.show = function() {
+  // Show all at once
+  if(POI.hide_timeout) window.clearTimeout(POI.hide_timeout);
+  POI.hide_timeout = null;
+  jQuery.each(POI.all, function() {
+    this.show();
+  })
+}
+
+POI.hide = function(delay) {
+  // Hide all at once after a specific delay
+  if(POI.hide_timeout) window.clearTimeout(POI.hide_timeout);
+  if(delay) {
+    POI.hide_timeout = window.setTimeout(function() {
+      POI.hide_timeout = null;
+      POI.hide();
+    }, delay)
+  } else {
+    jQuery.each(POI.all, function() {
+      this.hide();
+    })
+  }
+}

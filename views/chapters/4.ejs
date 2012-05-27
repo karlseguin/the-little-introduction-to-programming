@@ -1,14 +1,17 @@
 <div id="book">
+  <a name="yourfirstprogram" class="anchor"></a>
   <h2>Your First Program</h2>
   <p>This chapter is different than the ones we've seen so far. It'll let us apply what we've learned interactively. We'll be putting together a shopping list to build up our knowledge through small and simple steps. We'll also introduce new and more powerful concepts.</p>
 
   <p>In this chapter you'll be asked to provide some code in order to fufill a certain purpose. The output of this code will be diplayed on the right. Don't be afraid to try different solutions; and if you aren't sure what to type, you can always view the answer via the <em>answer</em> button. Do as much or as little as you want - we all learn differently and at a different pace.</p>
 
+  <a name="javascript" class="anchor"></a>
   <h3>Introducing JavaScript</h3>
   <p>The language that'll be using is JavaScript. The main reason we pick it is because web browsers have a JavaScript engine built-in. This means you have everything you need to be able to run JavaScript; there's no need to install or configured anything. Another benefit of JavaScript is that it's quite popular, making it a practical choice.</p>
 
   <p>Much of the new, slightly more cryptic, syntax that we learned in chapter 3 is how JavaScript (and a number of other languages) looks. That means you'll have to use braces <code>{}</code> for your blocks (like if statements and functions), use <code>var</code> before defining variables and include semicolons <code>;</code> after each statement (unline most languages which require a statement-terminator, JavaScript is fairly forgiving if you foget it, but it's better to be safe than sorry.)</p>
 
+  <a name="theland" class="anchor"></a>
   <h3>Lay Of The Land</h3>
   <p>The first thing we'll do is get comfortable with this new interactive environment. Every interactive section has the same six components. You should familiarize yourself with all six.</p>
 
@@ -34,6 +37,7 @@
     </div>
   </div>
 
+  <a name="input" class="anchor"></a>
   <h3>Getting Input</h3>
   <p>While a program will have many hard-coded values, most data comes from external sources: like a file or user input. In our example above, it doesn't make sense to hard-code the value <em>milk</em>. Instead, we'd prefer to ask the user using the newly available <code>prompt</code> function:</p>
 
@@ -48,11 +52,13 @@
     </div>
   </div>
 
+  <a name="library" class="anchor"></a>
   <h3>addItem, prompt, What Are These?</h3>
   <p>This is just a little detoure to remind you of the conversation we had about libraries and framework from chapter 3. You might very well be wondering where <code>addItem</code> and <code>prompt</code> come from and might even feel like you are cheating a bit. <code>prompt</code> is actually a function built-into JavaScript. I wouldn't even know where to begin if we had to build it ourselves. <code>addItem</code> is a function written specifically for this tutorial and can be simply thought of as a third-party library.</p>
 
   <p>The reason you didn't write the <code>addItem</code> function yourself is because it is full of information which is very specific to manipulating HTML web pages; which only muddies our attempt to learn programming in general. First you learn the basics, then you can learn more specific topics.</p>
 
+  <a name="validation" class="anchor"></a>
   <h3>Some Basic Validation</h3>
   <p>Currently, our little program allows users to answer the prompt without actually entering a value. It would be nice to catch this and display a message. Try it by using an <code>if/else</code> condition and the new <code>alert</code> function:</p>
 
@@ -67,6 +73,7 @@
     </div>
   </div>
 
+  <a name="duplicates" class="anchor"></a>
   <h3>Avoiding Duplicates, Part 1</h3>
   <p>The last task that we'll look at is making sure we can't add the same item twice. We'll do this in two separate steps. First, we'll use the new function <code>itemExists</code> to see if the item already exists. This is very similar to our above null or empty check. Go ahead and try: </p>
 
@@ -81,12 +88,13 @@
     </div>
   </div>
 
+  <a name="bonus" class="anchor"></a>
   <h3>Avoiding Duplicates, Bonus Step</h3>
   <p>The last step that we'll look at in this chapter is to write our own <code>itemExists</code> function. This is much trickier than the other steps. The template for the function is already included. Furthermore, in order to be able to to this we'll use the new <code>getItems</code> function which returns a collection of existing items</p>
 
-   <p>In chapter 2 we saw how to iterate over a collection, but that syntax isn't valid in JavaScript. In JavaScript we use a <code>for</code> loop. While common, the <code>for</code> loop syntax is a little tricky, largely because its 1 line of code containing 3 separate statement. Here's what it looks like: </p>
+  <p>In chapter 2 we saw how to iterate over a collection, but that syntax isn't valid in JavaScript. In JavaScript we use a <code>for</code> loop. While common, the <code>for</code> loop syntax is a little tricky, largely because its 1 line of code containing 3 separate statement. Here's what it looks like: </p>
 
- <pre data-language="javascript">for (initial statement; condition to continue; step statement) {...}</pre>
+  <pre data-language="javascript">for (initial statement; condition to continue; step statement) {...}</pre>
 
   <p>Although all three parts are typically provided, any, or all, can be blank. The following will loop endlessly:</p>
 
@@ -128,6 +136,7 @@ alert(itemExists("milk")); //we can test our function by outputting its result</
     </div>
   </div>
 
+  <a name="inthischapter" class="anchor"></a>
   <h3>In This Chapter</h3>
   <p>This chapter had two purposes. First and foremost, to reinforce what you've learned in the previous chapters by having you actually code. Hopefully you felt somewhat adventurous and tried to come up with various solutions, or tried doing something completely different. For example, what happens if you go back to the first example and leave out the closing quote <code>addItem("mil);</code> or tried to call a function which does not exist?. </p>
 

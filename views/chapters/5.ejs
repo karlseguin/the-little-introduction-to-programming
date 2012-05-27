@@ -1,3 +1,4 @@
+<a name="datastructures" class="anchor"></a>
 <h2>Data Structures</h2>
 <p>Up until now, whenever we wanted to group values together, we've used the term <em>collection</em>. For example, our <code>deck</code> variable held a collection of cards. However, to be accurate, our <code>deck</code> is actually an <em>array</em>, which is just one of many <em>collections</em>. An alternative word for <em>collection</em> is <em>data structure</em>.</p>
 
@@ -5,6 +6,7 @@
 
 <p>Data structures are important as they provide the mechanism for defining what we can do with our data. Other aspects, such as the type system (strings, numbers, booleans, ...), deal with what our data is. Also, data structures imply certain performance characteristics. We'll soon see specific examples of what this means. Put simply though, data structures communicate a lot about the code. It defines a common terminology so that when a programmer sees code using an <em>array</em> he or she can automatically infer both how the data can be manipulated and how those manipulations will perform.</p>
 
+<a name="arrays" class="anchor"></a>
 <h3>Arrays</h3>
 <p>We've already seen arrays enough to know quite a bit about them. Ultimately an array allows the values within it to be accessed by an index. Given the following code, we'd expect the value <code>sun</code> to be displayed:</p>
 
@@ -28,6 +30,7 @@ alert(pet[1]); //will display cat</pre>
 
 <p>We won't worry about fixed-sized arrays. In fact, for day to day programming, fixed-sized arrays, although often used, feel like a relic from the past. New languages tend to favor dynamic arrays (and simply call them <em>arrays</em>.). Whatever type of array we are talking about, the important point is that they are ordered and accessed by indexed.</p>
 
+<a name="qands" class="anchor"></a>
 <h3>Queues and Stacks</h3>
 <p>Queues and stacks aren't data structures that you'll use often, but we'll learn them to understand how data structures differ from one and other, and why so many exist in the first place.</p>
 
@@ -61,7 +64,7 @@ stack.shift(); //returns Chip 1</pre>
 
 <p>Queues and stacks serve specific but not entirely uncommon goals. However, they aren't something we need to master. We introduced them to show how data structures define what we can do with our data. It isn't just about being able to do more or less, but also about doing things differently (such as waiting until a value is present before we <code>shift</code>.)</p>
 
-
+<a name="sets" class="anchor"></a>
 <h3>Sets</h3>
 <p>Arrays are great if you want to preserve the order of values, or if you want to randomly access values by index. However, as we've already seen, to check if a value exists within the array, we have to loop through it. This may be fine for small arrays, but for large arrays with thounsands of values and checks happening hundreds of times per second, it's quite inneficient. The performance characteristic of searching an array is described as <em>linear</em> because the time it takes to find an item grows linearly with the number of values in the array.</p>
 
@@ -81,6 +84,7 @@ alert(list.exists("milk")); //will display true</pre>
 
 <p>Sets are very powerful; but what you gain in terms of functionality and perfomance for some things, you lose in terms of other. In comparison to arrays, you've lost ordering and the ability to hold duplicate values.</p>
 
+<a name="hashes" class="anchor"></a>
 <h3>Hashes</h3>
 <p>So far all the collections that we've looked at deal with a single value. Hashes on the other hand deal with a key and a value. Most of the time the key is a string, while the value can be any other piece of data. Hashes are also known as dictionaries and hash sets. As an example, if we wanted to track how many items to buy, we could use a hash:</p>
 
@@ -115,7 +119,7 @@ rows.push({type: "fish", name: "jorge", age: 2});</pre>
 
 <p>Like many things, the role played by hashes has changed over time. They were once used mostly to quickly access data by key. While still used a lot for this purpose, we see hashes being used more and more as simple containers of values, such as the animal data shown above. In a later chapter, we'll learn about <em>classes</em> which are a more structured way to contain and represent such data.</p>
 
-
+<a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>
 <p>In this chapter we learned more about arrays as well as hashes. These are two data structures that you'll make heavy use of. We also saw queues, stacks and sets. While all three serve useful purposes, we mostly explored them as a means to learn about different data structures. There are other classes of data structures available, but they tend to be more complex, more specialized and thus less often used.</p>
 

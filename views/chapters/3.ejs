@@ -1,3 +1,4 @@
+<a name="languages" class="anchor"></a>
 <h2>Understanding Languages</h2>
 <p>Now that we've learned the basics, it'd be wonderful if we could start putting all the pieces together and slowly program an application. Before we can do that though, we need to talk about some details that we previous glossed over, and correct some over-simplifications.</p>
 
@@ -7,11 +8,13 @@
 
 <p>Finally, programming languages tend to have a long life. A number of today's most popular languages are over 30 years old and almost all mainstream languages are at least a decade old. When you see something strange about a language, it very well could have to do with a problem or limitation long-since solved.</p>
 
+<a name="syntax" class="anchor"></a>
 <h3>Syntax</h3>
 <p>In chapter 2 we saw a number of operators, such as the assignment operator <code>=</code>, the equality operator <code>==</code> and the addition operator <code>+</code>. But there are no rules that say that these symbols must be used for these actions. A language designer could decide to use <code>%</code> to compare values and <code>#</code> to add them. Furthermore, there's no rule that defines what features a language must support. Maybe it isn't possible to add strings with an operator or to compare two values. Of course a language that didn't follow the most basic common sense or provide the most basic functionality, probably wouldn't be very popular.</p>
 
 <p>However, while we can all agree that <code>+</code> is the best symbol for the addition operation, and that a language <strong>should</strong> allow us to compare values, there are a number of things which are very subjective.</p>
 
+<a name="variables" class="anchor"></a>
 <h3>Variable Declaration</h3>
 <p>In chapter 2, we declared and assigned variables like so:</p>
 
@@ -32,9 +35,11 @@
 
 <p>While we are talking about variables, it's worth pointing out languages put restrictions on the characters you can use to name your variables, or functions. Thankfully, if you are naming things to be meaningful, this is rarely a problem.</p>
 
+<a name="strings" class="anchor"></a>
 <h3>Strings</h3>
 <p>In most languages, strings are exactly as we've explained them - a value enclosed in double quotes. However, some languages also allow you to use single quotes. The two often behave slightly differently, but don't worry about that. For now, it's safe to think of the two as being interchangeable (assuming the language supports both).</p>
 
+<a name="statementtermination" class="anchor"></a>
 <h3>Statement Termination</h3>
 <p>Many languages require an explicit character to mark the end of a statement and in many languages this symbol is a semicolon <code>;</code>:</p>
 
@@ -48,6 +53,7 @@ account_balance = account_balance - withdrawal_amount;</pre>
 
 <p>Should it return nothing, or should it return the collection of cards? In situations like these, languages without explicit statement terminators will always behave predictably, but unless you know what that behavior you can't just look at this code and know how it'll behave.</p>
 
+<a name="scope" class="anchor"></a>
 <h3>Scope</h3>
 <p>When we introduced the <code>if/else</code> control flow, we used indentation to indicate the <em>lines of code</em> that belonged to each branch:</p>
 
@@ -81,6 +87,7 @@ end</pre>
   print "Hello";
 }</pre>
 
+<a name="comments" class="anchor"></a>
 <h3>Comments</h3>
 <p>We haven't talked about comments yet, but almost all languages allow developers to add comments to their code. These have no impact on the application, but can be useful as reminders or explanations for other developers or even yourself.</p>
 
@@ -97,6 +104,7 @@ end</pre>
   ...
 }</pre>
 
+<a name="libraries" class="anchor"></a>
 <h3>Libraries and Frameworks</h3>
 <p>When we first talked about programming languages, we spoke of compilers which turn the code that we write into code that computers understand. The idea is to make programming more efficient by giving us higher-level tools. To further increase productivity, program languages often incude a set of standard libraries (also called a framework).</p>
 
@@ -104,6 +112,7 @@ end</pre>
 
 <p>You might think this takes the fun out of programming. Afterall, what's the point if everything's already written for you? Sure, reading a file is easy, but what you do with the files contents is all up to you.</p>
 
+<a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>
 <p>The goal of this chapter was to show that, while syntaxes might change, the core components of programming don't. A variable, whether prefixed with <code>var</code>, nothing, or something else is still a variable. A condition, whether wrapped in parentheses, or not, is still a condition. From this point on we'll settle on a single language, but hopefully you'll now be better equipped to see beyond that language's idiosyncrasies.</p>
 

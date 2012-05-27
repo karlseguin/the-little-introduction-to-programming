@@ -1,9 +1,10 @@
+<a name="moreonlanguages" class="anchor"></a>
 <h2>More on Languages</h2>
 <p>Our goal thus far has been to learn about programming in general, regardless of the language and its libraries. For this reason, we've looked at it things that exist no matter what language you use. How you define a variable, or the exact syntax of <code>for</code> loop is secondary to the concept of variables and looping.</p>
 
 <p>In this chapter we'll continue down this same path, but with a slightly broader perspective. Specifically, we want to familiriaze ourselves with some of the other common things we are likely to see in program. Some of these are just shortcuts provided by the language, or different approaches some languages take. Hopefully by learning these, you'll not only be in a better position to write more complex programs, but also be better able understand other people's code.</p>
 
-
+<a name="incrementing" class="anchor"></a>
 <h3>Incrementing</h3>
 <p>We've already seen a number of examples where we increment a value by some number. The code is straightforward, regardless of if we are increment a counter in a <code>for</code> loop, or adding/subtracting amounts:</p>
 
@@ -42,6 +43,7 @@ var total = ++i;</pre>
 
 <p>In such cases, it doesn't matter if you use a post or pre increment, since we only care about incrementing <code>i</code> itself and not about assigning the new or old value to another variable. (personally, I like to use a pre-increment, but having seen a lot of code, I'm pretty sure I'm in the minority.)</p>
 
+<a name="stringsandvalues" class="anchor"></a>
 <h3>Strings With Values</h3>
 <p>You'll often want to display a message which includes variable values. There are three common ways to do this, but not all languages provide all three mechanism.</p>
 
@@ -71,6 +73,7 @@ alert("Hello #{name}");</pre>
 
 <p>In chapter 3 we mentioned that some languages allow strings to be enclosed in either single or double quotes. In many of these languges, the above string interpolation is only possible using double quotes. This means that using single quotes, when you don't need this behavior, will be faster (because the processor doesn't have to look through your string looking for variables to replace).</p>
 
+<a name="stringescape" class="anchor"></a>
 <h3>Strings and Escape Sequences</h3>
 <p>Sometimes you'll want to include a special character within a string. The most common example is a double quote. However, a computer can't make sense of the following. Where is the string meant to end?</p>
 
@@ -84,9 +87,10 @@ alert("Hello #{name}");</pre>
 
 <pre data-language="javascript">var message = "I'm printing a backspace like so \\";</pre>
 
-<p>Finally, if you want to output a tab or new line, you can use the special <code>\t</code> or <code>\n</code> sequence. <code>\n</code> is a line feed. To get a new line to display properly on some operating systems, you'll have to print out a carriage return <code>\r</code> followed by a line feed: <code>\n\r</code>.
+<p>Finally, if you want to output a tab or new line, you can use the special <code>\t</code> or <code>\n</code> sequence. <code>\n</code> is a line feed. To get a new line to display properly on some operating systems, you'll have to print out a carriage return <code>\r</code> followed by a line feed: <code>\n\r</code>.</p>
 
 
+<a name="loopcontrol" class="anchor"></a>
 <h3>Loop Control</h3>
 <p>All the loops that we've seen so far have had a well defined start and stop point. For example we want to loop from the start to the end of an array. However, sometimes you'll want to exit the loop or possibly skip to the next iteration. For these operations, most languages provide two keywords: <code>break</code> and <code>continue</code>. When code reaches a <code>break</code>, it'll exit the existing loop (since it's possible to have loops within loops, it's worth pointing out that break will exit the inner-most loop):</p>
 
@@ -116,4 +120,41 @@ for (var i = 0; i &lt; values.length; i++) {
   }
 }</pre>
 
-<h3>Types</h3>
+<a name="otherloops" class="anchor"></a>
+<h3>Other Loops</h3>
+<p><code>for</code> loops aren't the only type of looping mechanism available in most languages. Two other common ones are the <code>while</code> and <code>do/while</code> loop. Both of these are simpler than the triple-statement <code>for</code> loop, but also less useful.</p>
+
+<p>A while loop will continue to loop as long as the provided condition remains true. Compare the the <code>for</code> we've already seen to iterate over an array with the <code>while</code> loop version:</p>
+
+<pre data-language="javascript">var i = 0;
+while (i &lt; deck.length) {
+  if (decks[i] == 'Joker') {
+    ....
+  }
+  i += 1;
+}</pre>
+
+<p>The for loop, while more complex, has the advantage of grouping the three components (initial statement; condition to continue; step statement) together. Now and again you'll see an endless <code>while</code> loop with some <code>break</code> condition:</p>
+
+<pre data-language="javascript">while (true) {
+  var name = prompt("What is your name?");
+  if (name == "Joker") {
+    break;
+  }
+  alert("Hello " + name);
+}</pre>
+
+<p>With both a <code>while</code> and <code>for</code> loop it is possible for no iterations to take place if the condition is initially false. A <code>do/while</code> places the condition at the end, and thus will execute at least once:</p>
+
+<pre data-language="javascript">do {
+  var name = prompt("What is your name?");
+  alert("Hello " + name);
+} while (name != "Joker");</pre>
+
+<p>Generally speak  you'll see <code>for</code> the most often, then <code>while</code> and finally <code>do/while</code>.</p>
+
+<a name="inthischapter" class="anchor"></a>
+<h3>In This Chapter</h3>
+<p>This chapter introduced new keywords and operations which many languages make available. Some of these may seem minor, that's because some are. Understanding the concept behind variables and conditions to control execution is a lot more important than knowing that <code>i++</code> is a quick way to do <code>i = i + 1</code>. However, as soon as you start exploring other guides and sample programs, these are things that you'll imediately run into.</p>
+
+<p>For the time being, you might be uncertain about what's the best approach to use for a given piece of code. What loop should you use, or how should you mix strings and values? At first, worry about making your code do what you want it to do. With experience, both reading other people's code, and expanding your own, you'll gain a feel for what improves and what distracts from your codes readability.</p>

@@ -1,3 +1,4 @@
+<a name="learningthebasics" class="anchor"></a>
 <h2>Learning the Basics</h2>
 <p>In the previous chapter we broke a program down into the vague concept of <em>lines of code</em>.  In this chapter, we'll start to explore some of the more frequent parts which go into making a <em>line of code</em>.</p>
 
@@ -18,6 +19,7 @@
 
 <p>This isn't too different than how we perform many day to day tasks. As you approach a traffic light, you collect data about your environment. At its simplest, you care about the color of the traffic light. If it's red or yellow, you stop. If it's green, you go. In reality, there are considerably more data points that you consider: the condition of the road, your current speed, what the cars and pedestrians around you are doing, how anxious you are to get home and so on and so forth. Our brain's ability to quickly consider all of these things and make such a absolute stop-or-go decision is impressive. A program isn't any different, except that every condition has to be explicitly expressed. There's no intuition, only the defined rules that we, as programmers, specified.</p>
 
+<a name="datatypes" class="anchor"></a>
 <h3>Dealing With Data - Types</h3>
 <p>The first thing we need to do is understand the basics of how a program deals with data. If you think about it, data can be broken into types. For example the make and model of your car is a string. Your age is a number. Whether you find this book is interesting or not is a boolean, or true or false. Strings, numbers and booleans represent the three types we'll concern ourselves with for now. However there are certainly other, more complex types. An address for example can be broken down into smaller components (street number, street name, city and country) but it often makes sense to think of an address as a single cohesive type.</p>
 
@@ -43,6 +45,7 @@ true</pre>
 
 <p>We'll revisit types in chapter 3. What's important for now is that you can tell a string from a number from a boolean and that you understand that what you can do with one type of data isn't necessarily valid for another type.</p>
 
+<a name="variables" class="anchor"></a>
 <h3>Dealing With Data - Variables</h3>
 <p>Much of the data that your program will make use of isn't going to be known ahead of time. Data can come from many sources, such as user inputs or by reading it from files stored on the computer. In our user registration example, we know that we'll be dealing with an email and password, but we don't know exactly what those values will be.</p>
 
@@ -65,6 +68,7 @@ password = "ghanima"</pre>
 
 <p>In the next couple sections, you'll see how important, yet simple, variables are. It's hard to  grasp them until we've introduced a few more concepts. What might be obvious already though is that properly naming your variables is crucial to making your code readable. Although you don't know the exact value held by <code>email</code>, if we printed it out, you probably wouldn't be surprised. However, if we named our variable <code>a</code> or <code>the</code> or even <code>string</code> your guess about the contents would be as good as mine.</p>
 
+<a name="flowcontrol" class="anchor"></a>
 <h3>Determining A Course Of Action</h3>
 <p>In chapter 1 we learned that a program is read from top to bottom. The reality is more complex. When we described our two examples, we saw how a program needs to execute different code based on various conditions. This aspect of programming is known as control flow, because it controls which part of code will be executed.</p>
 
@@ -123,6 +127,7 @@ end</pre>
 
 <p>Control flow can get more complicated, but it almost always comes down to taking an action based on some condition, or looping over code. Often, these two concepts are combined, say by looping over code until a certain condition is met. For now, it's sufficient that you understand that given a condition, it's possible to control what, if any, part of code is executed.</p>
 
+<a name="actions" class="anchor"></a>
 <h3>Performing Actions</h3>
 <p>We know how to manage data, and how to make decisions based on that data, now it's time to take action. If you go back through the examples in this chapter, you'll notice that we've already taken a number of actions. For example, we've printed messages to the user and subtracted one amount from another. Let's break it down further.</p>
 
@@ -148,7 +153,8 @@ end</pre>
 
 <p>The assignment <code>=</code> and equality <code>==</code> operators might seem similar, but they really have little relation. The first makes the left-hand variable equal to the right hand value. The second results in true of the two values are equal, or false otherwise.</p>
 
-<h4>Custom Actions: Functions</h4>
+<a name="functions" class="anchor"></a>
+<h3>Custom Actions: Functions</h3>
 <p>The last, and most advanced topic we'll cover in this chapter are functions. Much like a variable can be thought of as giving a label to a value, a function gives a label to a group of <em>lines of code</em>. Functions are powerful and important. They also serve a number of purposes. First, they help us organize our code. Rather than having a long series of code, we can break it down into functions with meaningful names. Secondly, they help us reuse code. You'll commonly have a task that you'll want to execute over the course of your program.</p>
 
 <p>In its simplest form, a function looks like:</p>
@@ -202,6 +208,7 @@ end</pre>
 
 <p>Notice that we had to change the name of <code>card</code> variable created in our for loop so that it wouldn't be confused with the <code>card</code> parameter. Depending on the language that you were using, you'd either get error or some weird behavior. Also, <code>c</code> isn't the best variable name, but given that it has a very short existence, it's probably ok.</p>
 
+<a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>
 <p>This chapter introduced the concept of data types and variables, control flow via <code>if/else</code> and loops, as well as operators and functions. Everything was broken down into small chunks, making it hard to see how they all fit together to form a program, but our last few examples, which were more complex, started to give us some insight on how it all fits together.</p>
 
