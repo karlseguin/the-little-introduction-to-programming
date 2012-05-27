@@ -5,5 +5,6 @@ module.exports = (config) ->
     'understanding languages',
     'your first program',
     'data structures',
-    'more on languages'
+    'more on languages',
+    'more on types',
   ]
