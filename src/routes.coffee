@@ -8,10 +8,6 @@ class Routes
     app.get '/', (req, res) ->
       res.render 'index', layout: 'layouts/home'
 
-
-    app.get '/help', (req, res) ->
-      res.render 'help'
-
     app.post '/subscribe', (req, res) ->
       Store.subscribe req.body.email, (err) ->
         res.render 'subscribe', { layout: 'layouts/home', locals: {ok: !err?}}
