@@ -94,7 +94,7 @@ config.functions =
       addItem: (item) -> $('#items').append($('<div>').text(item))
   prompt:
     display: "prompt(message);"
-    parameters: [['message - string', 'the message to display'], ['return - string', 'the value entered by the user']]
+    parameters: [['message - string', 'the message to display'], ['returns the value entered by the user']]
     define:
       prompt: (message) -> window.prompt(message)
   alert:
@@ -104,7 +104,7 @@ config.functions =
       alert: (message) -> window.alert(message)
   itemExists:
     display: "itemExists(item);"
-    parameters: [['item - string', 'the item to check'], ['return - boolean', 'true if the item exists, false otherwise']]
+    parameters: [['item - string', 'the item to check'], ['returs true if the item exists, false otherwise']]
     define:
       itemExists: (item) ->
         for element in $('#items').children()
@@ -112,7 +112,7 @@ config.functions =
         return false
    getItems:
     display: "getItems();"
-    parameters: [['return - string collection', 'the items currently in the list']]
+    parameters: [['returns a collection of the items in the list']]
     define:
       getItems: -> (element.innerHTML for element in $('#items').children())
 

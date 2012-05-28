@@ -7,7 +7,7 @@
 
   <a name="javascript" class="anchor"></a>
   <h3>Introducing JavaScript</h3>
-  <p>The language that'll be using is JavaScript. The main reason we pick it is because web browsers have a JavaScript engine built-in. This means you have everything you need to be able to run JavaScript; there's no need to install or configured anything. Another benefit of JavaScript is that it's quite popular, making it a practical choice.</p>
+  <p>The language that'll be using is JavaScript. The main reason we pick it is because web browsers have a JavaScript engine built-in. This means you have everything you need to be able to run JavaScript; there's no need to install or configure anything. Another benefit of JavaScript is that it's quite popular, making it a practical choice.</p>
 
   <p>Much of the new, slightly more cryptic, syntax that we learned in chapter 3 is how JavaScript (and a number of other languages) looks. That means you'll have to use braces <code>{}</code> for your blocks (like if statements and functions), use <code>var</code> before defining variables and include semicolons <code>;</code> after each statement (unline most languages which require a statement-terminator, JavaScript is fairly forgiving if you foget it, but it's better to be safe than sorry.)</p>
 
@@ -19,7 +19,7 @@
     <li>First, in the top right is your <em>shopping list</em> When you run your code, you'll see this list get updated. This is also where any error messages will show up.</li>
     <li>Next, you have an <em>coding area</em>, which is where you can program. The coding area is easy to spot because of how green it is.</li>
     <li>Below the coding area you'll find the <em>run button</em>. Clicking it will run the code found inside the coding area (again, feel free to play around, no one's watching!)</li>
-    <li>Since each excercise builds on top of the previous one, a <em>reset button</em> allows you to ensure your shopping list is properly setup. This is useful if you skip a step or if you played around and your shopping list is a message.</li>
+    <li>Since each excercise builds on top of the previous one, a <em>reset button</em> allows you to ensure your shopping list is properly setup. This is useful if you skip a step or if you played around and your shopping list is a mess.</li>
     <li>Next to the run button you'll find the an <em>answer button</em> which will show you a possible answer (there's always more than one way solve a programming problem).</li>
     <li>Finally, whenever you are typing inside your coding area, you'll see a <em>functions list</em> below your shopping list. This represents a list of functions you are allowed to use in this particular section. You can think of these as a 3rd party library - there to help you with common tasks.</li>
   </ol>
@@ -108,7 +108,7 @@
 
   <p>The above will add 10 items, named <em>1</em> through to <em>10</em>, to our list. As long as <code>i</code>, which starts at 1, is less than 10, we continue to loop. However, after each iteration, <code>i</code> is incremented by 1.</p>
 
-  <p>There are three other things to know. First, in JavaScript the first value of a collection starts at 0 (this is extremly common). Second, we can get the collection'st size by calling <code>collection.length</code>. Third, we can get the value at a certain position via square brackets <code>collection[3]</code>. Hopefully this last example will help you write your own <code>itemExists</code> function:</p>
+  <p>There are three other things to know. First, in JavaScript the first value of a collection starts at 0 (this is extremly common). Second, we can get the collection's size by calling <code>collection.length</code>. Third, we can get the value at a certain position via square brackets <code>collection[3]</code>. Hopefully this last example will help you write your own <code>itemExists</code> function:</p>
 
   <pre data-language="javascript">//this will duplicate every item in our list
 var items = getItems();
@@ -142,7 +142,7 @@ alert(itemExists("milk")); //we can test our function by outputting its result</
 
   <p>This chapter also introduced the <code>for</code> loop. Although some newer languages have nicer syntax to iterate over collection, the concepts of a <code>for</code> loop are important. We'll talk more about collections in the next chapter, but knowing that they start at 0, that we can get their length as well as individual values at specific positions, and how to iterate over them is knowledge that won't go to waste.</p>
 
-  <p>Don't worry if you had to use the answers often, or even if the answers didn't make too much sense. The next chapter will be dedicated to understanding some of the more advanced concepts that we've saw here, as well as introducing a few new ones.</p>
+  <p>Don't worry if you had to use the answers often, or even if the answers didn't make too much sense. The next chapter will be dedicated to understanding some of the more advanced concepts that we've seen here, as well as introducing a few new ones.</p>
 </div>
 
 <script type="text/template" id="functionTemplate">
@@ -150,7 +150,7 @@ alert(itemExists("milk")); //we can test our function by outputting its result</
     {{ display }}
     {% _.each(parameters, function(parameter, index) { %}
     <div class="type">{{ parameter[0] }}</div>
-    <div class="desc">{{ parameter[1] }}</div>
+    <div class="desc">{{ parameter[1] || '' }}</div>
     {% }); %}
   </div>
 </script>
