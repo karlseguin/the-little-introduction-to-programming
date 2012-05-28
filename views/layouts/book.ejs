@@ -23,7 +23,7 @@
       <%- partial('shared/paging') %>
       <div id="disqus_thread"></div>
       <script>
-      var disqus_identifier = '<%= chapter_link(chapter) %>';
+      var disqus_identifier = '<%= chapter_link(language, chapter) %>';
       (function() {
           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
           dsq.src = 'http://codingintro.disqus.com/embed.js';
