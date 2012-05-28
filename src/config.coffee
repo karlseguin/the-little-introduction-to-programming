@@ -7,4 +7,5 @@ module.exports = (config) ->
     'data structures',
     'more on languages',
     'more on types',
+    'next steps'
   ]
