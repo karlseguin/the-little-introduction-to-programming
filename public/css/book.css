@@ -351,3 +351,10 @@ textarea.answer {
 .sidelegend a:hover {
   text-decoration: none;
   background: #495963; }
+
+.anchor {
+  height: 0;
+  display: block; }
+
+a:target + h3 {
+  color: #886; }
