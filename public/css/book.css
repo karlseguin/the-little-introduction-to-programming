@@ -160,7 +160,7 @@ pre {
   text-shadow: 1px 1px 3px #000; }
 
 #toc:after {
-  content: "\25B6";
+  content: "\25BC";
   margin-left: 20px;
   font-size: 0.8em;
   text-shadow: 1px 1px 3px #000; }
