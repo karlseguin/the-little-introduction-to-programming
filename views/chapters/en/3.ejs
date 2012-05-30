@@ -1,136 +1,126 @@
-<a name="languages" class="anchor"></a>
-<h2>Understanding Languages</h2>
-<p>Now that we've learned the basics, it'd be wonderful if we could start putting all the pieces together and slowly program an application. Before we can do that though, we need to talk about some details that we previous glossed over, and correct some over-simplifications.</p>
+<div id="book">
+  <a name="yourfirstprogram" class="anchor"></a>
+  <h2>Your First Program</h2>
+  <p>This chapter is different than the ones we've seen so far. It'll let us apply what we've learned interactively. We'll be putting together a shopping list to build up our knowledge through small and simple steps. We'll also introduce new and more powerful concepts.</p>
 
-<p>In chapter 1 we mentioned that there are a lot of programming languages and that programming languages define the syntax that we use (amongst other things). Now that we've seen more code and we've seen the components which are common to almost all programming languages, it's time to show concrete examples of how one language might be different than another.</p>
+  <p>In this chapter you'll be asked to provide some code in order to fufill a certain purpose. The output of this code will be diplayed on the right. Don't be afraid to try different solutions; and if you aren't sure what to type, you can always view the answer via the <em>answer</em> button. Do as much or as little as you want - we all learn differently and at a different pace.</p>
 
-<p>Also, since programmers use <em>programming language</em> and <em>language</em> interchangeably, we will too.</p>
+  <a name="theland" class="anchor"></a>
+  <h3>Lay Of The Land</h3>
+  <p>The first thing we'll do is get comfortable with this new interactive environment. Every interactive section has the same six components. You should familiarize yourself with all six.</p>
 
-<p>Finally, programming languages tend to have a long life. A number of today's most popular languages are over 30 years old and almost all mainstream languages are at least a decade old. When you see something strange about a language, it very well could have to do with a problem or limitation long-since solved.</p>
+  <ol>
+    <li>First, in the top right is your <em>shopping list</em> When you run your code, you'll see this list get updated. This is also where any error messages will show up.</li>
+    <li>Next, you have an <em>coding area</em>, which is where you can program. The coding area is easy to spot because of how green it is.</li>
+    <li>Below the coding area you'll find the <em>run button</em>. Clicking it will run the code found inside the coding area (again, feel free to play around, no one's watching!)</li>
+    <li>Since each excercise builds on top of the previous one, a <em>reset button</em> allows you to ensure your shopping list is properly setup. This is useful if you skip a step or if you played around and your shopping list is a mess.</li>
+    <li>Next to the run button you'll find the an <em>answer button</em> which will show you a possible answer (there's always more than one way solve a programming problem).</li>
+    <li>Finally, whenever you are typing inside your coding area, you'll see a <em>functions list</em> below your shopping list. This represents a list of functions you are allowed to use in this particular section. You can think of these as a 3rd party library - there to help you with common tasks.</li>
+  </ol>
 
-<a name="syntax" class="anchor"></a>
-<h3>Syntax</h3>
-<p>In chapter 2 we saw a number of operators, such as the assignment operator <code>=</code>, the equality operator <code>==</code> and the addition operator <code>+</code>. But there are no rules that say that these symbols must be used for these actions. A language designer could decide to use <code>%</code> to compare values and <code>#</code> to add them. Furthermore, there's no rule that defines what features a language must support. Maybe it isn't possible to add strings with an operator or to compare two values. Of course a language that didn't follow the most basic common sense or provide the most basic functionality, probably wouldn't be very popular.</p>
+  <p>Let's give it a try. Below you'll find your first <em>coding area</em>. Once you click in it, you'll see that you have 1 function avaible (in the <em>functions list</em>). Since there are many ways to achieve the same thing, it's up to you to decide if your answer is correct. If you aren't sure, compare it to the provided answer (via the <em>answer button</em>).</p>
 
-<p>However, while we can all agree that <code>+</code> is the best symbol for the addition operation, and that a language <strong>should</strong> allow us to compare values, there are a number of things which are very subjective.</p>
+  <div class="codingArea" data-id="0">
+    <div class="goal">You need to buy milk. Add it to your list.</div>
+    <textarea class="input"></textarea>
+    <textarea class="answer" readonly="readonly"></textarea>
+    <div class="buttons">
+      <a href="#" class="run">run</a>
+      <a href="#" class="reset">reset</a>
+      <a href="#" class="answer">answer</a>
+    </div>
+  </div>
 
-<a name="variables" class="anchor"></a>
-<h3>Variable Declaration</h3>
-<p>In chapter 2, we declared and assigned variables like so:</p>
+  <a name="input" class="anchor"></a>
+  <h3>Getting Input</h3>
+  <p>While a program will have many hard-coded values, most data comes from external sources: like a file or user input. In our example above, it doesn't make sense to hard-code the value <em>milk</em>. Instead, we'd prefer to ask the user using the newly available <code>prompt</code> function:</p>
 
-<pre data-language="ruby">name = "Leto"</pre>
+  <div class="codingArea" data-id="1">
+    <div class="goal">Ask the user what to add and add the value to the list</div>
+    <textarea class="input"></textarea>
+    <textarea class="answer" readonly="readonly"></textarea>
+    <div class="buttons">
+      <a href="#" class="run">run</a>
+      <a href="#" class="reset">reset</a>
+      <a href="#" class="answer">answer</a>
+    </div>
+  </div>
 
-<p>It isn't uncommon that languages require slightly more explicit syntax:</p>
+  <a name="library" class="anchor"></a>
+  <h3>addItem, prompt, What Are These?</h3>
+  <p>This is just a little detoure to remind you of the conversation we had about libraries and framework from chapter 3. You might very well be wondering where <code>addItem</code> and <code>prompt</code> come from and might even feel like you are cheating a bit. <code>prompt</code> is actually a function built-into JavaScript. I wouldn't even know where to begin if we had to build it ourselves. <code>addItem</code> is a function written specifically for this tutorial and can be simply thought of as a third-party library.</p>
 
-<pre data-language="javascript">var name = "Leto"</pre>
+  <p>The reason you didn't write the <code>addItem</code> function yourself is because it is full of information which is very specific to manipulating HTML web pages; which only muddies our attempt to learn programming in general. First you learn the basics, then you can learn more specific topics.</p>
 
-<p>Again, some languages might opt for something different than <code>var</code>. One of the benefits to this is that variables can be declared but uninitialized:</p>
+  <a name="validation" class="anchor"></a>
+  <h3>Some Basic Validation</h3>
+  <p>Currently, our little program allows users to answer the prompt without actually entering a value. It would be nice to catch this and display a message. Try it by using an <code>if/else</code> condition and the new <code>alert</code> function:</p>
 
-<pre data-language="javascript">var name;</pre>
+  <div class="codingArea" data-id="2">
+    <div class="goal">If the entered value is empty, alert an warning</div>
+    <textarea class="input"></textarea>
+    <textarea class="answer" readonly="readonly"></textarea>
+    <div class="buttons">
+      <a href="#" class="run">run</a>
+      <a href="#" class="reset">reset</a>
+      <a href="#" class="answer">answer</a>
+    </div>
+  </div>
 
-<p>This, of course, brings up the question <em>what value is name?</em>. Most languages have some concept of <em>no value</em>, which is typically identified by the <code>null</code> keyword, though <code>nil</code> and <code>None</code> are also common.</p>
+  <a name="duplicates" class="anchor"></a>
+  <h3>Avoiding Duplicates, Part 1</h3>
+  <p>The last task that we'll look at is making sure we can't add the same item twice. We'll do this in two separate steps. First, we'll use the new function <code>itemExists</code> to see if the item already exists. This is very similar to our above null or empty check. Go ahead and try: </p>
 
-<pre data-language="ruby">if name == null
-  print "Please enter a name"</pre>
+  <div class="codingArea" data-id="3">
+    <div class="goal">Display a message if the item already exists</div>
+    <textarea class="input"></textarea>
+    <textarea class="answer" readonly="readonly"></textarea>
+    <div class="buttons">
+      <a href="#" class="run">run</a>
+      <a href="#" class="reset">reset</a>
+      <a href="#" class="answer">answer</a>
+    </div>
+  </div>
 
-<p>While we are talking about variables, it's worth pointing out languages put restrictions on the characters you can use to name your variables, or functions. Thankfully, if you are naming things to be meaningful, this is rarely a problem.</p>
+  <a name="bonus" class="anchor"></a>
+  <h3>Avoiding Duplicates, Bonus Step</h3>
+  <p>The last step that we'll look at in this chapter is to write our own <code>itemExists</code> function. In order to be able to do this we'll use the new <code>getItems</code> function which returns a collection of existing items. In chapter 2 we saw how to use a <code>for</code> loop to iterate over each value in a collection, such as <code>for card in deck</code>.</p>
 
-<a name="strings" class="anchor"></a>
-<h3>Strings</h3>
-<p>In most languages, strings are exactly as we've explained them - a value enclosed in double quotes. However, some languages also allow you to use single quotes. The two often behave slightly differently, but don't worry about that. For now, it's safe to think of the two as being interchangeable (assuming the language supports both).</p>
+  <div class="codingArea taller" data-id="4">
+    <div class="goal">As a bonus, write your own itemExists function</div>
+    <textarea class="input">function itemExists(itemToFind)
+  # Fill in the function's body
 
-<a name="statementtermination" class="anchor"></a>
-<h3>Statement Termination</h3>
-<p>Many languages require an explicit character to mark the end of a statement and in many languages this symbol is a semicolon <code>;</code>:</p>
 
-<pre data-language="ruby">name = "Leto";
-account_balance = account_balance - withdrawal_amount;</pre>
 
-<p>Although newlines are often meaningless in these languages, developers still write a statement-per-line. Languages with a statement terminator are more popular than those without, but this does seem to be changing with time. This isn't to say having an explicit statement terminator is useless. How should the following behave?</p>
 
-<pre data-language="ruby">return
-["Ace of Clubs", "2 of Hearts"]</pre>
+#we can test our function by outputting its result
+alert(itemExists("milk"))</textarea>
+    <textarea class="answer" readonly="readonly"></textarea>
+    <div class="buttons">
+      <a href="#" class="run">run</a>
+      <a href="#" class="reset">reset</a>
+      <a href="#" class="answer">answer</a>
+    </div>
+  </div>
 
-<p>Should it return nothing, or should it return the collection of cards? In situations like these, languages without explicit statement terminators will always behave predictably, but unless you know what that behavior you can't just look at this code and know how it'll behave.</p>
+  <a name="inthischapter" class="anchor"></a>
+  <h3>In This Chapter</h3>
+  <p>This chapter had two purposes. First and foremost, to reinforce what you've learned in the previous chapters by having you actually code. Hopefully you felt somewhat adventurous and tried to come up with various solutions, or tried doing something completely different. For example, what happens if you go back to the first example and leave out the closing quote <code>addItem("mil)</code> or tried to call a function which does not exist?. </p>
 
-<a name="scope" class="anchor"></a>
-<h3>Scope</h3>
-<p>When we introduced the <code>if/else</code> control flow, we used indentation to indicate the <em>lines of code</em> that belonged to each branch:</p>
+  <p>Don't worry if you had to use the answers often, or even if the answers didn't make too much sense. The next chapter will be dedicated to understanding some of the more advanced concepts that we've seen here, as well as introducing a few new ones.</p>
+</div>
 
-<pre data-language="ruby">if withdraw_amount &gt; account_balance
-  print "Amount too large"
-else
-  account_balance = account_balance - withdraw_amount
-  print "Withdrawal request accepted"
-end</pre>
+<script src="/js/coffee-script.js"></script>
+<script src="/js/chapter.3.js"></script>
 
-<p>A common alternative is to use braces <code>{}</code>. This tends to be seen in languages which also require statement termination <code>;</code> - probably because they are all more or less descendants of a very popular language called C.</p>
-
-<pre data-language="javascript">if (withdraw_amount &gt; account_balance) {
-  print "Amount too large"
-} else {
-  account_balance = account_balance - withdraw_amount
-  print "Withdrawal request accepted"
-}</pre>
-
-<p>There are two things to notice her. First, even though the braces, and not the indentation, identifies our scope, we still indent for the sake of readability. Second, notice that our <code>if</code> condition is is surrounded by parenthesis. This is yet another common requirement from this class of languages.</p>
-
-<p>In these languages, braces are also used for functions:</p>
-
-<pre data-language="ruby">function sayHello()
-  print "Hello"
-end</pre>
-
-<p>Turns into:</p>
-
-<pre data-language="javascript">function sayHello() {
-  print "Hello";
-}</pre>
-
-<a name="comments" class="anchor"></a>
-<h3>Comments</h3>
-<p>We haven't talked about comments yet, but almost all languages allow developers to add comments to their code. These have no impact on the application, but can be useful as reminders or explanations for other developers or even yourself.</p>
-
-<p>Most languages use a character to mark the start of a comment. The two most common are <code>#</code> and <code>//</code> (which is actually two characters). Comments can be on their own line, or they can be at the end of the line:</p>
-
-<pre data-language="ruby"># don't let them enter a negative amount
-if withdraw_amount &lt; 0
-  ...
-end</pre>
-
-<p>Or:</p>
-
-<pre data-language="javascript">if (withdraw_amount &lt; 0) { // don't let them enter a negative amount
-  ...
-}</pre>
-
-<a name="libraries" class="anchor"></a>
-<h3>Libraries and Frameworks</h3>
-<p>When we first talked about programming languages, we spoke of compilers which turn the code that we write into code that computers understand. The idea is to make programming more efficient by giving us higher-level tools. To further increase productivity, program languages often incude a set of standard libraries (also called a framework).</p>
-
-<p>These stardard libraries include a number of functions for every-day tasks, such as reading and writing files, accessing the internet, shuffling collections, and so on. These are all things we could write ourselves, but they are so common and so necessary, that robust implementations are provided for us. In addition, you'll find a community of programmers who are eager to share their own libraries which extend and enhance a language's standard library.</p>
-
-<p>You might think this takes the fun out of programming. Afterall, what's the point if everything's already written for you? Sure, reading a file is easy, but what you do with the files contents is all up to you.</p>
-
-<a name="inthischapter" class="anchor"></a>
-<h3>In This Chapter</h3>
-<p>The goal of this chapter was to show that, while syntaxes might change, the core components of programming don't. A variable, whether prefixed with <code>var</code>, nothing, or something else is still a variable. A condition, whether wrapped in parentheses, or not, is still a condition. From this point on we'll settle on a single language, but hopefully you'll now be better equipped to see beyond that language's idiosyncrasies.</p>
-
-<p>Don't let these details overwhelm you. In chapter 2 we saw a <code>hasCard</code> function. Look at this same function written in a different language:</p>
-
-<pre data-language="javascript">function hasCard(deck, card) {
-  foreach(c in deck) {
-    if (c == card) {
-      return true;
-    }
-  }
-  return false;
-}</pre>
-
-<p>You probably prefer one over the other, but they are both understandable, because they both rely on the same fundamentals: variables, functions, operators and control-flow. Also, you won't be asked to remember all of these different rules.</p>
-
-<p>You may be sad to hear this, but the the language that we'll be using will be of the more cryptic variety (with semi-colons <code>;</code> and braces <code>{}</code>). There are good reasons for this, which will be explained at the start of the next chapter. This chapter therefore served as an introduction to this new syntax.</p>
-
-<p>You may be wondering how professional programmers deal with this variety - some of which is quite subtle. First, most programmers only deal with 2 or 3 languages on a day to day basis. Secondly, most of the mainstream languages tend to have more in common than not. Finally, consider that we do this for hours every day, so it becomes quite natural to us. Despite these facts, most of us get tripped up quite frequently, especially if we've been using the same languages for days at a time and suddenly switch. My own personal nemesis is <code>else if</code>. Every language seems to have its own version <code>else if</code>, <code>elseif</code>, <code>elsif</code>, <code>elif</code>, ...) and I seem to always pick the wrong one.</p>
-
-<p>You might also be wondering why we need so many languages in the first place? Some languages are invented to solve specific problems. Some of it has to do with legacy. An old language which was used to create millions of applications can't be thrown away (otherwise we'd have to rewrite all those applications), so the language is kept around. At the same time new applications are built using newer languages. Some programmers just like to write new languages and explore the world of language design to try and come up with better techniques and patterns. Finally, politics play a part in the creation of new languages: company X releases a new language and company Y releases its own variation.</p>
+<div id="runner">
+  <div id="shopList">
+    <h4>Your Shopping List</h4>
+    <div id="items"></div>
+  </div>
+  <div id="funcList">
+    <h4>Available Functions</h4>
+    <div></div>
+  </div>
+</div>

@@ -75,8 +75,7 @@ password = "ghanima"</pre>
 <p>The simplest control flow is an <code>if</code> condition:</p>
 
 <pre data-language="ruby">if password.length &lt; 8
-  print "invalid password"
-end</pre>
+  print "invalid password"</pre>
 
 <p>Building on top of this, we have an <code>if/else</code> condition:</p>
 
@@ -84,8 +83,7 @@ end</pre>
   print "Amount too large"
 else
   account_balance = account_balance - withdraw_amount
-  print "Withdrawal request accepted"
-end</pre>
+  print "Withdrawal request accepted"</pre>
 
 <p>Finally we have an <code>if/else if/else</code>:</p>
 
@@ -95,14 +93,13 @@ else if withdraw_amount &gt; account_balance
   print "Amount too large"
 else
   account_balance = account_balance - withdraw_amount
-  print "Withdrawal request accepted"
-end</pre>
+  print "Withdrawal request accepted</pre>
 
 <p>You can have as many <code>else if</code> sections as you want, but only the first valid condition, going from top to bottom, will be executed.</p>
 
 <p>The other common type of control flow are loops. These execute the same piece of code multiple times. That might seem silly, and indeed, our first example is silly:</p>
 
-<pre data-language="ruby">for i = 1 to 10
+<pre data-language="ruby">for i in [1..10]
   print i</pre>
 
 <p>The above would print <code>12345678910</code>.</p>
@@ -113,11 +110,9 @@ end</pre>
 
 <p>The square brackets <code>[]</code> means <em>collection</em>. With the knowledge we've gained, we know that the above is a collection of strings, represented by the <code>deck</code> variable. Collections and loops go hand-in-hand:</p>
 
-<pre data-language="ruby">for each card in deck
+<pre data-language="ruby">for card in deck
   if card is "Joker"
-    print "Please remove the jokers from the deck!"
-  end
-end</pre>
+    print "Please remove the jokers from the deck!"</pre>
 
 <p>Notice in the above that we introduce a variable named <code>card</code> as part of our loop. The word <em>variable</em> was aptly chosen as the value of <code>card</code> varies with each iteration of our loop.</p>
 
@@ -160,8 +155,7 @@ end</pre>
 <p>In its simplest form, a function looks like:</p>
 
 <pre data-language="ruby">function sayHello()
-  print "Hello"
-end</pre>
+  print "Hello"</pre>
 
 <p>Our new function, named <code>sayHello</code> can be executed by adding parenthesis to the name:</p>
 
@@ -170,19 +164,15 @@ end</pre>
 <p>Functions can also be passed in variables. For a function these variables are called <code>parameters</code>:</p>
 
 <pre data-language="ruby">function sayHello(name)
-  print "Hello " + name
-end</pre>
+  print "Hello " + name</pre>
 
 <p>Finally, functions can return a value:</p>
 
 <pre data-language="ruby">function hasJoker(deck)
-  for each card in deck
+  for card in deck
     if card == "Joker"
       return true
-    end
-  end
-  return false
-end</pre>
+  return false</pre>
 
 <p>The <code>return</code> keyword is powerful as it exists the function immediately. The value returned is no different than any other value we've seen so far. It can be assigned to a variable, compared via an operator as well as other things we haven't looked at.</p>
 
@@ -194,13 +184,10 @@ end</pre>
 <p>In order to make <code>hasJoker</code> more reusable, we might change it like so:</p>
 
 <pre data-language="ruby">function hasCard(deck, card)
-  for each c in deck
+  for c in deck
     if c == card
       return true
-    end
-  end
-  return false
-end</pre>
+  return false</pre>
 
 <p>Which can be invoked like so:</p>
 

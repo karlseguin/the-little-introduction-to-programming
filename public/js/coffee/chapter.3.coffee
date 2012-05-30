@@ -1,16 +1,12 @@
-_.templateSettings =
-  interpolate: /\{\{(.+?)\}\}/g,
-  evaluate: /\{%(.+?)%\}/g
-
 class Runner
-  @functionTemplate: _.template($('#functionTemplate').html())
   @run: (e) ->
     config = Runner.getConfig(this)
     input = Runner.getInput(this, '.input')
     Runner.setContext(config)
     Runner.ok(this)
     try
-      `with(Runner.context) { eval(input.val()) }`
+      value = input.val().replace(/function *(.*?)(\(.*?\))/, '$1 = $2 ->')
+      `with(Runner.context) { eval(CoffeeScript.compile(value)) }`
     catch error
       Runner.error(this, error.toString())
     e.preventDefault()
@@ -32,7 +28,7 @@ class Runner
     config = Runner.getConfig(this)
     $list = $('#funcList').show().children('div:first').empty()
     for f in config.functions
-      $list.append(Runner.functionTemplate(Runner.getFunction(f)))
+      $list.append(Runner.buildFunctionInfo(Runner.config.functions[f]))
 
   @setContext: (config) ->
     Runner.context = {};
@@ -52,6 +48,13 @@ class Runner
   @getFunction: (f) ->
     @config.functions[f]
 
+  @buildFunctionInfo: (f) ->
+    $div = $('<div>').addClass('function').text(f.display)
+    for parameter in f.parameters
+      $('<div>').addClass('type').text(parameter[0]).appendTo($div);
+      $('<div>').addClass('desc').text(parameter[1]).appendTo($div);
+    return $div
+
   @ok: (element) ->
     Runner.getCodingArea(element).removeClass('error')
     Runner.shopList.removeClass('error').find('.error').remove()
@@ -64,23 +67,23 @@ class Runner
 config = {}
 config.steps = [
   {
-    answer: 'addItem("milk");'
+    answer: 'addItem("milk")'
     functions: ['addItem']
     reset: []
   }, {
-    answer: 'var item = prompt("What do you need to buy?");\raddItem(item);'
+    answer: 'item = prompt("What do you need to buy?")\raddItem(item)'
     functions: ['addItem', 'prompt']
     reset: ['milk']
   }, {
-    answer: 'var item = prompt("What do you need to buy?");\rif(item == null || item == ""){ //prompt returns null when the user hits cancel\r  alert("Please enter a value");\r} else {\r  addItem(item);\r}'
+    answer: 'item = prompt("What do you need to buy?")\rif item == null || item == "" #prompt returns null when the user hits cancel\r  alert("Please enter a value")\relse\r  addItem(item)\r'
     functions: ['addItem', 'prompt', 'alert']
     reset: ['milk', 'eggs']
   }, {
-    answer: '//removed the empty/null check for simplicity\rvar item = prompt("What do you need to buy?");\rif(itemExists(item) == true){\r alert("This item was already added");\r} else {\r  addItem(item);\r}'
+    answer: '#removed the empty/null check for simplicity\ritem = prompt("What do you need to buy?")\rif itemExists(item) == true\r alert("This item was already added")\relse\r  addItem(item)\r'
     functions: ['addItem', 'prompt', 'alert', 'itemExists']
     reset: ['milk', 'eggs']
   }, {
-    answer: 'function itemExists(item) {\r  var items = getItems();\r  for (var i = 0; i < items.length; i = i + 1) {\r    if (items[i] == item) {\r      return true;\r    }\r  }\r  return false;\r}\ralert(itemExists("milk"));'
+    answer: 'function itemExists(itemToFind)\r  items = getItems()\r  for item in items \r    if item == itemToFind\r      return true\r  return false\r\ralert(itemExists("milk"))'
     functions: ['alert', 'getItems']
     reset: ['milk', 'eggs']
   }
@@ -88,22 +91,22 @@ config.steps = [
 
 config.functions =
   addItem:
-    display: "addItem(item);"
+    display: "addItem(item)"
     parameters: [['item - string', 'the item to add to the list']]
     define:
       addItem: (item) -> $('#items').append($('<div>').text(item))
   prompt:
-    display: "prompt(message);"
+    display: "prompt(message)"
     parameters: [['message - string', 'the message to display'], ['returns the value entered by the user']]
     define:
       prompt: (message) -> window.prompt(message)
   alert:
-    display: "alert(message);"
+    display: "alert(message)"
     parameters: [['message - string', 'the message to display']]
     define:
       alert: (message) -> window.alert(message)
   itemExists:
-    display: "itemExists(item);"
+    display: "itemExists(item)"
     parameters: [['item - string', 'the item to check'], ['returs true if the item exists, false otherwise']]
     define:
       itemExists: (item) ->
@@ -111,7 +114,7 @@ config.functions =
           return true if element.innerHTML.toLowerCase() == item
         return false
    getItems:
-    display: "getItems();"
+    display: "getItems()"
     parameters: [['returns a collection of the items in the list']]
     define:
       getItems: -> (element.innerHTML for element in $('#items').children())
