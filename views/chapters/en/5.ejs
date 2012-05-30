@@ -1,126 +1,109 @@
-<a name="datastructures" class="anchor"></a>
-<h2>Data Structures</h2>
-<p>Up until now, whenever we wanted to group values together, we've used the term <em>collection</em>. For example, our <code>deck</code> variable held a collection of cards. However, to be accurate, our <code>deck</code> is actually an <em>array</em>, which is just one of many <em>collections</em>. An alternative word for <em>collection</em> is <em>data structure</em>.</p>
+<a name="moreonlanguages" class="anchor"></a>
+<h2>More on Languages</h2>
+<p>Our goal thus far has been to learn about programming in general, regardless of the language and its libraries. For this reason, we've looked at it things that exist no matter what language you use. How you define a variable, or the exact syntax of <code>for</code> loop is secondary to the concept of variables and looping.</p>
 
-<p>In this chapter we are going to look at a few data structures, including arrays, in order to properly understand them. There are countless data structures but it isn't important to know them all. What is important is to understand the common ones, and to understand why so many exist. So far we've only needed arrays so it can be hard to imagine problems where arrays aren't ideal or even sufficient.</p>
+<p>In this chapter we'll continue down this same path, but with a slightly broader perspective. Specifically, we want to familiriaze ourselves with some of the other common things we are likely to see in program. Some of these are just shortcuts provided by the language, or different approaches some languages take. Hopefully by learning these, you'll not only be in a better position to write more complex programs, but also be better able understand other people's code.</p>
 
-<p>Data structures are important as they provide the mechanism for defining what we can do with our data. Other aspects, such as the type system (strings, numbers, booleans, ...), deal with what our data is. Also, data structures imply certain performance characteristics. We'll soon see specific examples of what this means. Put simply though, data structures communicate a lot about the code. It defines a common terminology so that when a programmer sees code using an <em>array</em> he or she can automatically infer both how the data can be manipulated and how those manipulations will perform.</p>
+<a name="incrementing" class="anchor"></a>
+<h3>Incrementing</h3>
+<p>We've already seen a number of examples where we increment a value by some number:</p>
 
-<a name="arrays" class="anchor"></a>
-<h3>Arrays</h3>
-<p>We've already seen arrays enough to know quite a bit about them. Ultimately an array allows the values within it to be accessed by an index. Given the following code, we'd expect the value <code>sun</code> to be displayed:</p>
+<pre data-language="ruby">i = i + 1
+# or
+account_balance = account_balance - withdrawal_amount</pre>
 
-<pre data-language="javascript">var landscape = ["hills", "clouds", "sun", "birds"];
-alert(landscape[2]);</pre>
+<p>Incrementing and decrementing values is such a common thing, that most languages provide alternative syntax:</p>
 
-<p>Remember, in most languages, the first element of an array starts at index 0. We can also write a value at a specific index:</p>
+<pre data-language="ruby">i += 1
+# or
+account_balance -= withdrawal_amount</pre>
 
-<pre data-language="javascript">landscape[3] = "seagulls";</pre>
+<p>The two versions are identical, the second one is simply less verbose by making use of the <code>+=</code> and <code>-=</code> operators. Not only is incrementing so common that we have this special syntax, but incrementing and decrementing by 1 is itself so common that many languages give us special syntax for that specific purpose:</p>
 
-<p>Another important characteristic of arrays is that the order is preserved. In the following example, where we start with a blank array and add two items, we know for sure that the 2nd item will be <code>cat</code>:</p>
+<pre data-language="ruby">i++
+# or
+i--
+# or
+++i
+# or
+--i</pre>
 
-<pre data-language="javascript">var pets = [];
-pets.push("dog");
-pets.push("cat");
-alert(pet[1]); //will display cat</pre>
+<p>There's a subtle difference between the first two and the last two. The first two are called post-increment and post-decrement. The last two are called pre-increment and pre-decrement. The difference between them is all about the operator's precedence with respect to other operators. Consider:
 
-<p>This might seem obvious, but we'll soon see data structures which don't make such guarantees. The real power of array ordering is that you can control the order yourself. Initially the values in an array are arranged based on how they were inserted. However, you can rearrange the order to suit your needs - say by sorting them from most awesome pet to least awesome pet (thus making cat the first item in the array!)</p>
+<pre data-language="ruby">i = 5
+total = i++
+//vs
+i = 5
+total = ++i</pre>
 
-<p>Sadly, there's some ambiguity over what an array actually is. In many languages, an array is fixed-sized. That is, we can only create an array by specifying a size (the number of elements to hold) and cannot expand the array beyond this size. If we need more room, we must create a larger array and copy over the values ourself. This is the traditional and proper meaning of <em>array</em>. Arrays like those in JavaScript, which don't require that we specify an initial size and can grow as needed, are often called <em>dynamic arrays</em>. This is one of the few cases where data structure terminology is ambiguous.</p>
+<p>In both cases <code>i</code> will be equal to 6. However, in the first case, <code>i</code> is assigned to <code>total</code> and then incremented. Thus, <code>total</code> is 5. In the second case, <code>i</code> is incremented and then assigned to <code>total</code>. Thus, <code>total</code> is 6.</p>
 
-<p>We won't worry about fixed-sized arrays. In fact, for day to day programming, fixed-sized arrays, although often used, feel like a relic from the past. New languages tend to favor dynamic arrays (and simply call them <em>arrays</em>.). Whatever type of array we are talking about, the important point is that they are ordered and accessed by indexed.</p>
+<a name="stringsandvalues" class="anchor"></a>
+<h3>Strings With Values</h3>
+<p>You'll often want to display a message which includes variable values. There are three common ways to do this, but not all languages provide all three mechanism.</p>
 
-<a name="qands" class="anchor"></a>
-<h3>Queues and Stacks</h3>
-<p>Queues and stacks aren't data structures that you'll use often, but we'll learn them to understand how data structures differ from one and other, and why so many exist in the first place.</p>
+<p>The simplest to understand, and the one we've used so far, is to join the pieces together with the <code>+</code> operator:</p>
 
-<p>Both are very well named, and to understand how they work, you must simply think of a real life queue and stack. Imagine a line of people waiting at the checkout counter. The behavior of this line is simple: you get into the queue, then move closer to the front and then get out of the queue. In computer science terms, a queue is also known as a FIFO, or first-in first-out. That is, the first person to enter the queue will be the first person to leave the queue.</p>
+<pre data-language="ruby">name = prompt("What is your name?")
+alert("Hello " + name)</pre>
 
-<p>A stack on the other had is like a stack of chips in a poker game. Chips get added and removed from the top of the pile. A stack is known as a LIFO, or last-in first out. Because the most recently added chips are the ones that get used up the soonest.</p>
+<p>This works well for simple message, but it can get quite messy for something even slightly complicated.</p>
 
-<p>Knowing this, we can implement a queue with just two functions: <code>enqueue</code> and <code>dequeue</code>. Similarly, a stack can be implemented with: <code>push</code> and <code>pop</code>. The names of the functions don't matter as much as what they do, but these names are commonly used.</p>
+<p>Another common approach is to have some type of string formatting function. Every language seems to have its own version, but it normally ends up looking something like:</p>
 
-<p>Both queues and stacks can be, and often are, built using arrays. In fact, JavaScript doesn't have proper queues or stacks. However, for a queue we can use the <code>push</code> function to add values to the end of our queue and <code>shift</code> to remove value at the front:</p>
+<pre data-language="ruby">name = prompt("What is your name?")
+formatted = format("Hello %s", name)
+alert(formatted)
 
-<pre data-language="javascript">var queue = [];
-queue.push('Custom 1');
-queue.push('Custom 2');
-queue.push('Custom 3');
-queue.shift(); //returns Customer 1
-queue.shift(); //returns Customer 2
-queue.shift(); //returns Customer 3</pre>
+# or, a more terse version:
+name = prompt("What is your name?")
+alert(format("Hello %s", name))</pre>
 
-<p>For stacks, we can use <code>unshift</code> to add values at the front and again use <code>shift</code> to remove them from the front:</p>
+<p>Again, this varies a lot from one language to another, but in the above <code>%s</code> is a string place holder, as opposed to a <code>%d</code> digit placeholder. Writing such a <code>format</code> function in most languages wouldn't be too difficult (assuming one didn't already exist).</p>
 
-<pre data-language="javascript">var stack = [];
-stack.unshift('Chip 1');
-stack.unshift('Chip 2');
-stack.unshift('Chip 3');
-stack.shift(); //returns Chip 3
-stack.shift(); //returns Chip 2
-stack.shift(); //returns Chip 1</pre>
+<p>The last approach that you'll often see is the ability to put variables directly in your string:</p>
 
-<p>At this point, it wouldn't be unreasonable for you to wonder whether stacks and queues really serve a purpose. It just seems like we are limiting the functionality available to arrays! But we've only looked at the simplest implementation. A queue for example can be enhanced to handle priorioty (often called a priority queue). Items get enqueued normally but also include an additional piece of information: their priority. Items are then dequeued first based on priority, then in the order they were enqueued. Another enhancement has to do with an empty queue or stack. Our above code simply returns an undefined value if we <code>shift</code> when our collection is empty. Many implementations can be made to wait (or block) until sometimes else adds items to the queue.</p>
+<pre data-language="ruby">name = prompt("What is your name?")
+alert("Hello #{name}")</pre>
 
-<p>Queues and stacks serve specific but not entirely uncommon goals. However, they aren't something we need to master. We introduced them to show how data structures define what we can do with our data. It isn't just about being able to do more or less, but also about doing things differently (such as waiting until a value is present before we <code>shift</code>.)</p>
+<a name="stringescape" class="anchor"></a>
+<h3>Strings and Escape Sequences</h3>
+<p>Sometimes you'll want to include a special character within a string. The most common example is a double quote. However, a computer can't make sense of the following. Where is the string meant to end?</p>
 
-<a name="sets" class="anchor"></a>
-<h3>Sets</h3>
-<p>Arrays are great if you want to preserve the order of values, or if you want to randomly access values by index. However, as we've already seen, to check if a value exists within the array, we have to loop through it. This may be fine for small arrays, but for large arrays with thounsands of values and checks happening hundreds of times per second, it's quite inneficient. The performance characteristic of searching an array is described as <em>linear</em> because the time it takes to find an item grows linearly with the number of values in the array.</p>
+<pre data-language="ruby">message = "And he said "to get to the other side""</pre>
 
-<p>If rather than accessing a value by a numeric positional index, we want to access it by the value itself, we can use a <em>set</em>. Since the way we access our data (or, the <em>key</em>) is the value itself, sets don't allow duplicate values. These properties make sets ideal for a number of use cases: such as a shopping list. The reason we didn't use a set in chapter 4 is because JavaScript doesn't yet support sets, but the next version will.</p>
+<p>To avoid this ambiguity, languages tend to have an escape character, and that tends to be the backslace <code>\</code>:</p>
 
-<p>The way sets will probably end up looking in JavaScript is:</p>
+<pre data-language="ruby">message = "And he said \"to get to the other side\""</pre>
 
-<pre data-language="javascript">var list = new Set();
-list.set("milk");
-list.set("eggs");
-list.set("milk"); //doesn't do anything
-alert(list.exists("milk")); //will display true</pre>
+<p>When you want to print an actual backslash, you simply escape it:</p>
 
-<p>In theory, we could use plain old arrays to create sets. In fact, in chapter 4 we could have modified the <code>addItem</code> function to make use of the <code>itemExists</code> and not allow duplicates to be added. However there are certain performance characteristics that one expects from a set. Namely, the speed of adding an item and checking for the existance of an item should not vary based on the size of a set. This is a good example of how data structures not only define the behavior of a collection, but also its performance characteristics.</p>
+<pre data-language="ruby">message = "I'm printing a backspace like so \\"</pre>
 
-<p>As a final point, a properly implemented set should allow for set-based operation (in the mathematical sense). For example, you should be able to create a union of two sets (to get all the values contained in both), or an intersection (to get only the value which exist in both). That may seem academic, but it's actually quite useful. Imagine having a set with the list of movies Jane has seen and intesecting it with the set of movies Matt has seen. The result is a list of movies that both have seen.</p>
+<p>Finally, if you want to output a tab or new line, you can use the special <code>\t</code> or <code>\n</code> sequence. <code>\n</code> is a line feed. To get a new line to display properly on some operating systems, you'll have to print out a carriage return <code>\r</code> followed by a line feed: <code>\n\r</code>.</p>
 
-<p>Sets are very powerful; but what you gain in terms of functionality and perfomance for some things, you lose in terms of other. In comparison to arrays, you've lost ordering and the ability to hold duplicate values.</p>
+<a name="otherloops" class="anchor"></a>
+<h3>Other Loops</h3>
+<p><code>for</code> loops aren't the only type of looping mechanism available in most languages. Two other common ones are the <code>while</code> and <code>do/while</code> loop. In general, a <code>for</code> loop can be thought of as iterating through a collection of values. A <code>while</code> and <code>do/while</code> loop iterate so long as a condition is true. They are both similar in that, the <code>for</code> loop's condition is implied to be: <em>is there another value?</em>. For example, we could iterate through a collection of values using a <code>while</code> loop like so: </p>
 
-<a name="hashes" class="anchor"></a>
-<h3>Hashes</h3>
-<p>So far all the collections that we've looked at deal with a single value. Hashes on the other hand deal with a key and a value. Most of the time the key is a string, while the value can be any other piece of data. Hashes are also known as dictionaries and hash sets. As an example, if we wanted to track how many items to buy, we could use a hash:</p>
+<pre data-language="ruby">i = 0
+while i &lt; deck.length
+  if decks[i] == 'Joker'
+    # .. do something
+  i += 1</pre>
 
-<pre data-language="javascript">var list = {};
-list["milk"] = 1;
-list["milk"] = list["milk"] + 1;
-alert(list["milk"]); //will display 2</pre>
 
-<p>Notice that, in JavaScript, we creat a hash with braces <code>{}</code>. The value of a hash isn't limited to a simple string, number of boolean. It can be something more complex, like an array, or another hash: </p>
+<p>With both a <code>while</code> and <code>for</code> loop it is possible for no iterations to take place if the condition is initially false or the collection is empty. A <code>do/while</code> places the condition at the end, and thus will execute at least once:</p>
 
-<pre data-language="javascript">var list = {};
-list['milk'] = {quantity: 1, section: "dairy"};
-alert("You need to buy " + list["milk"]["quantity"] + " milk");
-</pre>
+<pre data-language="ruby">do
+  name = prompt("What is your name?")
+  alert("Hello " + name)
+while name != "Joker"</pre>
 
-<p>Above we see an inline method for creating a hash in JavaScript. Sets and hashes share a lot in common. We can actually create a set using hashes. Our above set example could be rewritten like so:</p>
-
-<pre data-language="javascript">var list = {};
-list["milk"] = true;
-list["eggs"] = true;
-list["milk"] = true;
-alert(list["milk"] == true); //will display true</pre>
-
-<p>However, we don't have access to any set-based operations.</p>
-
-<p>Hashes are powerful and are used often. They conviniently let you represent more complex data. For example, we could represent a spreadsheet using an array of hashes:</p>
-
-<pre data-language="javascript">var rows = [];
-rows.push({type: "cat", name: "fluffy", age: 5});
-rows.push({type: "dog", name: "hunter", age: 6});
-rows.push({type: "fish", name: "jorge", age: 2});</pre>
-
-<p>Like many things, the role played by hashes has changed over time. They were once used mostly to quickly access data by key. While still used a lot for this purpose, we see hashes being used more and more as simple containers of values, such as the animal data shown above. In a later chapter, we'll learn about <em>classes</em> which are a more structured way to contain and represent such data.</p>
+<p>Generally speaking you'll see <code>for</code> the most often, then <code>while</code> and finally <code>do/while</code>.</p>
 
 <a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>
-<p>In this chapter we learned more about arrays as well as hashes. These are two data structures that you'll make heavy use of. We also saw queues, stacks and sets. While all three serve useful purposes, we mostly explored them as a means to learn about different data structures. There are other classes of data structures available, but they tend to be more complex, more specialized and thus less often used.</p>
+<p>This chapter introduced new keywords and operations which many languages make available. Some of these may seem minor, that's because some are. Understanding the concept behind variables and conditions to control execution is a lot more important than knowing that <code>i++</code> is a quick way to do <code>i = i + 1</code>. However, as soon as you start exploring other guides and sample programs, these are things that you'll imediately run into.</p>
 
-<p>JavaScipt's support for arrays and hashes is quite excellent. The clean and elegant syntax for creating and manipulating hashes isn't something available in all languages. While JavaScript does support the more advanced concept of a <em>class</em>, for simple data or simple programs, developers often favor hashes.</p>
+<p>For the time being, you might be uncertain about what's the best approach to use for a given piece of code. What loop should you use, or how should you mix strings and values? At first, worry about making your code do what you want it to do. With experience, both reading other people's code, and expanding your own, you'll gain a feel for what improves and what distracts from your codes readability.</p>

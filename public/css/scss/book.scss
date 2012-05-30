@@ -15,8 +15,9 @@ ol li {padding:7px;}
 pre{padding:20px;border:1px solid #eee;border-radius:5px;margin-bottom:20px;}
 
 #header{height:40px;@include gradient(#4a4a4a, #333333);position:fixed;left:0;width:100%;z-index:10;}
-#toc{position:absolute;right:0;height:40px;line-height:40px;border:solid #000;border-width:0 1px;color:#fff;@include gradient(#333333, #222222);@include noselect();cursor:pointer;width:250px;text-align:center;font-size:1em;margin:0;}
-#toc:hover{background:#4a4a4a;}
+#toc{position:absolute;right:0;height:40px;line-height:40px;border:solid #000;border-width:0 1px;color:#fff;@include gradient(#555555, #444444);@include noselect();cursor:pointer;width:250px;text-align:center;font-size:1em;margin:0;text-shadow:1px 1px 3px #000;}
+#toc:after{content: "\25B6";margin-left:20px;font-size:0.8em;text-shadow:1px 1px 3px #000;}
+#toc:hover{background:#222;}
 #menu{z-index:10;position:fixed;right:5%;top:40px;display:none;margin:0;padding:0;list-style:none;background:#222;border:1px solid #000;width:250px;border-bottom-left-radius:3px;border-bottom-right-radius:3px;}
 #menu li{border-bottom:1px solid #000;margin:0;}
 #menu li:last-child{border-radius:5px;}

@@ -21,7 +21,7 @@
 
 <a name="datatypes" class="anchor"></a>
 <h3>Dealing With Data - Types</h3>
-<p>The first thing we need to do is understand the basics of how a program deals with data. If you think about it, data can be broken into types. For example the make and model of your car is a string. Your age is a number. Whether you find this book is interesting or not is a boolean, or true or false. Strings, numbers and booleans represent the three types we'll concern ourselves with for now. However there are certainly other, more complex types. An address for example can be broken down into smaller components (street number, street name, city and country) but it often makes sense to think of an address as a single cohesive type.</p>
+<p>The first thing we need to do is understand the basics of how a program deals with data. If you think about it, data can be broken into types. For example the make and model of your car is a string. Your age is a number. Whether you find this book is interesting or not is a boolean, or true or false. Strings, numbers and booleans represent the three types we'll concern ourselves with for now. However there are certainly other, more complex types. An address, for example, can be broken down into smaller components (street number, street name, city and country) but it often makes sense to think of an address as a single cohesive type.</p>
 
 <p>In a program, telling what type of data we are dealing with isn't difficult:</p>
 
@@ -66,7 +66,7 @@ password = "ghanima"</pre>
 
 <p>Exactly how <code>get_the_value_entered_by_the_user</code> works or what it does isn't important. What is important is that the <code>email's</code> value isn't determined by us when we program, but rather determined as the program is running.</p>
 
-<p>In the next couple sections, you'll see how important, yet simple, variables are. It's hard to  grasp them until we've introduced a few more concepts. What might be obvious already though is that properly naming your variables is crucial to making your code readable. Although you don't know the exact value held by <code>email</code>, if we printed it out, you probably wouldn't be surprised. However, if we named our variable <code>a</code> or <code>the</code> or even <code>string</code> your guess about the contents would be as good as mine.</p>
+<p>In the next couple of sections, you'll see how important, yet simple, variables are. It's hard to  grasp them until we've introduced a few more concepts. What might be obvious already though is that properly naming your variables is crucial to making your code readable. Although you don't know the exact value held by <code>email</code>, if we printed it out, you probably wouldn't be surprised. However, if we named our variable <code>a</code> or <code>the</code> or even <code>string</code> your guess about the contents would be as good as mine.</p>
 
 <a name="flowcontrol" class="anchor"></a>
 <h3>Determining A Course Of Action</h3>
@@ -118,7 +118,7 @@ else
 
 <p>This example is similar to how we'd check for jokers in the real world. It's true that our eyes and brain might be able to look at multiple cards at once, but it isn't a stretch to imagine scanning each card one at a time, and taking a certain action if we spot a joker.</p>
 
-<p>Finally, you'll often need conditions based on more than a single fact. For example, we might want to display the above message if the card is "Joker" or the card is "Fool". The brother to an <em>or</em> condition is the <em>and</em> condition. In some languages the words "or" and "and" are used, but in most "or" is represented by <code>||</code> and "and" by <code>&amp;&amp;</code>.
+<p>Finally, you'll often need conditions based on more than a single fact. For example, we might want to display the above message if the card is "Joker" or the card is "Fool". This is am <em>or</em> condition and will be true if one <em>or</em> the other part is true. The sister to an <em>or</em> condition is the <em>and</em> condition, which will be true only when both parts are true. In some languages the words "or" and "and" are used, but in most "or" is represented by <code>||</code> and "and" by <code>&amp;&amp;</code>.
 
 <p>Control flow can get more complicated, but it almost always comes down to taking an action based on some condition, or looping over code. Often, these two concepts are combined, say by looping over code until a certain condition is met. For now, it's sufficient that you understand that given a condition, it's possible to control what, if any, part of code is executed.</p>
 
@@ -130,7 +130,7 @@ else
 
 <pre data-language="ruby">account_balance = account_balance - withdraw_amount</pre>
 
-<p>It's fair to say that this line involves two actions: subtract the two numbers, then assign the results into the <code>account_balance</code> variable. You might be wondering how the order is determined. Just like in mathematic operators, programming operators have an order of precedents and can be controlled with parenthesis <code>()</code>. Thankfully, this order is pretty intuitive. The above is the same as doing:</p>
+<p>It's fair to say that this line involves two actions: subtract the two numbers, then assign the results into the <code>account_balance</code> variable. You might be wondering how the order is determined. Just like in mathematic operators, programming operators have an order of precedence and can be controlled with parenthesis <code>()</code>. Thankfully, this order is pretty intuitive. The above is the same as doing:</p>
 
 <pre data-language="ruby">account_balance = (account_balance - withdraw_amount)</pre>
 
@@ -174,7 +174,7 @@ else
       return true
   return false</pre>
 
-<p>The <code>return</code> keyword is powerful as it exists the function immediately. The value returned is no different than any other value we've seen so far. It can be assigned to a variable, compared via an operator as well as other things we haven't looked at.</p>
+<p>The <code>return</code> keyword is powerful as it exits the function immediately. The value returned is no different than any other value we've seen so far. It can be assigned to a variable, compared via an operator as well as other things we haven't looked at.</p>
 
 <p>Our <code>hasJoker</code> function can be used like so:</p>
 

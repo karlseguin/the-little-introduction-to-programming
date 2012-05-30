@@ -1,87 +1,50 @@
-<a name="moreontypes" class="anchor"></a>
-<h2>More On Types</h2>
-In chapter 2 we talked about types, focusing on three main types: <code>strings</code>, <code>numbers</code> and <code>booleans</code>. In following chapters we used arrays and talked about other data structures. However, throughout our coding, types haven't played big role. Besides knowins that a value was a string or a number, and knowing that some operations only work on some types (like conditions are expressed as booleans), it has all seemed rather academic.</p>
+<a name="nextsteps" class="anchor"></a>
+<h2>Next Steps</h2>
+<p>The world of programming is vaste, but you've taken the first step. There are a number of advanced yet fundamental topics still worth exploring. There's an even greater number of higher level concepts and tools that might interest you. Even though you could continue to learn about programming in general, a more specific route would yield more tangible benefits.</p>
 
-<p>Types truly are important as they define what we can and can't do with our data. How much in-your-face this fact is largely depends on the language. With respect to types, languages fall into one of two categories: types are either explicitly stated or they are implied. The proper terms are: static typed languages and dynamic typed languages.</p>
+<p>In this chapter we'll look at where you can go from here. Generally speaking, where you go is defind by what you want to do. Do you want to build mobile applications or websites? Do you need to deal with data and reporst or maybe weave some Excel magic? Each of these fields tend to have their own languages. But learning a new language isn't the challenge. What's truly difficult about learning a new field of programming are the libraries and constraints specific to that field or technology. The way that you display an input field on a website is different than how you do it on an iPhone. Similarly, the challenges of dealing with different browsers and slow internet speeds are different than those of dealing with limited battery life and a touch-based interface.</p>
 
-<p>JavaScript is a dynamic typed language. In a static typed language, you'll see code peppered with type information. If we were to rewrite our <code>itemExists</code> function in such a language, it would look something like:</p>
+<a name="learnandteach" class="anchor"></a>
+<h3>A Tip On Learning</h3>
+<p>We all learn differently. Some like to read, some like videos, others have to get their hands dirty. There's one strategy that I've used which I'd like to share with you: learn by helping. Whenever I'm learning something new, I join the forums and hang around in the groups and try answer whatever questions I can. At first, I can't answer anything. But I read the questions people have, spend a bit of time trying to figure it out, and read the replies they get. Eventually, someone asks a question that I know the answer to. That first "thanks" reply is quite satisfying; as is the pace at which you find yourself able to answer additional questions.</p>
 
-<pre data-language="generic">bool function itemExists(string item) {
-  string[] items = getItems();
-  for (int i = 0; i &lt; items.length; i++) {
-    if (items[i] == item) {
-      return true;
-    }
-  }
-  return false;
-}</pre>
+<p>Maybe this trick won't work for you, but I suggest you try it. Many communities have their own forums and groups where anybody can ask questions and anybody can answer. Alternatively, you can try a more generic help-site like <a href="http://stackoverflow.com">StackOverflow</a>. You can follow only those topics which interest you, ask questions when you need help, and answer questions when you can.</p>
 
-<p>Notice that we've replaced <code>var</code> with explicit type information - either a string array (<code>string[]</code>) or an integer (<code>int i</code>). Furthermore, we've had to state the type of parameter our function expects as well as the type it returns.</p>
+<a name="websites" class="anchor"></a>
+<h3>Websites</h3>
+<p>Of all the technologies that may interest you, programming websites is likely the most daunting for two important reasons. First of all, there's so much choice in technologies and tools, that it's simply overwhelming. Which do you pick and where do you start? Secondly, in order to create a meaningful website, you need to know 5 different technologies. HTML, CSS and JavaScript can be thought of controlling everything the user sees and interacts with. You then need a language that does all the behind the scenes work - like saving users. Finally, most websites rely on some type of database to store data. Individually, these aren't hard to learn (you can put together a simpe HTML page in a few minutes). But combined, it's a bit crazy.</p>
 
-<p>In a static language, once a variable is declared to be a certain type, the values assigned to it can only be of that type. This isn't true of a dynamic language. Below we have code written in a dynamic language, followed by code written in a static language. The static language version will not compile - you'll get an error:</p>
+<p>However, of all the technologies, you'll not better resources than those by and for web programmers. Using Google you can find endless guides, tutorials, videos and blog posts that cover each of these layers - both separately as well as how they come together. It's a passionate and mature community. Furthermore, the web is the most accessible platform available. Build something for the web and anyone can use it.</p>
 
-<pre data-language="generic">var name = "Leto";
-name = 9001;
+<p>While there truly is too much choice, I feel comfortable in recommending two specific technologies: PHP and Python.</p>
 
-//vs
-string name = "Leto";
-name = 9001; //error!</pre>
+<p>PHP is the most established and most popular language for the web. It will be the simplest thing to learn, and also one of the best documented. The downside of PHP is that it isn't particularly elegant and many of the concepts are dated. Also, PHP is almost exclusively used for the web. While much of the core experience you gain using it is transferable, the language and libraries itself aren't. The <a href="http://php.net/">official php website</a>, while intimidating at first, is a good place to start.</p>
 
-<a name="dynamicvsstatic" class="anchor"></a>
-<h3>Dynamic vs Static Typing</h3>
-<p>Many programmers passionately prefer one type system versus the other. Proponents of dynamic languages say they are more productive. Developers who prefer static languages think their code is less likely to contain errors and run faster.</p>
+<p>Unlike PHP which is both a language and a framework, <a href="http://www.python.org/">Python</a> is just the language. For web-based applications, you'll want to pair it with a appropriate framework. <a href="https://www.djangoproject.com/">Django</a> is a popular choice with excellent documentation. Python is modern and popular for tasks other than websites, making it a more useful language than PHP. Python web frameworks, like Django, are more elegant and promote good approaches to programming. Furthermore, the Python community as a whole tend to write excellent documentation and guides.</p>
 
-<p>This is a good time to point out that the type system isn't just about having to enter fewer characters. Languages that are dynamic tend to have other common properties; and static languages share many similarties with each other. As a simple example, arrays in dynamic languages tend to be dynamic, while arrays in static languages tend to be fixed. </p>
+<p><a href="http://learnpythonthehardway.org/">Learn Python The Hard Way</a> is a great ebook you can use to master python. You can read the book online for free, or pay for a pdf or epub.</p>
 
-<p>Professional programmers should strive to master at least one of each. As someone learning to program, I don't think it matters too much. Dynamic languages are probably easier to learn. The choice may very well be forced upon you based on what you want to program F.or example, if you want to write applications for Android mobile devices you only have 1 language choice, and it's statically typed.</p>
+<a name="mobile" class="anchor"></a>
+<h3>Mobile Applications</h3>
+<p>If you are interested in writing mobile applications, the choice is much simpler. If you want to target Apple-based devices (iPhones and iPads), you'll want to learn the Objective-C language and the Cocoa framework. <a href="https://developer.apple.com/">Apple's developer center</a> is the right place to start. To write iOS applications you'll need an Apple computer as well as XCode, which you can download for free from the app store.</p>
 
-<a name="numbers" class="anchor"></a>
-<h3>Numbers</h3>
-<p>So far we've treated all numbers the same. However, numbers actually come in a variety of shapes and sizes. At the very least, most languages support two types of numbers: integer and floats. Integers don't support decimals and typically support a range of -4 billion to +4billion (plus or minus a couple hundred million). 0, 5, -1495 and 9001 are all examples of integers. Floats on the other hand support a much wider range and support fractions. 0.1, -29394.49 and 2003.9 are all examples of floats.</p>
+<p>For Android-based devices, you can head over to <a href="http://developer.android.com/index.html">Google's Android developer zone</a>. Android applications are built using Java (which has no relationship to JavaScript). The tools are free and can be run on all popular operating systems.</p>
 
-<p>Static languages tend to take this even further by introducing different types of integers and floats. The different integers represent different minimum and maximum ranges. A <code>byte</code> can go from 0-255 while a <code>long</code> can go into the quintillions. Integers can also be made to dissalow negative values (and thus increasing the maximum positive value). Finally, floats can also be <coe>decimals</code>. The difference between a float in a decimal has to do with accuracy. When you manipulate floats (such as multiplying or dividing them) you can lose precision - which is bad if you are dealing with things like money. Decimals don't suffer from this problem. The downside is that they don't perform as well</p>
+<a name="desktop" class="anchor"></a>
+<h3>Windows</h3>
+<p>For anything relating to Windows, you'll likely want to learn C# and check out <a href="http://msdn.microsoft.com/">MSDN</a>. Of all the technologies listed here, Microsoft's documentation is the worst - likely because its such a large ecosystem. Microsoft has a number of free tools under its <em>Express</em> brand which are a great way to get started.</p>
 
-<p>For now, you just need to know that numbers are categorized as integers and floats. The main difference being that floats support fractions.</p>
+<a name="database" class="anchor"></a>
+<h3>Database</h3>
+<p>There are a number of databases available, but thankfully they all use a standard language known as SQL. Different databases do extend SQL with their own extensions, but once you know the fundamentals, everything else easily falls into place. A big part of learning database isn't the language, but rather how to model your data and how to effectively query it.</p>
 
-<a name="typeconversion" class="anchor"></a>
-<h3>Type Conversion</h3>
-<p>Whethever type system you are dealing with, you'll often want to convert data from one type to another. Even though JavaScript is dynamic, a value still has a type. For example, the value returned by the <code>prompt</code> function is always a string. If the user enters <em>5</em> when prompted, what do you think the value of <code>sum</code> will be?: </p>
-
-<pre data-language="javascript">var sum = 4;
-sum += prompt("Enter price");</pre>
-
-<p>The answer is "45". When you ask JavaScript to add a string to an integer, it'll automatically convert the integer to a string. What we need to do is convert the value to an integer. Different languages have different functions for doing this. In JavaScript the <code>parseInt</code> and <code>parseFloat</code> convert a value to an integer or float:</p>
-
-<pre data-language="javascript">var sum = 4;
-sum += parseInt(prompt("Enter price"));</pre>
-
-<p>If the value isn't a valid integer, say because "five" was entered, JavaScript will return a special value called <code>NaN</code> (or Not a Number). A different language might return an error.</p>
-
-<p>Similarly values can be converted to a string. This is often done via a method called <code>toString</code>. Again, it's worth pointing out that not all languages behave the same. JavaScript will happily display the following: </p>
-
-<pre data-language="javascript">var power = 9001;
-alert("It's over " + power);</pre>
-
-<p>Whereas another language, even a dynamic language, might insist that <code>power</code> be explicatly converted to a string.</p>
-
-<p>In addition to conversions, static languages allow some types to be coerced into other types. For example, we said that a <code>byte</code> can hold a value from 0-255 while a <code>long</code> has a much larger range. Despite this difference, there is some overlap. In some cases, a <code>long</code> could be a valid <code>byte</code>. We can only turn a <code>long</code> into a <code>byte</code> by explicitely telling the compiler <em>yes, we really mean to do this.</em> This coercion is done by casting:</p>
-
-<pre data-language="generic">long large = 200;
-byte small = (byte)large;</pre>
-
-<p>Finally, you might be surprised by the result you get when dividing integers. In JavaScript dividing the integer 1 by the integer 3 will give you an expected float 0.333333. In static languages, however, operations involving two integers will result in an integer, as will operations involving two decimals result in a decimal. Therefore, <code>1 / 3</code> will result in 0. This is true for many dynamic languages as well. To get the 0.3333, one or both values must be a float: <code>1 / 3.0</code>.</p>
+<p>It doesn't matter which Database you pick, but if you don't have any existing preferences, I'd suggest you look at <a href="http://www.postgresql.org/">PostgreSQL</a>. It's free, runs on most operating system, has good documentation and a strong community.</p>
 
 
-<a name="gettingthetype" class="anchor"></a>
-<h3>Getting The Type</h3>
-<p>It's always possible to get a value's type. In JavaScript this is done via the <code>typeof</code> operator. The following code will display <em>string</em>.</p>
+<a name="conclusion" class="anchor"></a>
+<h3>Conclusion</h3>
+<p>A challenge of learning and teaching programming is how long it takes before something tangible can be created. In this respect, this book has failed you. You didn't create anything meaningful and there's still much to learn before you can do so.</p>
 
-<pre data-language="javascript">alert(typeof "i love unicorns");</pre>
+<p>Despite this, I'm hopeful that you don't feel like your time has been wasted; nor that you are discouraged. Even if you've spent all this time and many things remain unclear, don't be dissapointed. As you start to turn this theory into practical solutions, much will become clear. In some ways, we've barely taken a step forward. But we have oriented ourselves, ensured that we have the basic provisions, and properly readied ourselves for our journey.</p>
 
-<p>This is handy in cases where we don't know what type of data we are dealing with. Futhermore, in many other languages, types themselves are complex objects supporting many advanced functions. This isn't something you are likely to need as you get started. But it should give you some idea of just how big a role types play - in both dynamic and static languages.</p>
-
-<a name="inthischapter" class="anchor"></a>
-<h3>In This Chapter</h3>
-<p>This chapter expanded our initial concept of types into a much more comprehensive version. The most important thing to know is that static-typed languages exist and are very popular. If you are looking at code and you see the words <code>string</code> and <code>int</code> (to name a few), you are looking at a static typed language.</p>
-
-<p>We also broke down numbers into to main groups. It's normally obvious if you want an integer or a float. The breakdown from that point on isn't as important. The only exception is if you are dealing with money, in which case you'll want to make sure you are using a type that won't lose precision.</p>
+<p>Thank you.</p>

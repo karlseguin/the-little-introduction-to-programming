@@ -1,160 +1,84 @@
-<a name="moreonlanguages" class="anchor"></a>
-<h2>More on Languages</h2>
-<p>Our goal thus far has been to learn about programming in general, regardless of the language and its libraries. For this reason, we've looked at it things that exist no matter what language you use. How you define a variable, or the exact syntax of <code>for</code> loop is secondary to the concept of variables and looping.</p>
+<a name="moreontypes" class="anchor"></a>
+<h2>More On Types</h2>
+In chapter 2 we talked about types, focusing on three main types: <code>strings</code>, <code>numbers</code> and <code>booleans</code>. In following chapters we used arrays and talked about other data structures. However, throughout our coding, types haven't played big role. Besides knowins that a value was a string or a number, and knowing that some operations only work on some types (like conditions are expressed as booleans), it has all seemed rather academic.</p>
 
-<p>In this chapter we'll continue down this same path, but with a slightly broader perspective. Specifically, we want to familiriaze ourselves with some of the other common things we are likely to see in program. Some of these are just shortcuts provided by the language, or different approaches some languages take. Hopefully by learning these, you'll not only be in a better position to write more complex programs, but also be better able understand other people's code.</p>
+<p>Types truly are important as they define what we can and can't do with our data. How much in-your-face this fact is largely depends on the language. With respect to types, languages fall into one of two categories: types are either explicitly stated or they are implied. The proper terms are: static typed languages and dynamic typed languages.</p>
 
-<a name="incrementing" class="anchor"></a>
-<h3>Incrementing</h3>
-<p>We've already seen a number of examples where we increment a value by some number. The code is straightforward, regardless of if we are increment a counter in a <code>for</code> loop, or adding/subtracting amounts:</p>
+<p>So far we've only seen dynamic typing. In a static typed language, you'll see code peppered with type information. If we were to rewrite our <code>itemExists</code> function in such a language, it would look something like:</p>
 
-<pre data-language="javascript">i = i + 1;
-//or
-account_balance = account_balance - withdrawal_amount;</pre>
+<pre data-language="generic">bool function itemExists(string itemToFind)
+  string[] items = getItems()
+  for item in items
+    if item == itemToFind
+      return true
+  return false</pre>
 
-<p>Incrementing and decrementing values is such a common thing, that most languages provide alternative syntax:</p>
+<p>Notice that our variabled are now declared with explicit type information - such as <code>string[]</code>). Furthermore, we've had to state the type of parameter our function expects as well as the type it returns.</p>
 
-<pre data-language="javascript">i += 1;
-//or
-account_balance -= withdrawal_amount;</pre>
+<p>In a static language, once a variable is declared to be a certain type, the values assigned to it can only be of that type. This isn't true of a dynamic language. Below we have code written in a dynamic language, followed by code written in a static language. The static language version will not compile - you'll get an error:</p>
 
-<p>The two versions are identical, the second one is simply less verbose by making use of the <code>+=</code> and <code>-=</code> operators. Not only is incrementing so common that we have this special syntax, but incrementing and decrementing by 1 is itself so common that many languages give us special syntax for that specific purpose:</p>
+<pre data-language="generic">name = "Goku"
+name = 9001
 
-<pre data-language="javascript">i++;
-//or
-i--;
-//or
-++i;
-//or
---i;</pre>
+# vs
+string name = "Goku"
+name = 9001 # error!</pre>
 
-<p>There's a subtle difference between the first two and the last two. The first two are called post-increment and post-decrement. The last two are called pre-increment and pre-decrement. The difference between them is all about the operator's precedence with respect to other operators. Consider:
+<a name="dynamicvsstatic" class="anchor"></a>
+<h3>Dynamic vs Static Typing</h3>
+<p>Many programmers passionately prefer one type system versus the other. Proponents of dynamic languages say they are more productive. Developers who prefer static languages think their code is less likely to contain errors and run faster.</p>
 
-<pre data-language="javascript">var i = 5;
-var total = i++;
-//vs
-var i = 5;
-var total = ++i;</pre>
+<p>This is a good time to point out that the type system isn't just about having to enter fewer characters. Languages that are dynamic tend to have other common properties; and static languages share many similarties with each other. As a simple example, arrays in dynamic languages tend to be dynamic, while arrays in static languages tend to be fixed. </p>
 
-<p>In both cases <code>i</code> will be equal to 6. However, in the first case, <code>i</code> is assigned to <code>total</code> and then incremented. Thus, <code>total</code> is 5. In the second case, <code>i</code> is incremented and then assigned to <code>total</code>. Thus, <code>total</code> is 6.</p>
+<p>Professional programmers should strive to master at least one of each. As someone learning to program, I don't think it matters too much. Dynamic languages are probably easier to learn. The choice may very well be forced upon you based on what you want to program F.or example, if you want to write applications for Android mobile devices you only have 1 language choice, and it's statically typed.</p>
 
-<p>The <code>++</code> operator is often seen in a <code>for</code> loop:
-<pre data-language="javascript">for(var i = 0; i &lt; list.length; i++) { ... }</pre>
+<a name="numbers" class="anchor"></a>
+<h3>Numbers</h3>
+<p>So far we've treated all numbers the same. However, numbers actually come in a variety of shapes and sizes. At the very least, most languages support two types of numbers: integer and floats. Integers don't support decimals and typically support a range of -4 billion to +4billion (plus or minus a couple hundred million). 0, 5, -1495 and 9001 are all examples of integers. Floats on the other hand support a much wider range and support fractions. 0.1, -29394.49 and 2003.9 are all examples of floats.</p>
 
-<p>In such cases, it doesn't matter if you use a post or pre increment, since we only care about incrementing <code>i</code> itself and not about assigning the new or old value to another variable. (personally, I like to use a pre-increment, but having seen a lot of code, I'm pretty sure I'm in the minority.)</p>
+<p>Static languages tend to take this even further by introducing different types of integers and floats. The different integers represent different minimum and maximum ranges. A <code>byte</code> can go from 0-255 while a <code>long</code> can go into the quintillions. Integers can also be made to dissalow negative values (and thus increasing the maximum positive value). Finally, floats can also be <coe>decimals</code>. The difference between a float in a decimal has to do with accuracy. When you manipulate floats (such as multiplying or dividing them) you can lose precision - which is bad if you are dealing with things like money. Decimals don't suffer from this problem. The downside is that they don't perform as well</p>
 
-<a name="stringsandvalues" class="anchor"></a>
-<h3>Strings With Values</h3>
-<p>You'll often want to display a message which includes variable values. There are three common ways to do this, but not all languages provide all three mechanism.</p>
+<p>For now, you just need to know that numbers are categorized as integers and floats. The main difference being that floats support fractions.</p>
 
-<p>The simplest to understand, and the one we've used so far, is to join the pieces together with the <code>+</code> operator:</p>
+<a name="typeconversion" class="anchor"></a>
+<h3>Type Conversion</h3>
+<p>Whethever type system you are dealing with, you'll often want to convert data from one type to another. Even in a dynamically typed language, a value still has a type. For example, the value returned by the <code>prompt</code> function is always a string. If the user enters <em>5</em> when prompted, what do you think the value of <code>sum</code> will be?: </p>
 
-<pre data-language="javascript">var name = prompt("What is your name?");
-alert("Hello " + name);</pre>
+<pre data-language="ruby">sum = 4
+sum += prompt("Enter price")</pre>
 
-<p>This works well for simple message, but it can get quite messy for something even slightly complicated. Unfortunately, this is the only option available in JavaScript (without creating our own).</p>
+<p>This depends on the language you are using. Some will generate an error. Others will convert the <code>sum</code> to a string resulting in "45". To get the desired answer of <em>9</em> we need to do is convert the value to an integer. Different languages have different functions for doing this. In your browser the functions <code>parseInt</code> and <code>parseFloat</code> convert a value to an integer or float:</p>
 
-<p>Another common approach is to have some type of string formatting function. Every language seems to have its own version, but it normally ends up looking something like:</p>
+<pre data-language="ruby">sum = 4
+sum += parseInt(prompt("Enter price"))</pre>
 
-<pre data-language="javascript">var name = prompt("What is your name?");
-var formatted = format("Hello %s", name);
-alert(formatted);
+<p>What happens if the value we are trying to convert isn't a valid integer? Again, this depends on the language. Many will generate an error. Some may return special values that indicate that the conversion failed.</p>
 
-//or, a more terse version:
-var name = prompt("What is your name?");
-alert(format("Hello %s", name));</pre>
+<p>Similarly values can be converted to a string. This is often done via a method called <code>toString</code>. Again, it's worth pointing out that not all languages behave the same. For example, your browser will gladly execute the following:</p>
 
-<p>Again, this varies a lot from one language to another, but in the above <code>%s</code> is a string place holder, as opposed to a <code>%d</code> digit placeholder. Writing such a <code>format</code> method in JavaScript wouldn't be too difficult.</p>
+<pre data-language="ruby">power = 9001
+alert("It's over " + power)</pre>
 
-<p>The last approach that you'll often see is the ability to put variables directly in your string:</p>
+<p>Whereas another language, even a dynamic language, might insist that <code>power</code> be explicatly converted to a string.</p>
 
-<pre data-language="ruby">var name = prompt("What is your name?");
-alert("Hello #{name}");</pre>
+<p>In addition to conversions, static languages allow some types to be coerced into other types. For example, we said that a <code>byte</code> can hold a value from 0-255 while a <code>long</code> has a much larger range. Despite this difference, there is some overlap. In some cases, a <code>long</code> could be a valid <code>byte</code>. We can only turn a <code>long</code> into a <code>byte</code> by explicitely telling the compiler <em>yes, we really mean to do this.</em> This coercion is done by casting:</p>
 
-<p>In chapter 3 we mentioned that some languages allow strings to be enclosed in either single or double quotes. In many of these languges, the above string interpolation is only possible using double quotes. This means that using single quotes, when you don't need this behavior, will be faster (because the processor doesn't have to look through your string looking for variables to replace).</p>
+<pre data-language="generic">long large = 200
+byte small = (byte)large</pre>
 
-<a name="stringescape" class="anchor"></a>
-<h3>Strings and Escape Sequences</h3>
-<p>Sometimes you'll want to include a special character within a string. The most common example is a double quote. However, a computer can't make sense of the following. Where is the string meant to end?</p>
-
-<pre data-language="javascript">var message = "And he said "to get to the other side"";</pre>
-
-<p>To avoid this ambiguity, languages tend to have an escape character, and that tends to be the backslace <code>\</code>:</p>
-
-<pre data-language="javascript">var message = "And he said \"to get to the other side\"";</pre>
-
-<p>When you want to print an actual backslash, you simply escape it:</p>
-
-<pre data-language="javascript">var message = "I'm printing a backspace like so \\";</pre>
-
-<p>Finally, if you want to output a tab or new line, you can use the special <code>\t</code> or <code>\n</code> sequence. <code>\n</code> is a line feed. To get a new line to display properly on some operating systems, you'll have to print out a carriage return <code>\r</code> followed by a line feed: <code>\n\r</code>.</p>
+<p>Finally, you might be surprised by the result you get when dividing integers. In some languages, dividing the integer 1 by the integer 3 will give you an expected float 0.333333. In static languages, however, operations involving two integers will result in an integer, as will operations involving two decimals result in a decimal. Therefore, <code>1 / 3</code> will result in 0. This is true for many dynamic languages as well. To get the 0.3333, one or both values must be a float: <code>1 / 3.0</code>.</p>
 
 
-<a name="loopcontrol" class="anchor"></a>
-<h3>Loop Control</h3>
-<p>All the loops that we've seen so far have had a well defined start and stop point. For example we want to loop from the start to the end of an array. However, sometimes you'll want to exit the loop or possibly skip to the next iteration. For these operations, most languages provide two keywords: <code>break</code> and <code>continue</code>. When code reaches a <code>break</code>, it'll exit the existing loop (since it's possible to have loops within loops, it's worth pointing out that break will exit the inner-most loop):</p>
+<a name="gettingthetype" class="anchor"></a>
+<h3>Getting The Type</h3>
+<p>It's always possible to get a value's type. This is oftne achieved via the <code>typeof</code> operator. The following code will display <em>string</em>.</p>
 
-<pre data-language="javascript">for (var i = 0; i &lt; deck.length; i++) {
-  if (decks[i] == "Ace") {
-    alert("Found it! Card " + i + " is the first ace");
-    break;
-  }
-}</pre>
+<pre data-language="ruby">alert(typeof "i love unicorns")</pre>
 
-<p>When code reaches a <code>continue</code> it skips to the next iteration, jumping over any following lines of code. The output from the code below is 1, 2, 4</p>
-
-<pre data-language="javascript">var values = [1, 2, 3, 4];
-for (var i = 0; i &lt; values.length; i++) {
-  if (values[i] == 3) {
-    continue;
-  }
-  alert(values[i]);
-}</pre>
-
-<p>In thibs simple example, it might be best, from a readabiilty point of view, to rewrite the code as follows. But in some cases <code>continue</code> will be more readable.</p>
-
-<pre data-language="javascript">var values = [1, 2, 3, 4];
-for (var i = 0; i &lt; values.length; i++) {
-  if (values[i] != 3) {
-    alert(values[i]);
-  }
-}</pre>
-
-<a name="otherloops" class="anchor"></a>
-<h3>Other Loops</h3>
-<p><code>for</code> loops aren't the only type of looping mechanism available in most languages. Two other common ones are the <code>while</code> and <code>do/while</code> loop. Both of these are simpler than the triple-statement <code>for</code> loop, but also less useful.</p>
-
-<p>A while loop will continue to loop as long as the provided condition remains true. Compare the the <code>for</code> we've already seen to iterate over an array with the <code>while</code> loop version:</p>
-
-<pre data-language="javascript">var i = 0;
-while (i &lt; deck.length) {
-  if (decks[i] == 'Joker') {
-    ....
-  }
-  i += 1;
-}</pre>
-
-<p>The for loop, while more complex, has the advantage of grouping the three components (initial statement; condition to continue; step statement) together. Now and again you'll see an endless <code>while</code> loop with some <code>break</code> condition:</p>
-
-<pre data-language="javascript">while (true) {
-  var name = prompt("What is your name?");
-  if (name == "Joker") {
-    break;
-  }
-  alert("Hello " + name);
-}</pre>
-
-<p>With both a <code>while</code> and <code>for</code> loop it is possible for no iterations to take place if the condition is initially false. A <code>do/while</code> places the condition at the end, and thus will execute at least once:</p>
-
-<pre data-language="javascript">do {
-  var name = prompt("What is your name?");
-  alert("Hello " + name);
-} while (name != "Joker");</pre>
-
-<p>Generally speak  you'll see <code>for</code> the most often, then <code>while</code> and finally <code>do/while</code>.</p>
+<p>This is handy in cases where we don't know what type of data we are dealing with. Futhermore, in many other languages, types themselves are complex objects supporting many advanced functions. This isn't something you are likely to need as you get started. But it should give you some idea of just how big a role types play - in both dynamic and static languages.</p>
 
 <a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>
-<p>This chapter introduced new keywords and operations which many languages make available. Some of these may seem minor, that's because some are. Understanding the concept behind variables and conditions to control execution is a lot more important than knowing that <code>i++</code> is a quick way to do <code>i = i + 1</code>. However, as soon as you start exploring other guides and sample programs, these are things that you'll imediately run into.</p>
+<p>This chapter expanded our initial concept of types into a much more comprehensive version. The most important thing to know is that static-typed languages exist and are very popular. If you are looking at code and you see the words <code>string</code> and <code>int</code> (to name a few), you are looking at a static typed language.</p>
 
-<p>For the time being, you might be uncertain about what's the best approach to use for a given piece of code. What loop should you use, or how should you mix strings and values? At first, worry about making your code do what you want it to do. With experience, both reading other people's code, and expanding your own, you'll gain a feel for what improves and what distracts from your codes readability.</p>
+<p>We also broke down numbers into to main groups. It's normally obvious if you want an integer or a float. The breakdown from that point on isn't as important. The only exception is if you are dealing with money, in which case you'll want to make sure you are using a type that won't lose precision.</p>

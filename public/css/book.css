@@ -144,11 +144,11 @@ pre {
   border: solid #000;
   border-width: 0 1px;
   color: #fff;
-  background: #222222;
-  background: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#222222));
-  background: -moz-linear-gradient(-90deg, #333333, #222222);
-  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr='#333333', endColorstr='#222222');
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222')";
+  background: #444444;
+  background: -webkit-gradient(linear, left top, left bottom, from(#555555), to(#444444));
+  background: -moz-linear-gradient(-90deg, #555555, #444444);
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr='#555555', endColorstr='#444444');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#444444')";
   -moz-user-select: none;
   -khtml-user-select: none;
   user-select: none;
@@ -156,10 +156,17 @@ pre {
   width: 250px;
   text-align: center;
   font-size: 1em;
-  margin: 0; }
+  margin: 0;
+  text-shadow: 1px 1px 3px #000; }
+
+#toc:after {
+  content: "\25B6";
+  margin-left: 20px;
+  font-size: 0.8em;
+  text-shadow: 1px 1px 3px #000; }
 
 #toc:hover {
-  background: #4a4a4a; }
+  background: #222; }
 
 #menu {
   z-index: 10;
