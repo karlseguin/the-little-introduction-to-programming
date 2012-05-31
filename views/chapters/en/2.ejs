@@ -43,7 +43,9 @@ true</pre>
 
 <p>The first line will result in <code>12</code> while the second line will result in <code>"Hello World"</code>. However, it doesn't make sense to divide one string by another or to make a number lowercase.</p>
 
-<p>We'll revisit types in chapter 3. What's important for now is that you can tell a string from a number from a boolean and that you understand that what you can do with one type of data isn't necessarily valid for another type.</p>
+<p>There's one final value worth considering: <code>null</code>. <code>null</code> should be thought of as no-value, which is definitely different than an empty string or 0</p>
+
+<p>We'll revisit types in throughout the book. What's important for now is that you can tell a string from a number from a boolean and that you understand that what you can do with one type of data isn't necessarily valid for another type.</p>
 
 <a name="variables" class="anchor"></a>
 <h3>Dealing With Data - Variables</h3>
@@ -67,6 +69,8 @@ password = "ghanima"</pre>
 <p>Exactly how <code>get_the_value_entered_by_the_user</code> works or what it does isn't important. What is important is that the <code>email's</code> value isn't determined by us when we program, but rather determined as the program is running.</p>
 
 <p>In the next couple of sections, you'll see how important, yet simple, variables are. It's hard to  grasp them until we've introduced a few more concepts. What might be obvious already though is that properly naming your variables is crucial to making your code readable. Although you don't know the exact value held by <code>email</code>, if we printed it out, you probably wouldn't be surprised. However, if we named our variable <code>a</code> or <code>the</code> or even <code>string</code> your guess about the contents would be as good as mine.</p>
+
+<p>Finally, in most languages, variable names are case-sensitive. <code>Name</code>, <code>name</code> and <code>NAME</code> are all different variables. It's good practice to avoid relying on case to differentiate variables. When code contains both an <code>address</code> and an <code>Address</code> variable, it isn't obvious which should be used or how they differ.</p>
 
 <a name="flowcontrol" class="anchor"></a>
 <h3>Determining A Course Of Action</h3>
@@ -178,8 +182,13 @@ else
 
 <p>Our <code>hasJoker</code> function can be used like so:</p>
 
-<pre data-language="ruby">  if hasJoker(deck) == true
-    print "Please remove the jokers from the deck!"</pre>
+<pre data-language="ruby">if hasJoker(deck) == true
+  print "Please remove the jokers from the deck!"</pre>
+
+<p>As a side note, conditions work by evaluating boolean values (true/false). There's no difference between <code>true == true</code> and just <code>true</code>. Similarly, there's no difference between <code>true == false</code> and just <code>false</code>. Therefore, the above, while more clear, can be rewritten : </p>
+
+<pre data-language="ruby">if hasJoker(deck)
+  print "Please remove the jokers from the deck!"</pre>
 
 <p>In order to make <code>hasJoker</code> more reusable, we might change it like so:</p>
 
@@ -194,6 +203,8 @@ else
 <pre data-language="ruby">exists = hasCard(deck, "2 of Hearts")</pre>
 
 <p>Notice that we had to change the name of <code>card</code> variable created in our for loop so that it wouldn't be confused with the <code>card</code> parameter. Depending on the language that you were using, you'd either get error or some weird behavior. Also, <code>c</code> isn't the best variable name, but given that it has a very short existence, it's probably ok.</p>
+
+<p>Like variable names, function names are also case-sensitive.</p>
 
 <a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>

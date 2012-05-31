@@ -86,14 +86,14 @@ alert(list.exists("milk")) #will display true</pre>
 
 <a name="hashes" class="anchor"></a>
 <h3>Hashes</h3>
-<p>So far all the collections that we've looked at deal with a single value. Hashes on the other hand deal with a key and a value. Most of the time the key is a string, while the value can be any other piece of data. Hashes are also known as dictionaries and hash sets. As an example, if we wanted to track how many items to buy, we could use a hash:</p>
+<p>So far all the collections that we've looked at deal with a single value. Hashes on the other hand deal with a key and a value. Hashes are also known as dictionaries and hash sets. Most of the time the key is a string, while the value can be any other piece of data. As an example, if we wanted to track how many items to buy, we could use a hash:</p>
 
 <pre data-language="ruby">list = {}
 list["milk"] = 1
 list["milk"] = list["milk"] + 1
 alert(list["milk"]) #will display 2</pre>
 
-<p>Notice that we creat a hash with braces <code>{}</code>. The value of a hash isn't limited to a simple string, number of boolean. It can be something more complex, like an array, or another hash: </p>
+<p>Notice that we create a hash with braces <code>{}</code>. The value of a hash isn't limited to a simple string, number of boolean. It can be something more complex, like an array, or another hash: </p>
 
 <pre data-language="ruby">list = {};
 list['milk'] = {quantity: 1, section: "dairy"}
@@ -116,7 +116,7 @@ rows.push({type: "cat", name: "fluffy", age: 5})
 rows.push({type: "dog", name: "hunter", age: 6})
 rows.push({type: "fish", name: "jorge", age: 2})</pre>
 
-<p>Like many things, the role played by hashes has changed over time. They were once used mostly to quickly access data by key. While still used a lot for this purpose, we see hashes being used more and more as simple containers of values, such as the animal data shown above. In a later chapter, we'll learn about <em>classes</em> which are a more structured way to contain and represent such data.</p>
+<p>Like many things, the role played by hashes has changed over time. They were once used mostly to quickly access data by key. While still used frequently for this purpose, we see hashes being used more and more as simple containers of values, such as the animal data shown above. In a later chapter, we'll learn about <em>classes</em> which are a more structured way to contain and represent such data.</p>
 
 <a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>

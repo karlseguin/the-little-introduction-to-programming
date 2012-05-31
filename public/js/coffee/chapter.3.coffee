@@ -20,6 +20,7 @@ class Runner
     config = Runner.getConfig(this)
     list = Runner.shopList.empty()
     Runner.getCodingArea(this).find('.goal').removeClass('incorrect correct')
+    Runner.ok()
     for item in config.reset
       list.append($('<div>').text(item))
     e.preventDefault()
