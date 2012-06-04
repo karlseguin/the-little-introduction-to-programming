@@ -23,9 +23,14 @@
     };
 
     Runner.answer = function(e) {
-      var config;
+      var answer, config;
       config = Runner.getConfig(this);
-      Runner.getInput(this, '.answer').toggle().text(config.answer);
+      answer = Runner.getInput(this, '.answer').toggle();
+      if (answer.is(':visible')) {
+        $(this).text('hide');
+      } else {
+        $(this).text('answer');
+      }
       return e.preventDefault();
     };
 

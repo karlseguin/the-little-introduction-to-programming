@@ -251,7 +251,7 @@ pre {
 
 .codingArea > div {
   width: 100%;
-  padding: 5px 10px; }
+  padding: 4px; }
 
 .codingArea .goal {
   border: 1px solid transparent;
@@ -263,7 +263,7 @@ pre {
   overflow: auto;
   position: relative;
   padding-left: 0;
-  padding-right: 20px; }
+  padding-right: 10px; }
 
 .codingArea .buttons a {
   padding: 4px 10px;
@@ -287,7 +287,7 @@ pre {
   right: 0; }
 
 textarea {
-  padding: 1%;
+  padding: 4px;
   height: 125px;
   border: 1px solid #afa;
   width: 100%;
