@@ -13,7 +13,7 @@ class Runner
 
   @answer: (e) ->
     config = Runner.getConfig(this)
-    answer = Runner.getInput(this, '.answer').toggle()
+    answer = Runner.getInput(this, '.answer').toggle().text(config.answer)
     if answer.is(':visible')
       $(this).text('hide')
     else
