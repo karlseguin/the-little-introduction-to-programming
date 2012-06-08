@@ -1,7 +1,9 @@
 <a name="moreontypes" class="anchor"></a>
 <h2>More On Types</h2>
-In chapter 2 we talked about types, focusing on three main types: <code>strings</code>, <code>numbers</code> and <code>booleans</code>. In following chapters we used arrays and talked about other data structures. However, throughout our coding, types haven't played big role. Besides knowins that a value was a string or a number, and knowing that some operations only work on some types (like conditions are expressed as booleans), it has all seemed rather academic.</p>
+In chapter 2 we talked about types, focusing on three main types: <code>strings</code>, <code>numbers</code> and <code>booleans</code>. In following chapters we used arrays and talked about other data structures. However, throughout our coding, types haven't played big role. Besides knowing that a value was a string or a number, and knowing that some operations only work on some types (like conditions are expressed as booleans), it has all seemed rather academic.</p>
 
+<a name="dynamicvsstatic" class="anchor"></a>
+<h3>Dynamic vs Static Typing</h3>
 <p>Types truly are important as they define what we can and can't do with our data. How much in-your-face this fact is largely depends on the language. With respect to types, languages fall into one of two categories: types are either explicitly stated or they are implied. The proper terms are: static typed languages and dynamic typed languages.</p>
 
 <p>So far we've only seen dynamic typing. In a static typed language, you'll see code peppered with type information. If we were to rewrite our <code>itemExists</code> function in such a language, it would look something like:</p>
@@ -13,9 +15,9 @@ In chapter 2 we talked about types, focusing on three main types: <code>strings<
       return true
   return false</pre>
 
-<p>Notice that our variabled are now declared with explicit type information - such as <code>string[]</code>). Furthermore, we've had to state the type of parameter our function expects as well as the type it returns.</p>
+<p>Notice that our variables are now declared with explicit type information - such as <code>string[]</code>). Furthermore, we've had to state the type of parameter our function expects as well as the type it returns.</p>
 
-<p>In a static language, once a variable is declared to be a certain type, the values assigned to it can only be of that type. This isn't true of a dynamic language. Below we have code written in a dynamic language, followed by code written in a static language. The static language version will not compile - you'll get an error:</p>
+<p>In a static language, once a variable is declared to be a certain type, the values assigned to it can only be of that type. This isn't true of a dynamic language. Below we have code written in a dynamic language, followed by code written in a static language. The static language version will not compile - you'll get an error because <code>name</code> is defined as a string and cannot hold a number:</p>
 
 <pre data-language="generic">name = "Goku"
 name = 9001
@@ -24,44 +26,42 @@ name = 9001
 string name = "Goku"
 name = 9001 # error!</pre>
 
-<a name="dynamicvsstatic" class="anchor"></a>
-<h3>Dynamic vs Static Typing</h3>
 <p>Many programmers passionately prefer one type system versus the other. Proponents of dynamic languages say they are more productive. Developers who prefer static languages think their code is less likely to contain errors and run faster.</p>
 
 <p>This is a good time to point out that the type system isn't just about having to enter fewer characters. Languages that are dynamic tend to have other common properties; and static languages share many similarties with each other. As a simple example, arrays in dynamic languages tend to be dynamic, while arrays in static languages tend to be fixed. </p>
 
-<p>Professional programmers should strive to master at least one of each. As someone learning to program, I don't think it matters too much. Dynamic languages are probably easier to learn. The choice may very well be forced upon you based on what you want to program F.or example, if you want to write applications for Android mobile devices you only have 1 language choice, and it's statically typed.</p>
+<p>Professional programmers should strive to master at least one of each. As someone learning to program, I don't think it matters woo much which one you pick. Dynamic languages are probably easier to learn. The choice may very well be forced upon you based on what you want to program .For example, if you want to write applications for Android mobile devices you only have one language choice, Java, which is statically typed.</p>
 
 <a name="numbers" class="anchor"></a>
 <h3>Numbers</h3>
-<p>So far we've treated all numbers the same. However, numbers actually come in a variety of shapes and sizes. At the very least, most languages support two types of numbers: integer and floats. Integers don't support decimals and typically support a range of -4 billion to +4billion (plus or minus a couple hundred million). 0, 5, -1495 and 9001 are all examples of integers. Floats on the other hand support a much wider range and support fractions. 0.1, -29394.49 and 2003.9 are all examples of floats.</p>
+<p>So far we've treated all numbers the same. However, numbers actually come in a variety of shapes and sizes. At the very least, most languages support two types of numbers: integer and floats. Integers don't support decimals and typically support a range of -4 billion to +4 billion (plus or minus a couple hundred million). 0, 5, -1495 and 9001 are all examples of integers. Floats on the other hand support a much wider range and support fractions. 0.1, -29394.49 and 2003.9 are all examples of floats.</p>
 
-<p>Static languages tend to take this even further by introducing different types of integers and floats. The different integers represent different minimum and maximum ranges. A <code>byte</code> can go from 0-255 while a <code>long</code> can go into the quintillions. Integers can also be made to dissalow negative values (and thus increasing the maximum positive value). Finally, floats can also be <coe>decimals</code>. The difference between a float in a decimal has to do with accuracy. When you manipulate floats (such as multiplying or dividing them) you can lose precision - which is bad if you are dealing with things like money. Decimals don't suffer from this problem. The downside is that they don't perform as well</p>
+<p>Static languages tend to take this even further by introducing different types of integers and floats. The different integers represent different minimum and maximum ranges. A <code>byte</code> can go from 0 to 255 while a <code>long</code> can go into the quintillions. Integers can also be made to disallow negative values (and thus increasing the maximum positive value). Finally, floats can also be <code>decimals</code>. The difference between a float and a decimal has to do with accuracy. When you manipulate floats (such as multiplying or dividing them) you can lose precision (think of it as rounding errors) which is bad if you are dealing with things like money. Decimals don't suffer from this problem. The downside is that they don't perform as well</p>
 
 <p>For now, you just need to know that numbers are categorized as integers and floats. The main difference being that floats support fractions.</p>
 
 <a name="typeconversion" class="anchor"></a>
 <h3>Type Conversion</h3>
-<p>Whethever type system you are dealing with, you'll often want to convert data from one type to another. Even in a dynamically typed language, a value still has a type. For example, the value returned by the <code>prompt</code> function is always a string. If the user enters <em>5</em> when prompted, what do you think the value of <code>sum</code> will be?: </p>
+<p>Whatever type system you are dealing with, you'll often want to convert data from one type to another. Even in a dynamically typed language, a value still has a type. For example, the value returned by the <code>prompt</code> function is always a string. If the user enters <em>5</em> when prompted, what do you think the value of <code>sum</code> will be?: </p>
 
 <pre data-language="ruby">sum = 4
 sum += prompt("Enter price")</pre>
 
-<p>This depends on the language you are using. Some will generate an error. Others will convert the <code>sum</code> to a string resulting in "45". To get the desired answer of <em>9</em> we need to do is convert the value to an integer. Different languages have different functions for doing this. In your browser the functions <code>parseInt</code> and <code>parseFloat</code> convert a value to an integer or float:</p>
+<p>This depends on the language you are using. Some will generate an error. Others will convert the <code>sum</code> to a string and append it to the 4 already stored in it - resulting in "45". To get the desired answer of <em>9</em> we need to convert the value to an integer. Different languages have different functions for doing this. In your browser the functions <code>parseInt</code> and <code>parseFloat</code> convert a value to an integer or float:</p>
 
 <pre data-language="ruby">sum = 4
 sum += parseInt(prompt("Enter price"))</pre>
 
 <p>What happens if the value we are trying to convert isn't a valid integer? Again, this depends on the language. Many will generate an error. Some may return special values that indicate that the conversion failed.</p>
 
-<p>Similarly values can be converted to a string. This is often done via a method called <code>toString</code>. Again, it's worth pointing out that not all languages behave the same. For example, your browser will gladly execute the following:</p>
+<p>Similarly, values can be converted to a string. This is often done via a method called <code>toString</code>. Again, it's worth pointing out that not all languages behave the same. For example, your browser will gladly execute the following:</p>
 
 <pre data-language="ruby">power = 9001
 alert("It's over " + power)</pre>
 
 <p>Whereas another language, even a dynamic language, might insist that <code>power</code> be explicatly converted to a string.</p>
 
-<p>In addition to conversions, static languages allow some types to be coerced into other types. For example, we said that a <code>byte</code> can hold a value from 0-255 while a <code>long</code> has a much larger range. Despite this difference, there is some overlap. In some cases, a <code>long</code> could be a valid <code>byte</code>. We can only turn a <code>long</code> into a <code>byte</code> by explicitely telling the compiler <em>yes, we really mean to do this.</em> This coercion is done by casting:</p>
+<p>In addition to conversions, static languages allow some types to be coerced into other types. For example, we said that a <code>byte</code> can hold a value from 0 to 255 while a <code>long</code> has a much larger range. Despite this difference, there is some overlap. In some cases, a <code>long</code> could be a valid <code>byte</code>. We can only turn a <code>long</code> into a <code>byte</code> by explicitly telling the compiler <em>yes, we really mean to do this.</em> This coercion is done by casting:</p>
 
 <pre data-language="generic">long large = 200
 byte small = (byte)large</pre>
@@ -79,6 +79,6 @@ byte small = (byte)large</pre>
 
 <a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>
-<p>This chapter expanded our initial concept of types into a much more comprehensive version. The most important thing to know is that static-typed languages exist and are very popular. If you are looking at code and you see the words <code>string</code> and <code>int</code> (to name a few), you are looking at a static typed language.</p>
+<p>This chapter expanded our initial concept of types into a much more comprehensive version. The most important thing to know is that static typed languages exist and are very popular. If you are looking at code and you see the words <code>string</code> and <code>int</code> (to name a few), you are looking at a static typed language.</p>
 
-<p>We also broke down numbers into to main groups. It's normally obvious if you want an integer or a float. The breakdown from that point on isn't as important. The only exception is if you are dealing with money, in which case you'll want to make sure you are using a type that won't lose precision.</p>
+<p>We also broke down numbers into two main groups. It's normally obvious if you want an integer or a float. The breakdown from that point on isn't as important. The only exception is if you are dealing with money, in which case you'll want to make sure you are using a type that won't lose precision.</p>
