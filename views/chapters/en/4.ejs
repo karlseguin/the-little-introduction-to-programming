@@ -2,9 +2,9 @@
 <h2>Data Structures</h2>
 <p>Up until now, whenever we wanted to group values together, we've used the term <em>collection</em>. For example, our <code>deck</code> variable held a collection of cards. However, to be accurate, our <code>deck</code> is actually an <em>array</em>, which is just one of many <em>collections</em>. An alternative word for <em>collection</em> is <em>data structure</em>.</p>
 
-<p>In this chapter we are going to look at a few data structures, including arrays, in order to properly understand them. There are countless data structures but it isn't important to know them all. What is important is to understand the common ones, and to understand why so many exist. So far we've only needed arrays so it can be hard to imagine problems where arrays aren't ideal or even sufficient.</p>
+<p>In this chapter we are going to look at a few data structures, including arrays, in order to properly understand them. There are countless data structures but it isn't important to know them all. What is important is to understand the common ones, and to understand why so many exist. So far we've only needed arrays, so it can be hard to imagine problems where arrays aren't ideal or even sufficient.</p>
 
-<p>Data structures are important as they provide the mechanism for defining what we can do with our data. Other aspects, such as the type system (strings, numbers, booleans, ...), deal with what our data is. Also, data structures imply certain performance characteristics. We'll soon see specific examples of what this means. Put simply though, data structures communicate a lot about the code. It defines a common terminology so that when a programmer sees code using an <em>array</em> he or she can automatically infer both how the data can be manipulated and how those manipulations will perform.</p>
+<p>Data structures are important as they provide the mechanism for defining what we can do with our data. Other aspects, such as the type system (strings, numbers, booleans, ...), deal with what our data is. Also, data structures can have certain performance characteristics, for example retrieving the value of an array at a specified index will always be the same no matter how small or large the index is. Put simply though, data structures communicate a lot about the code. They define a common terminology so that when a programmer sees code using an <em>array</em> he or she can automatically infer both how the data can be manipulated and how those manipulations will perform.</p>
 
 <a name="arrays" class="anchor"></a>
 <h3>Arrays</h3>
@@ -13,22 +13,22 @@
 <pre data-language="ruby">landscape = ["hills", "clouds", "sun", "birds"]
 alert(landscape[2])</pre>
 
-<p>Remember, in most languages, the first element of an array starts at index 0. We can also write a value at a specific index:</p>
+<p>In most languages, the first element of an array starts at index 0 because the index represents the offset from the start. We can also write a value at a specific index:</p>
 
 <pre data-language="ruby">landscape[3] = "seagulls"</pre>
 
-<p>Another important characteristic of arrays is that the order is preserved. In the following example, where we start with a blank array and add two items, we know for sure that the 2nd item will be <code>cat</code>:</p>
+<p>Another important characteristic of arrays is that the order of elements is preserved. In the following example, where we start with a blank array and add two items, we know for sure that the 2nd item will be <code>cat</code>:</p>
 
 <pre data-language="ruby">pets = []
 pets.push("dog")
 pets.push("cat")
-alert(pet[1]) #will display cat</pre>
+alert(pet[1]) # will display cat</pre>
 
 <p>This might seem obvious, but we'll soon see data structures which don't make such guarantees. The real power of array ordering is that you can control the order yourself. Initially the values in an array are arranged based on how they were inserted. However, you can rearrange the order to suit your needs - say by sorting them from most awesome pet to least awesome pet (thus making cat the first item in the array!)</p>
 
 <p>Sadly, there's some ambiguity over what an array actually is. In many languages, an array is fixed-sized. That is, we can only create an array by specifying a size (the number of elements to hold) and cannot expand the array beyond this size. If we need more room, we must create a larger array and copy over the values ourself. This is the traditional and proper meaning of <em>array</em>. Arrays which don't require that we specify an initial size and can grow as needed, are often called <em>dynamic arrays</em>. This is one of the few cases where data structure terminology is ambiguous.</p>
 
-<p>We won't worry about fixed-sized arrays. In fact, for day to day programming, fixed-sized arrays, although often used, feel like a relic from the past. New languages tend to favor dynamic arrays (and simply call them <em>arrays</em>.). Whatever type of array we are talking about, the important point is that they are ordered and accessed by indexed.</p>
+<p>We won't worry about fixed-sized arrays. In fact, for day-to-day programming, fixed-sized arrays, although often used, feel like a relic from the past. New languages tend to favor dynamic arrays (and simply call them <em>arrays</em>.). Whatever type of array we are talking about, the important point is that they are ordered and accessed by indexed.</p>
 
 <a name="qands" class="anchor"></a>
 <h3>Queues and Stacks</h3>
@@ -40,7 +40,7 @@ alert(pet[1]) #will display cat</pre>
 
 <p>Knowing this, we can implement a queue with just two functions: <code>enqueue</code> and <code>dequeue</code>. Similarly, a stack can be implemented with: <code>push</code> and <code>pop</code>. The names of the functions don't matter as much as what they do, but these names are commonly used.</p>
 
-<p>Both queues and stacks can be, and often are, built using arrays. For example, if we were to build a queue using the arrays that your browser supports,we can use the <code>push</code> function to add values to the end of our queue and <code>shift</code> to remove value at the front:</p>
+<p>Both queues and stacks can be, and often are, built using arrays. For example, if we were to build a queue using the arrays that your browser supports, we can use the <code>push</code> function to add, or queue, values and the <code>shift</code> function to dequeue values:</p>
 
 <pre data-language="ruby">queue = []
 queue.push("Custom 1")
@@ -50,7 +50,7 @@ queue.shift() #returns Customer 1
 queue.shift() #returns Customer 2
 queue.shift() #returns Customer 3</pre>
 
-<p>For stacks, we can use <code>unshift</code> to add values at the front and again use <code>shift</code> to remove them from the front:</p>
+<p>For stacks, we can use <code>unshift</code> to push values at the front and again use <code>shift</code> to pop values from the front:</p>
 
 <pre data-language="ruby">stack = []
 stack.unshift("Chip 1")
@@ -66,7 +66,7 @@ stack.shift() #returns Chip 1</pre>
 
 <a name="sets" class="anchor"></a>
 <h3>Sets</h3>
-<p>Arrays are great if you want to preserve the order of values, or if you want to randomly access values by index. However, as we've already seen, to check if a value exists within the array, we have to loop through it. This may be fine for small arrays, but for large arrays with thounsands of values and checks happening hundreds of times per second, it's quite inneficient. The performance characteristic of searching an array is described as <em>linear</em> because the time it takes to find an item grows linearly with the number of values in the array.</p>
+<p>Arrays are great if you want to preserve the order of values, or if you want to randomly access values by index. However, as we've already seen, to check if a value exists within the array, we have to loop through it. This may be fine for small arrays, but for large arrays with thousands of values and checks happening hundreds of times per second, it's quite inneficient. The performance characteristic of searching an array is described as <em>linear</em> because the time it takes to find an item grows linearly with the number of values in the array.</p>
 
 <p>If rather than accessing a value by a numeric positional index, we want to access it by the value itself, we can use a <em>set</em>. Since the way we access our data (or, the <em>key</em>) is the value itself, sets don't allow duplicate values. These properties make sets ideal for a number of use cases: such as a shopping list. The reason we didn't use a set in the previous chapter is because browsers don't yet support them, but newer versions will.</p>
 
@@ -76,9 +76,9 @@ stack.shift() #returns Chip 1</pre>
 list.set("milk")
 list.set("eggs")
 list.set("milk") #doesn't do anything
-alert(list.exists("milk")) #will display true</pre>
+alert(list.exists("milk")) # will display true</pre>
 
-<p>In theory, we could use plain old arrays to create sets. In fact, in chapter 3 we could have modified the <code>addItem</code> function to make use of the <code>itemExists</code> and not allow duplicates to be added. However there are certain performance characteristics that one expects from a set. Namely, the speed of adding an item and checking for the existance of an item should not vary based on the size of a set. This is a good example of how data structures not only define the behavior of a collection, but also its performance characteristics.</p>
+<p>In theory, we could use plain old arrays to create sets. In fact, in chapter 3 we could have modified the <code>addItem</code> function to make use of the <code>itemExists</code> and not allow duplicates to be added. However there are certain performance characteristics that one expects from a set. Namely, the speed of adding an item and checking for the existence of an item should not vary based on the size of a set. This is a good example of how data structures not only define the behavior of a collection, but also their performance characteristics.</p>
 
 <p>As a final point, a properly implemented set should allow for set-based operation (in the mathematical sense). For example, you should be able to create a union of two sets (to get all the values contained in both), or an intersection (to get only the value which exist in both). That may seem academic, but it's actually quite useful. Imagine having a set with the list of movies Jane has seen and intesecting it with the set of movies Matt has seen. The result is a list of movies that both have seen.</p>
 
@@ -91,9 +91,9 @@ alert(list.exists("milk")) #will display true</pre>
 <pre data-language="ruby">list = {}
 list["milk"] = 1
 list["milk"] = list["milk"] + 1
-alert(list["milk"]) #will display 2</pre>
+alert(list["milk"]) # will display 2</pre>
 
-<p>Notice that we create a hash with braces <code>{}</code>. The value of a hash isn't limited to a simple string, number of boolean. It can be something more complex, like an array, or another hash: </p>
+<p>Notice that we create a hash with braces <code>{}</code>. The value of a hash isn't limited to a simple string, number or boolean. It can be something more complex, like an array, or another hash: </p>
 
 <pre data-language="ruby">list = {};
 list['milk'] = {quantity: 1, section: "dairy"}
@@ -107,17 +107,19 @@ list["eggs"] = true
 list["milk"] = true
 alert(list["milk"] == true) # will display true</pre>
 
-<p>However, we don't have access to any set-based operations.</p>
+<p>However, we don't have access to any set-based operations, like a union (which we might not need).</p>
 
 <p>Hashes are powerful and are used often. They conviniently let you represent more complex data. For example, we could represent a spreadsheet using an array of hashes:</p>
 
 <pre data-language="ruby">rows = []
 rows.push({type: "cat", name: "fluffy", age: 5})
 rows.push({type: "dog", name: "hunter", age: 6})
-rows.push({type: "fish", name: "jorge", age: 2})</pre>
+rows.push({type: "fish", name: "jorge", age: 2})
+alert(rows[1]["name"] + " is " + rows[1]["age"] + " years old"); # hunter is 6 years old
+</pre>
 
 <p>Like many things, the role played by hashes has changed over time. They were once used mostly to quickly access data by key. While still used frequently for this purpose, we see hashes being used more and more as simple containers of values, such as the animal data shown above. In a later chapter, we'll learn about <em>classes</em> which are a more structured way to contain and represent such data.</p>
 
 <a name="inthischapter" class="anchor"></a>
 <h3>In This Chapter</h3>
-<p>In this chapter we learned more about arrays as well as hashes. These are two data structures that you'll make heavy use of. We also saw queues, stacks and sets. While all three serve useful purposes, we mostly explored them as a means to learn about different data structures. There are other classes of data structures available, but they tend to be more complex, more specialized and thus less often used.</p>
+<p>In this chapter we learned about arrays as well as hashes. These are two data structures that you'll make heavy use of. We also saw queues, stacks and sets. While all three serve useful purposes, we mostly explored them as a means to learn about different data structures. There are other classes of data structures available, but they tend to be more complex, more specialized and thus less often used.</p>
