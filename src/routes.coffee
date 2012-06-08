@@ -3,9 +3,11 @@ Store = require('./store');
 class Routes
   @routes: (app) ->
     app.get '/chapter/:language/:chapter/:name', (req, res) ->
+      res.setHeader('Cache-Control', 'public, max-age=60')
       res.render "chapters/#{req.params.language}/#{req.params.chapter}", {layout: 'layouts/book', locals: {language: req.params.language, chapter: parseInt(req.params.chapter)}}
 
     app.get '/', (req, res) ->
+      res.setHeader('Cache-Control', 'public, max-age=60')
       res.render 'index', layout: 'layouts/home'
 
     app.post '/subscribe', (req, res) ->
